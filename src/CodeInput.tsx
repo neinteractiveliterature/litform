@@ -23,7 +23,7 @@ import defaultCodeMirrorOptions from './defaultCodeMirrorOptions';
 import ErrorDisplay from './ErrorDisplay';
 import LoadingIndicator from './LoadingIndicator';
 
-import '../Codemirror/LiquidMultiplexModes';
+import './LiquidMultiplexModes';
 
 export type CodeInputProps = Omit<IControlledCodeMirror, 'onChange' | 'onBeforeChange'> & {
   onChange: (value: string) => void;
