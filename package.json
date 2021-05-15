@@ -7,7 +7,9 @@
   "module": "lib",
   "main": "lib",
   "repository": "https://github.com/neinteractiveliterature/litform",
-  "sideEffects": false,
+  "sideEffects": [
+    "./lib/LiquidMultiplexModes.js"
+  ],
   "private": false,
   "files": [
     "lib"
@@ -19,6 +21,7 @@
   "peerDependencies": {
     "@apollo/client": "^3.3.18",
     "codemirror": "^5.61.0",
+    "graphql": "^15.5.0",
     "react": "^17.0.2",
     "react-bootstrap4-modal": "^1.7.5",
     "react-codemirror2": "^7.2.1"
@@ -30,6 +33,7 @@
     "@typescript-eslint/parser": "^4.23.0",
     "codemirror": "^5.61.0",
     "eslint": "^7.26.0",
+    "graphql": "^15.5.0",
     "prettier": "^2.3.0",
     "react": "^17.0.2",
     "react-bootstrap4-modal": "^1.7.5",

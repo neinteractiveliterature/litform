@@ -4,7 +4,7 @@
     "sourceMap": true, // allow sourcemap support
     "declaration": true,
     "strictNullChecks": true, // enable strict null checks as a best practice
-    "module": "CommonJS", // specify module code generation
+    "module": "ES6", // specify module code generation
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "react-jsx", // use typescript to transpile jsx to js
