@@ -1,0 +1,34 @@
+{
+  "name": "@neinteractiveliterature/litform",
+  "description": "A library of shared frontend components used in NEIL's web apps",
+  "author": "Nat Budin <natbudin@gmail.com>",
+  "license": "MIT",
+  "version": "0.1.0",
+  "module": "lib",
+  "main": "lib",
+  "repository": "https://github.com/neinteractiveliterature/litform",
+  "sideEffects": false,
+  "private": false,
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "yarn run build"
+  },
+  "peerDependencies": {
+    "@apollo/client": "^3.3.18",
+    "react": "^17.0.2",
+    "react-bootstrap4-modal": "^1.7.5"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.3.18",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "eslint": "^7.26.0",
+    "prettier": "^2.3.0",
+    "react": "^17.0.2",
+    "react-bootstrap4-modal": "^1.7.5",
+    "typescript": "^4.2.4"
+  }
+}
