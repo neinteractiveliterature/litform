@@ -1,5 +1,6 @@
 export { AlertProvider, useAlert } from './Alert';
 export { useAuthHeadersLink, useErrorHandlerLink } from './ApolloLinkHelpers';
+export { default as CodeInput } from './CodeInput';
 export { default as Confirm, useConfirm, useGraphQLConfirm } from './Confirm';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as ErrorDisplay } from './ErrorDisplay';
