@@ -10,6 +10,15 @@ export default {
     helpText: { control: 'text' },
     invalidFeedback: { control: 'text' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `An \`<input>\` tag and a matching \`<label>\`, styled for Bootstrap.  All normal
+          properties of \`<input>\` are supported, so you can pass \`value={...}\`,
+          \`onChange={...}\`, etc.`,
+      },
+    },
+  },
 } as Meta;
 
 const Template: Story<BootstrapFormInputProps> = (args) => <BootstrapFormInput {...args} />;

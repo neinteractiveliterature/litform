@@ -4,14 +4,23 @@ import useUniqueId from './useUniqueId';
 import HelpText from './HelpText';
 
 type BootstrapFormInputPropsCommon = InputHTMLAttributes<HTMLInputElement> & {
+  /** the content of the label that will appear above the input */
   label: ReactNode;
+  /** if true, the label will be hidden visually (but still present for screenreaders) */
   hideLabel?: boolean;
+  /** if present, this content will appear below the input */
   helpText?: ReactNode;
+  /** if present, this content will appear as validation feedback.  This will appear only if
+   * the className includes is-invalid. */
   invalidFeedback?: ReactNode;
 };
 
 type BootstrapFormInputPropsWithHTMLChange = BootstrapFormInputPropsCommon;
 type BootstrapFormInputPropsWithTextChange = Omit<BootstrapFormInputPropsCommon, 'onChange'> & {
+  /**
+   * if present, this will be called each time the text content of the input changes.  It's an
+   * easier alternative to onChange that avoids having to deal with DOM events.
+   */
   onTextChange: (text: string) => void;
 };
 
@@ -49,7 +58,7 @@ function BootstrapFormInput(props: BootstrapFormInputProps) {
 
   return (
     <div className="mb-3">
-      <label htmlFor={inputId} className={props.hideLabel ? 'sr-only' : undefined}>
+      <label htmlFor={inputId} className={props.hideLabel ? 'visually-hidden' : undefined}>
         {props.label}
       </label>
       <input

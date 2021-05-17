@@ -1,17 +1,29 @@
-import { ReactNode, ChangeEventHandler, ChangeEvent, InputHTMLAttributes } from 'react';
+import { ReactNode, ChangeEvent, InputHTMLAttributes } from 'react';
 import classnames from 'classnames';
 
 import useUniqueId from './useUniqueId';
 
 export type BootstrapFormCheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
-  name?: string;
+  /** the content of the label that will appear beside the element */
   label: ReactNode;
+  /** whether or not the element is checked */
   checked: boolean;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  /**
+   * if present, this will be called each time this input is checked or unchecked.  It's an
+   * easier alternative to onChange that avoids having to deal with DOM events.
+   */
   onCheckedChange?: (value: boolean) => void;
-  disabled?: boolean;
+  /**
+   * is this input a radio button or a checkbox?
+   */
   type: 'radio' | 'checkbox';
+  /**
+   * the className that will be applied to the wrapper <div> around the input and its label
+   */
   className?: string;
+  /**
+   * the className that will be applied to the input itself
+   */
   inputClassName?: string;
 };
 
