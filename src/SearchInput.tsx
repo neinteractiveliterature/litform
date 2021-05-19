@@ -26,7 +26,7 @@ function SearchInput({
 
   return (
     <div>
-      <label htmlFor={inputId} className="sr-only">
+      <label htmlFor={inputId} className="form-label visually-hidden">
         {label}
       </label>
       <div className="input-group" {...(inputGroupProps || {})}>
@@ -40,10 +40,8 @@ function SearchInput({
           onChange={(event) => setTransientValue(event.target.value)}
           {...(inputProps || {})}
         />
-        <span className="input-group-append search-input-addon">
-          <span className="input-group-text">
-            <i className="fa fa-search" />
-          </span>
+        <span className="input-group-text search-input-addon">
+          <i className="fa fa-search" />
         </span>
       </div>
     </div>

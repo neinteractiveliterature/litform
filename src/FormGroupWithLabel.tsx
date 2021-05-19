@@ -24,7 +24,7 @@ function FormGroupWithLabel({
 
   return (
     <div className={className ?? 'mb-3'}>
-      <label htmlFor={id} className={labelClassName}>
+      <label htmlFor={id} className={labelClassName ?? 'form-label'}>
         {label}
       </label>
       {children(id)}

@@ -58,7 +58,10 @@ function BootstrapFormInput(props: BootstrapFormInputProps) {
 
   return (
     <div className="mb-3">
-      <label htmlFor={inputId} className={props.hideLabel ? 'visually-hidden' : undefined}>
+      <label
+        htmlFor={inputId}
+        className={`form-label ${props.hideLabel ? 'visually-hidden' : undefined}`}
+      >
         {props.label}
       </label>
       <input
