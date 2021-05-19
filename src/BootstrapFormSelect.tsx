@@ -1,6 +1,6 @@
 import { SelectHTMLAttributes, ReactNode } from 'react';
 import * as React from 'react';
-import useUniqueId from './useUniqueId';
+import FormGroupWithLabel from './FormGroupWithLabel';
 
 type BootstrapFormSelectPropsCommon = SelectHTMLAttributes<HTMLSelectElement> & {
   label: ReactNode;
@@ -34,21 +34,21 @@ function extractSelectElementAttributes(
 }
 
 function BootstrapFormSelect(props: BootstrapFormSelectProps) {
-  const inputId = useUniqueId(props.name ? `${props.name}-` : 'select-');
   const onChangeProp = isHTMLChangeProps(props)
     ? props.onChange
     : (event: React.ChangeEvent<HTMLSelectElement>) => props.onValueChange(event.target.value);
 
   return (
-    <div className="mb-3">
-      <label htmlFor={inputId}>{props.label}</label>
-      <select
-        className="form-control"
-        id={inputId}
-        onChange={onChangeProp}
-        {...extractSelectElementAttributes(props)}
-      />
-    </div>
+    <FormGroupWithLabel label={props.label}>
+      {(id) => (
+        <select
+          className="form-select"
+          id={id}
+          onChange={onChangeProp}
+          {...extractSelectElementAttributes(props)}
+        />
+      )}
+    </FormGroupWithLabel>
   );
 }
 
