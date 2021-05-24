@@ -17,6 +17,12 @@ export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as LoadQueryWrapper } from './LoadQueryWrapper';
 export { default as MultipleChoiceInput } from './MultipleChoiceInput';
 export { default as PageLoadingIndicator } from './PageLoadingIndicator';
+export {
+  useAutoClosingPopper,
+  useLitformPopper,
+  useLitformPopperWithAutoClosing,
+  useToggleOpen,
+} from './PopperUtils';
 export { default as SearchInput } from './SearchInput';
 export { default as useDebouncedState } from './useDebouncedState';
 export { default as useIsMounted } from './useIsMounted';
