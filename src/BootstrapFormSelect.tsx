@@ -1,6 +1,6 @@
-import { SelectHTMLAttributes, ReactNode } from 'react';
+import { SelectHTMLAttributes } from 'react';
 import * as React from 'react';
-import { FormGroupWithLabelWrapper } from './FormGroupWithLabel';
+import { FormGroupWithLabelProps, FormGroupWithLabelWrapper } from './FormGroupWithLabel';
 
 type BootstrapFormSelectPropsCommon = SelectHTMLAttributes<HTMLSelectElement>;
 
@@ -9,18 +9,20 @@ type BootstrapFormSelectPropsWithTextChange = Omit<BootstrapFormSelectPropsCommo
   onValueChange: (value: string) => void;
 };
 
-export type BootstrapFormSelectProps =
+type BootstrapFormSelectOwnProps =
   | BootstrapFormSelectPropsWithHTMLChange
   | BootstrapFormSelectPropsWithTextChange;
 
+export type BootstrapFormSelectProps = BootstrapFormSelectOwnProps & FormGroupWithLabelProps;
+
 function isHTMLChangeProps(
-  props: BootstrapFormSelectProps,
+  props: BootstrapFormSelectOwnProps,
 ): props is BootstrapFormSelectPropsWithHTMLChange {
   return !Object.prototype.hasOwnProperty.call(props, 'onValueChange');
 }
 
 function extractSelectElementAttributes(
-  props: BootstrapFormSelectProps,
+  props: BootstrapFormSelectOwnProps,
 ): SelectHTMLAttributes<HTMLSelectElement> {
   if (isHTMLChangeProps(props)) {
     const { onChange, ...otherProps } = props;
@@ -31,7 +33,7 @@ function extractSelectElementAttributes(
   return otherProps;
 }
 
-function BootstrapFormSelect(props: BootstrapFormSelectProps) {
+function BootstrapFormSelect(props: BootstrapFormSelectOwnProps) {
   const onChangeProp = isHTMLChangeProps(props)
     ? props.onChange
     : (event: React.ChangeEvent<HTMLSelectElement>) => props.onValueChange(event.target.value);
@@ -45,4 +47,7 @@ function BootstrapFormSelect(props: BootstrapFormSelectProps) {
   );
 }
 
-export default FormGroupWithLabelWrapper(BootstrapFormSelect);
+const WrappedBootstrapFormSelect: React.FunctionComponent<BootstrapFormSelectProps> =
+  FormGroupWithLabelWrapper(BootstrapFormSelect);
+
+export default WrappedBootstrapFormSelect;

@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 import * as React from 'react';
-import { FormGroupWithLabelWrapper } from './FormGroupWithLabel';
+import { FormGroupWithLabelProps, FormGroupWithLabelWrapper } from './FormGroupWithLabel';
 
 type BootstrapFormInputPropsCommon = InputHTMLAttributes<HTMLInputElement>;
 
@@ -13,18 +13,22 @@ type BootstrapFormInputPropsWithTextChange = Omit<BootstrapFormInputPropsCommon,
   onTextChange: (text: string) => void;
 };
 
-export type BootstrapFormInputProps =
+type BootstrapFormInputOwnProps =
   | BootstrapFormInputPropsWithHTMLChange
   | BootstrapFormInputPropsWithTextChange;
 
+export type BootstrapFormInputProps =
+  | (BootstrapFormInputPropsWithHTMLChange & FormGroupWithLabelProps)
+  | (BootstrapFormInputPropsWithTextChange & FormGroupWithLabelProps);
+
 function isHTMLChangeProps(
-  props: BootstrapFormInputProps,
+  props: BootstrapFormInputOwnProps,
 ): props is BootstrapFormInputPropsWithHTMLChange {
   return !Object.prototype.hasOwnProperty.call(props, 'onTextChange');
 }
 
 function extractInputElementAttributes(
-  props: BootstrapFormInputProps,
+  props: BootstrapFormInputOwnProps,
 ): InputHTMLAttributes<HTMLInputElement> {
   if (isHTMLChangeProps(props)) {
     return props;
@@ -34,7 +38,7 @@ function extractInputElementAttributes(
   return otherProps;
 }
 
-function BootstrapFormInput(props: BootstrapFormInputProps) {
+function BootstrapFormInput(props: BootstrapFormInputOwnProps) {
   const inputAttributes = extractInputElementAttributes(props);
 
   const onChangeProp = isHTMLChangeProps(props)
@@ -53,4 +57,7 @@ function BootstrapFormInput(props: BootstrapFormInputProps) {
   );
 }
 
-export default FormGroupWithLabelWrapper(BootstrapFormInput);
+const WrappedBootstrapFormInput: React.FunctionComponent<BootstrapFormInputProps> =
+  FormGroupWithLabelWrapper(BootstrapFormInput);
+
+export default WrappedBootstrapFormInput;
