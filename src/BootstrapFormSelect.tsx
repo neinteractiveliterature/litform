@@ -2,41 +2,22 @@ import { SelectHTMLAttributes } from 'react';
 import * as React from 'react';
 import { FormGroupWithLabelWrapper, FormGroupWithLabelWrapperProps } from './FormGroupWithLabel';
 
-type BootstrapFormSelectPropsCommon = SelectHTMLAttributes<HTMLSelectElement>;
-
-type BootstrapFormSelectPropsWithHTMLChange = BootstrapFormSelectPropsCommon;
-type BootstrapFormSelectPropsWithTextChange = Omit<BootstrapFormSelectPropsCommon, 'onChange'> & {
+type BootstrapFormSelectOwnProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> & {
   onValueChange: (value: string) => void;
 };
 
-type BootstrapFormSelectOwnProps =
-  | BootstrapFormSelectPropsWithHTMLChange
-  | BootstrapFormSelectPropsWithTextChange;
-
 export type BootstrapFormSelectProps = FormGroupWithLabelWrapperProps<BootstrapFormSelectOwnProps>;
-
-function isHTMLChangeProps(
-  props: BootstrapFormSelectOwnProps,
-): props is BootstrapFormSelectPropsWithHTMLChange {
-  return !Object.prototype.hasOwnProperty.call(props, 'onValueChange');
-}
 
 function extractSelectElementAttributes(
   props: BootstrapFormSelectOwnProps,
 ): SelectHTMLAttributes<HTMLSelectElement> {
-  if (isHTMLChangeProps(props)) {
-    const { onChange, ...otherProps } = props;
-    return otherProps;
-  }
-
   const { onValueChange, ...otherProps } = props;
   return otherProps;
 }
 
 function BootstrapFormSelect(props: BootstrapFormSelectOwnProps) {
-  const onChangeProp = isHTMLChangeProps(props)
-    ? props.onChange
-    : (event: React.ChangeEvent<HTMLSelectElement>) => props.onValueChange(event.target.value);
+  const onChangeProp = (event: React.ChangeEvent<HTMLSelectElement>) =>
+    props.onValueChange(event.target.value);
 
   return (
     <select

@@ -2,10 +2,7 @@ import { InputHTMLAttributes } from 'react';
 import * as React from 'react';
 import { FormGroupWithLabelWrapper, FormGroupWithLabelWrapperProps } from './FormGroupWithLabel';
 
-type BootstrapFormInputPropsCommon = InputHTMLAttributes<HTMLInputElement>;
-
-type BootstrapFormInputPropsWithHTMLChange = BootstrapFormInputPropsCommon;
-type BootstrapFormInputPropsWithTextChange = Omit<BootstrapFormInputPropsCommon, 'onChange'> & {
+type BootstrapFormInputOwnProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
   /**
    * if present, this will be called each time the text content of the input changes.  It's an
    * easier alternative to onChange that avoids having to deal with DOM events.
@@ -13,37 +10,21 @@ type BootstrapFormInputPropsWithTextChange = Omit<BootstrapFormInputPropsCommon,
   onTextChange: (text: string) => void;
 };
 
-type BootstrapFormInputOwnProps =
-  | BootstrapFormInputPropsWithHTMLChange
-  | BootstrapFormInputPropsWithTextChange;
-
 export type BootstrapFormInputProps = FormGroupWithLabelWrapperProps<BootstrapFormInputOwnProps>;
-
-function isHTMLChangeProps(
-  props: BootstrapFormInputOwnProps,
-): props is BootstrapFormInputPropsWithHTMLChange {
-  return !Object.prototype.hasOwnProperty.call(props, 'onTextChange');
-}
 
 function extractInputElementAttributes(
   props: BootstrapFormInputOwnProps,
 ): InputHTMLAttributes<HTMLInputElement> {
-  if (isHTMLChangeProps(props)) {
-    return props;
-  }
-
-  const { onTextChange, ...otherProps } = props as BootstrapFormInputPropsWithTextChange;
+  const { onTextChange, ...otherProps } = props;
   return otherProps;
 }
 
 function BootstrapFormInput(props: BootstrapFormInputOwnProps) {
   const inputAttributes = extractInputElementAttributes(props);
 
-  const onChangeProp = isHTMLChangeProps(props)
-    ? props.onChange
-    : (event: React.ChangeEvent<HTMLInputElement>) => {
-        props.onTextChange(event.target.value);
-      };
+  const onChangeProp = (event: React.ChangeEvent<HTMLInputElement>) => {
+    props.onTextChange(event.target.value);
+  };
 
   return (
     <input
