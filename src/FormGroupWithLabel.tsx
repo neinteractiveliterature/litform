@@ -72,10 +72,16 @@ function FormGroupWithLabel({
 
 export default FormGroupWithLabel;
 
-export function FormGroupWithLabelWrapper<P extends { id: string }>(
+export type FormGroupWithLabelWrapperProps<P extends { id?: string }> = Omit<
+  FormGroupWithLabelProps,
+  'children'
+> &
+  Omit<P, 'id'>;
+
+export function FormGroupWithLabelWrapper<P extends { id?: string }>(
   WrappedComponent: React.ComponentType<P>,
-): React.FunctionComponent<Omit<FormGroupWithLabelProps, 'children'> & Omit<P, 'id'>> {
-  const Wrapper = (props: Omit<FormGroupWithLabelProps, 'children'> & Omit<P, 'id'>) => {
+): React.FunctionComponent<FormGroupWithLabelWrapperProps<P>> {
+  const Wrapper = (props: FormGroupWithLabelWrapperProps<P>) => {
     const [formGroupWithLabelProps, wrappedComponentProps] = extractFormGroupWithLabelProps(props);
     return (
       <FormGroupWithLabel {...formGroupWithLabelProps}>

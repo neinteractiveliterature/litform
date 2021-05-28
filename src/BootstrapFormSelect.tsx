@@ -1,6 +1,6 @@
 import { SelectHTMLAttributes } from 'react';
 import * as React from 'react';
-import { FormGroupWithLabelProps, FormGroupWithLabelWrapper } from './FormGroupWithLabel';
+import { FormGroupWithLabelWrapper, FormGroupWithLabelWrapperProps } from './FormGroupWithLabel';
 
 type BootstrapFormSelectPropsCommon = SelectHTMLAttributes<HTMLSelectElement>;
 
@@ -13,7 +13,7 @@ type BootstrapFormSelectOwnProps =
   | BootstrapFormSelectPropsWithHTMLChange
   | BootstrapFormSelectPropsWithTextChange;
 
-export type BootstrapFormSelectProps = BootstrapFormSelectOwnProps & FormGroupWithLabelProps;
+export type BootstrapFormSelectProps = FormGroupWithLabelWrapperProps<BootstrapFormSelectOwnProps>;
 
 function isHTMLChangeProps(
   props: BootstrapFormSelectOwnProps,

@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 import * as React from 'react';
-import { FormGroupWithLabelProps, FormGroupWithLabelWrapper } from './FormGroupWithLabel';
+import { FormGroupWithLabelWrapper, FormGroupWithLabelWrapperProps } from './FormGroupWithLabel';
 
 type BootstrapFormInputPropsCommon = InputHTMLAttributes<HTMLInputElement>;
 
@@ -17,9 +17,7 @@ type BootstrapFormInputOwnProps =
   | BootstrapFormInputPropsWithHTMLChange
   | BootstrapFormInputPropsWithTextChange;
 
-export type BootstrapFormInputProps =
-  | (BootstrapFormInputPropsWithHTMLChange & FormGroupWithLabelProps)
-  | (BootstrapFormInputPropsWithTextChange & FormGroupWithLabelProps);
+export type BootstrapFormInputProps = FormGroupWithLabelWrapperProps<BootstrapFormInputOwnProps>;
 
 function isHTMLChangeProps(
   props: BootstrapFormInputOwnProps,

@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react';
 import * as React from 'react';
 import useUniqueId from './useUniqueId';
-import { FormGroupWithLabelProps, FormGroupWithLabelWrapper } from './FormGroupWithLabel';
+import { FormGroupWithLabelWrapper, FormGroupWithLabelWrapperProps } from './FormGroupWithLabel';
 
 type BootstrapFormTextareaPropsCommon = TextareaHTMLAttributes<HTMLTextAreaElement>;
 
@@ -17,7 +17,8 @@ type BootstrapFormTextareaOwnProps =
   | BootstrapFormTextareaPropsWithHTMLChange
   | BootstrapFormTextareaPropsWithTextChange;
 
-export type BootstrapFormTextareaProps = BootstrapFormTextareaOwnProps & FormGroupWithLabelProps;
+export type BootstrapFormTextareaProps =
+  FormGroupWithLabelWrapperProps<BootstrapFormTextareaOwnProps>;
 
 function isHTMLChangeProps(
   props: BootstrapFormTextareaOwnProps,
