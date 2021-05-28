@@ -1,19 +1,8 @@
-import { InputHTMLAttributes, ReactNode } from 'react';
+import { InputHTMLAttributes } from 'react';
 import * as React from 'react';
-import useUniqueId from './useUniqueId';
-import HelpText from './HelpText';
+import { FormGroupWithLabelWrapper } from './FormGroupWithLabel';
 
-type BootstrapFormInputPropsCommon = InputHTMLAttributes<HTMLInputElement> & {
-  /** the content of the label that will appear above the input */
-  label: ReactNode;
-  /** if true, the label will be hidden visually (but still present for screenreaders) */
-  hideLabel?: boolean;
-  /** if present, this content will appear below the input */
-  helpText?: ReactNode;
-  /** if present, this content will appear as validation feedback.  This will appear only if
-   * the className includes is-invalid. */
-  invalidFeedback?: ReactNode;
-};
+type BootstrapFormInputPropsCommon = InputHTMLAttributes<HTMLInputElement>;
 
 type BootstrapFormInputPropsWithHTMLChange = BootstrapFormInputPropsCommon;
 type BootstrapFormInputPropsWithTextChange = Omit<BootstrapFormInputPropsCommon, 'onChange'> & {
@@ -38,16 +27,14 @@ function extractInputElementAttributes(
   props: BootstrapFormInputProps,
 ): InputHTMLAttributes<HTMLInputElement> {
   if (isHTMLChangeProps(props)) {
-    const { helpText, label, hideLabel, invalidFeedback, type, onChange, ...otherProps } = props;
-    return otherProps;
+    return props;
   }
 
-  const { helpText, label, hideLabel, invalidFeedback, type, onTextChange, ...otherProps } = props;
+  const { onTextChange, ...otherProps } = props as BootstrapFormInputPropsWithTextChange;
   return otherProps;
 }
 
 function BootstrapFormInput(props: BootstrapFormInputProps) {
-  const inputId = useUniqueId(`${props.name || 'input'}-`);
   const inputAttributes = extractInputElementAttributes(props);
 
   const onChangeProp = isHTMLChangeProps(props)
@@ -57,24 +44,13 @@ function BootstrapFormInput(props: BootstrapFormInputProps) {
       };
 
   return (
-    <div className="mb-3">
-      <label
-        htmlFor={inputId}
-        className={`form-label ${props.hideLabel ? 'visually-hidden' : undefined}`}
-      >
-        {props.label}
-      </label>
-      <input
-        className="form-control"
-        id={inputId}
-        onChange={onChangeProp}
-        type={props.type ?? 'text'}
-        {...inputAttributes}
-      />
-      <HelpText>{props.helpText}</HelpText>
-      {props.invalidFeedback && <div className="invalid-feedback">{props.invalidFeedback}</div>}
-    </div>
+    <input
+      onChange={onChangeProp}
+      {...inputAttributes}
+      className={props.className ?? 'form-control'}
+      type={props.type ?? 'text'}
+    />
   );
 }
 
-export default BootstrapFormInput;
+export default FormGroupWithLabelWrapper(BootstrapFormInput);

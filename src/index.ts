@@ -13,7 +13,11 @@ export { default as CopyToClipboardButton } from './CopyToClipboardButton';
 export { default as DisclosureTriangle } from './DisclosureTriangle';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as ErrorDisplay } from './ErrorDisplay';
-export { default as FormGroupWithLabel } from './FormGroupWithLabel';
+export {
+  default as FormGroupWithLabel,
+  extractFormGroupWithLabelProps,
+  FormGroupWithLabelWrapper,
+} from './FormGroupWithLabel';
 export { default as HelpText } from './HelpText';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as LoadQueryWrapper } from './LoadQueryWrapper';

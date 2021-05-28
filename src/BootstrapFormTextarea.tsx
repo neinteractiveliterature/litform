@@ -1,14 +1,9 @@
 import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react';
 import * as React from 'react';
 import useUniqueId from './useUniqueId';
-import HelpText from './HelpText';
+import { FormGroupWithLabelWrapper } from './FormGroupWithLabel';
 
-type BootstrapFormTextareaPropsCommon = TextareaHTMLAttributes<HTMLTextAreaElement> & {
-  label: ReactNode;
-  hideLabel?: boolean;
-  helpText?: ReactNode;
-  invalidFeedback?: ReactNode;
-};
+type BootstrapFormTextareaPropsCommon = TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 type BootstrapFormTextareaPropsWithHTMLChange = BootstrapFormTextareaPropsCommon;
 type BootstrapFormTextareaPropsWithTextChange = Omit<
@@ -32,40 +27,30 @@ function extractTextareaElementAttributes(
   props: BootstrapFormTextareaProps,
 ): InputHTMLAttributes<HTMLTextAreaElement> {
   if (isHTMLChangeProps(props)) {
-    const { helpText, label, hideLabel, invalidFeedback, onChange, ...otherProps } = props;
+    const { onChange, ...otherProps } = props;
     return otherProps;
   }
 
-  const { helpText, label, hideLabel, invalidFeedback, onTextChange, ...otherProps } = props;
+  const { onTextChange, ...otherProps } = props;
   return otherProps;
 }
 
 function BootstrapFormTextarea(props: BootstrapFormTextareaProps) {
-  const { name, label, hideLabel, helpText, invalidFeedback } = props;
+  const { name } = props;
   const inputId = useUniqueId(`${name}-`);
   const onChangeProp = isHTMLChangeProps(props)
     ? props.onChange
     : (event: React.ChangeEvent<HTMLTextAreaElement>) => props.onTextChange(event.target.value);
 
   return (
-    <div className="mb-3">
-      <label
-        htmlFor={inputId}
-        className={`form-label ${hideLabel ? 'visually-hidden' : undefined}`}
-      >
-        {label}
-      </label>
-      <textarea
-        className="form-control"
-        id={inputId}
-        name={name}
-        onChange={onChangeProp}
-        {...extractTextareaElementAttributes(props)}
-      />
-      <HelpText>{helpText}</HelpText>
-      {invalidFeedback && <div className="invalid-feedback">{invalidFeedback}</div>}
-    </div>
+    <textarea
+      className="form-control"
+      id={inputId}
+      name={name}
+      onChange={onChangeProp}
+      {...extractTextareaElementAttributes(props)}
+    />
   );
 }
 
-export default BootstrapFormTextarea;
+export default FormGroupWithLabelWrapper(BootstrapFormTextarea);
