@@ -18,6 +18,7 @@ export {
   extractFormGroupWithLabelProps,
   FormGroupWithLabelWrapper,
 } from './FormGroupWithLabel';
+export { default as HelpPopover } from './HelpPopover';
 export { default as HelpText } from './HelpText';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as LoadQueryWrapper } from './LoadQueryWrapper';
