@@ -3,11 +3,11 @@ import ErrorDisplay from './ErrorDisplay';
 import PageLoadingIndicator from './PageLoadingIndicator';
 
 export default function LoadQueryWrapper<TData, TProps>(
-  useLoadData: (baseOptions?: QueryHookOptions<TData, Record<string, never>>) => QueryResult<TData>,
+  useLoadData: (baseOptions: QueryHookOptions<TData, Record<string, never>>) => QueryResult<TData>,
   WrappedComponent: React.ComponentType<TProps & { data: TData }>,
 ): (props: TProps) => JSX.Element {
   const Wrapper = (props: TProps) => {
-    const { data, loading, error } = useLoadData();
+    const { data, loading, error } = useLoadData({});
 
     if (loading) {
       return <PageLoadingIndicator visible />;
