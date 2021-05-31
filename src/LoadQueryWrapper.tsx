@@ -2,8 +2,8 @@ import { QueryHookOptions, QueryResult } from '@apollo/client';
 import ErrorDisplay from './ErrorDisplay';
 import PageLoadingIndicator from './PageLoadingIndicator';
 
-export default function LoadQueryWrapper<TData, TProps>(
-  useLoadData: (baseOptions: QueryHookOptions<TData, Record<string, never>>) => QueryResult<TData>,
+export default function LoadQueryWrapper<TData, TVariables, TProps>(
+  useLoadData: (baseOptions: QueryHookOptions<TData, TVariables>) => QueryResult<TData>,
   WrappedComponent: React.ComponentType<TProps & { data: TData }>,
 ): (props: TProps) => JSX.Element {
   const Wrapper = (props: TProps) => {
