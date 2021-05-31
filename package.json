@@ -18,7 +18,9 @@
     "build": "tsc",
     "prepublishOnly": "yarn run build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "peerDependencies": {
     "@apollo/client": "^3.3.18",
@@ -41,7 +43,10 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.3.0-alpha.29",
     "@storybook/theming": "^6.3.0-alpha.29",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
     "@types/codemirror": "^5.60.0",
+    "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.169",
     "@types/luxon": "^1.26.5",
     "@types/uuid": "^8.3.0",
@@ -53,6 +58,7 @@
     "css-loader": "^5.2.4",
     "eslint": "^7.26.0",
     "graphql": "^15.5.0",
+    "jest": "^27.0.3",
     "luxon": "^1.27.0",
     "prettier": "^2.3.0",
     "react": "^17.0.2",
@@ -64,6 +70,7 @@
     "sass": "^1.32.13",
     "sass-loader": "^10",
     "style-loader": "^2.0.0",
+    "ts-jest": "^27.0.2",
     "typescript": "^4.2.4"
   },
   "dependencies": {
