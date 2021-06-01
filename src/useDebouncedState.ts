@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import debounce from 'lodash/debounce.js';
+import debounce from 'lodash/debounce';
 
 export default function useDebouncedState<T>(
   initialState: T | (() => T),
