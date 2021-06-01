@@ -1,6 +1,14 @@
 const config = {
   presets: [
     [
+      '@babel/preset-env',
+      {
+        targets: {
+          node: '12',
+        },
+      },
+    ],
+    [
       '@babel/preset-react',
       {
         runtime: 'automatic',
@@ -8,7 +16,6 @@ const config = {
     ],
     '@babel/preset-typescript',
   ],
-  plugins: ['babel-plugin-add-import-extension'],
 };
 
-export default config;
+module.exports = config;
