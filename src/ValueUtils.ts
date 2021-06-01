@@ -1,4 +1,4 @@
-import escapeRegExp from 'lodash/escapeRegExp';
+import escapeRegExp from 'lodash/escapeRegExp.js';
 
 export const onlyOneIsNull = (a: any, b: any) =>
   (a == null && b != null) || (a != null && b == null);
@@ -17,17 +17,19 @@ export function chooseAmong<T>(
   return eligibleValues.sort(sortFunction)[0];
 }
 
-export const preferNull = <T>(sortFunction: (a: T, b: T) => number) => (a: T, b: T) => {
-  if (a == null) {
-    return -1;
-  }
+export const preferNull =
+  <T>(sortFunction: (a: T, b: T) => number) =>
+  (a: T, b: T) => {
+    if (a == null) {
+      return -1;
+    }
 
-  if (b == null) {
-    return 1;
-  }
+    if (b == null) {
+      return 1;
+    }
 
-  return sortFunction(a, b);
-};
+    return sortFunction(a, b);
+  };
 
 export function sortByLocaleString<T>(
   list: T[],
