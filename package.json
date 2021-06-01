@@ -14,6 +14,7 @@
   "files": [
     "lib"
   ],
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "yarn run build",
