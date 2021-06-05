@@ -6,6 +6,7 @@ const config = {
         targets: {
           node: '12',
         },
+        modules: false,
       },
     ],
     [
@@ -16,6 +17,7 @@ const config = {
     ],
     '@babel/preset-typescript',
   ],
+  plugins: ['babel-plugin-add-import-extension'],
 };
 
-module.exports = config;
+export default config;

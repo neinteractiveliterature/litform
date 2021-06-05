@@ -1,4 +1,4 @@
-import escapeRegExp from 'lodash/escapeRegExp';
+import escapeRegExp from 'lodash/escapeRegExp.js';
 
 export const onlyOneIsNull = (a: any, b: any) =>
   (a == null && b != null) || (a != null && b == null);
