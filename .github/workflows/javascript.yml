@@ -31,7 +31,7 @@ jobs:
     - name: yarn install
       run: yarn install
     - name: jest
-      uses: yarn run jest
+      run: yarn run jest
   tsc:
     name: tsc
     runs-on: ubuntu-latest
