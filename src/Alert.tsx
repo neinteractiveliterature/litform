@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode } from 'react';
-import Modal from 'react-bootstrap4-modal';
+import { Modal } from 'react-bootstrap4-modal';
 
 import useModal from './useModal';
 
