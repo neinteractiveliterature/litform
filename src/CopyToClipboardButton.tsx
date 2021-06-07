@@ -1,8 +1,10 @@
 import { useState, ReactNode } from 'react';
-import ClipboardButton from 'react-clipboard.js';
+import * as ReactClipboardJS from 'react-clipboard.js';
 
-export type CopyToClipboardButtonProps = ClipboardButton['props'] & {
-  copiedProps?: ClipboardButton['props'];
+const ClipboardButton = ReactClipboardJS.default;
+
+export type CopyToClipboardButtonProps = ReactClipboardJS.default['props'] & {
+  copiedProps?: ReactClipboardJS.default['props'];
   defaultText?: ReactNode;
   copiedText?: ReactNode;
 };
