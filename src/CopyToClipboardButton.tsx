@@ -1,15 +1,17 @@
-import { useState, ReactNode } from 'react';
-import * as ReactClipboardJS from 'react-clipboard.js';
+import { useState, ReactNode, HTMLAttributes } from 'react';
+import copy from 'copy-to-clipboard';
 
-const ClipboardButton = ReactClipboardJS.default;
-
-export type CopyToClipboardButtonProps = ReactClipboardJS.default['props'] & {
-  copiedProps?: ReactClipboardJS.default['props'];
+export type CopyToClipboardButtonProps = HTMLAttributes<HTMLButtonElement> & {
+  text: string;
+  format?: string;
+  copiedProps?: HTMLAttributes<HTMLButtonElement>;
   defaultText?: ReactNode;
   copiedText?: ReactNode;
 };
 
 function CopyToClipboardButton({
+  text,
+  format,
   copiedProps,
   defaultText,
   copiedText,
@@ -28,11 +30,17 @@ function CopyToClipboardButton({
     }, 2000);
   };
 
+  const copyToClipboard = () => {
+    if (copy(text, { format })) {
+      onSuccess();
+    }
+  };
+
   return (
-    <ClipboardButton {...otherProps} {...(copied ? copiedProps || {} : {})} onSuccess={onSuccess}>
+    <button {...otherProps} {...(copied ? copiedProps || {} : {})} onClick={copyToClipboard}>
       <i className="fa fa-copy" />{' '}
       {copied ? copiedText || 'Copied!' : defaultText || 'Copy to clipboard'}
-    </ClipboardButton>
+    </button>
   );
 }
 

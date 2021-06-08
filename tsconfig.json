@@ -22,13 +22,7 @@
     ],
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "plugins": [
-      {
-        "transform": "@zoltu/typescript-transformer-append-js-extension/output/index.js",
-        "after": true
-      }
-    ]
+    "esModuleInterop": true
   },
   "include": [
     "./src/"

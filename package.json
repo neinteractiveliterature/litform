@@ -5,18 +5,20 @@
   "license": "MIT",
   "version": "0.8.2",
   "module": "lib",
-  "main": "lib",
+  "main": "dist",
   "repository": "https://github.com/neinteractiveliterature/litform",
   "sideEffects": [
     "./lib/LiquidMultiplexModes.js"
   ],
   "private": false,
   "files": [
+    "dist",
     "lib"
   ],
-  "type": "module",
   "scripts": {
-    "build": "rm -rf lib/* && tsc --declaration --outDir lib/ --emitDeclarationOnly --declarationMap && babel --extensions '.ts,.tsx' src --out-dir lib --source-maps true",
+    "build": "yarn run build:lib && yarn run build:dist",
+    "build:dist": "rm -rf dist/* && tsc --outDir dist/ --module commonjs",
+    "build:lib": "rm -rf lib/* && tsc --outDir lib/",
     "prepublishOnly": "yarn run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -62,9 +64,6 @@
     "luxon": "^1.27.0",
     "prettier": "^2.3.0",
     "react": "^17.0.2",
-    "react-clipboard.js": "^2.0.16",
-    "react-codemirror2": "^7.2.1",
-    "react-cool-onclickoutside": "^1.6.2",
     "react-dom": "^17.0.2",
     "sass": "^1.32.13",
     "sass-loader": "^10",
@@ -75,6 +74,7 @@
   },
   "dependencies": {
     "codemirror": "^5.61.0",
+    "copy-to-clipboard": "^3.3.1",
     "lodash": "^4.17.21",
     "luxon": "^1.27.0",
     "react-bootstrap4-modal": "^2.0.0",

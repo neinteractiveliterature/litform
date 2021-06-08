@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
   presets: [
     [
       '@babel/preset-env',
@@ -17,7 +17,5 @@ const config = {
     ],
     '@babel/preset-typescript',
   ],
-  plugins: ['babel-plugin-add-import-extension'],
+  // plugins: ['babel-plugin-add-import-extension'],
 };
-
-export default config;
