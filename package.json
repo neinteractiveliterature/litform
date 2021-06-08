@@ -78,7 +78,6 @@
     "lodash": "^4.17.21",
     "luxon": "^1.27.0",
     "react-bootstrap4-modal": "^2.0.0",
-    "react-clipboard.js": "^2.0.16",
     "react-codemirror2": "^7.2.1",
     "react-cool-onclickoutside": "^1.6.2",
     "uuid": "^8.3.2"
