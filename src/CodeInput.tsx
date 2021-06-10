@@ -1,38 +1,46 @@
-import { useState, useCallback, ReactNode } from 'react';
+import {
+  useState,
+  useCallback,
+  ReactNode,
+  useRef,
+  useEffect,
+  useMemo,
+  useLayoutEffect,
+} from 'react';
 import * as React from 'react';
-import { Controlled as CodeMirror, IControlledCodeMirror, DomEvent } from 'react-codemirror2';
 import classNames from 'classnames';
 import { ApolloError } from '@apollo/client';
 
-import { EditorConfiguration } from 'codemirror';
-import 'codemirror/mode/markdown/markdown.js';
-import 'codemirror/mode/htmlmixed/htmlmixed.js';
-import 'codemirror/mode/javascript/javascript.js';
-import 'codemirror/addon/mode/multiplex.js';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/addon/edit/matchbrackets.js';
-import 'codemirror/addon/edit/matchtags.js';
-import 'codemirror/addon/fold/foldcode.js';
-import 'codemirror/addon/fold/brace-fold.js';
-import 'codemirror/addon/fold/markdown-fold.js';
-import 'codemirror/addon/fold/xml-fold.js';
-import 'codemirror/addon/fold/foldgutter.js';
-import 'codemirror/addon/fold/foldgutter.css';
+import { EditorState } from '@codemirror/state';
+import { EditorView, basicSetup } from '@codemirror/basic-setup';
+import { defaultTabBinding } from '@codemirror/commands';
+import { keymap } from '@codemirror/view';
+import type { Extension } from '@codemirror/state';
+import type { ViewUpdate } from '@codemirror/view';
 
-import defaultCodeMirrorOptions from './defaultCodeMirrorOptions';
 import ErrorDisplay from './ErrorDisplay';
 import LoadingIndicator from './LoadingIndicator';
 
-import './LiquidMultiplexModes';
+function getStyleForLines(lines: number | undefined) {
+  const height = `${(lines ?? 6) * 1.4}rem`;
+  return { minHeight: height };
+}
 
-export type CodeInputProps = Omit<IControlledCodeMirror, 'onChange' | 'onBeforeChange'> & {
+function buildHeightTheme(lines: number | undefined) {
+  return EditorView.theme({
+    '.cm-content, .cm-gutter': getStyleForLines(lines),
+  });
+}
+
+export type CodeInputProps = {
+  className: string;
   onChange: (value: string) => void;
   getPreviewContent?: (value: string) => Promise<ReactNode>;
-  mode: string;
+  value: string;
   editButtonText?: string;
   previewButtonText?: string;
   disabled?: boolean;
-  codeMirrorOptions?: EditorConfiguration;
+  extensions?: Extension[];
   extraNavControls?: ReactNode;
   lines?: number;
   formControlClassName?: string;
@@ -41,15 +49,38 @@ export type CodeInputProps = Omit<IControlledCodeMirror, 'onChange' | 'onBeforeC
   renderPreview?: (previewContent: ReactNode) => ReactNode;
 };
 
+function useCodeMirror(extensions: Extension[]) {
+  const editorView = useMemo<EditorView>(() => {
+    const initialState = EditorState.create({
+      extensions: [basicSetup, ...extensions],
+    });
+
+    return new EditorView({ state: initialState });
+  }, [extensions]);
+
+  useLayoutEffect(() => {
+    return () => {
+      editorView.dom.parentElement?.removeChild(editorView.dom);
+    };
+  }, [editorView]);
+
+  const editorRef = useCallback<React.RefCallback<HTMLElement>>(
+    (element) => {
+      element?.appendChild(editorView.dom);
+    },
+    [editorView],
+  );
+
+  return [editorRef, editorView] as const;
+}
+
 function CodeInput({
-  onBlur,
   onChange,
   value,
   getPreviewContent,
-  mode,
   disabled,
-  codeMirrorOptions,
   extraNavControls,
+  extensions,
   className,
   lines,
   formControlClassName,
@@ -58,20 +89,49 @@ function CodeInput({
   renderPreview,
   editButtonText,
   previewButtonText,
-  ...props
 }: CodeInputProps): JSX.Element {
   const [previewing, setPreviewing] = useState(false);
   const [previewContent, setPreviewContent] = useState<ReactNode | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
   const [previewError, setPreviewError] = useState<ApolloError | null>(null);
+  const valueRef = useRef<string>(value);
+  const onChangeRef = useRef<typeof onChange>(onChange);
 
-  const onBeforeChange = useCallback(
-    (editor, data, newValue) => {
-      onChange(newValue);
-      setPreviewContent(null);
-    },
-    [onChange],
+  const fullExtensions = useMemo(
+    () => [
+      keymap.of([defaultTabBinding]),
+      buildHeightTheme(lines),
+      ...(extensions ?? []),
+      EditorView.updateListener.of((update: ViewUpdate) => {
+        if (update.docChanged) {
+          const newDoc = update.state.doc.toString();
+          if (newDoc !== valueRef.current) {
+            onChangeRef.current(update.state.doc.toString());
+          }
+          setPreviewContent(null);
+        }
+      }),
+    ],
+    [extensions, lines],
   );
+
+  const [editorRef, editorView] = useCodeMirror(fullExtensions);
+
+  useEffect(() => {
+    valueRef.current = value;
+    if (editorView && value !== editorView.state.doc.toString()) {
+      editorView.dispatch({
+        changes: [
+          { from: 0, to: editorView.state.doc.length },
+          { from: 0, insert: value },
+        ],
+      });
+    }
+  }, [value, editorView]);
+
+  useEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
 
   const editTabClicked = useCallback((event) => {
     event.preventDefault();
@@ -114,7 +174,11 @@ function CodeInput({
       return renderPreview(previewContent ?? '');
     }
 
-    return <div className="markdown-preview">{previewContent ?? ''}</div>;
+    return (
+      <div className="p-2" style={getStyleForLines(lines)}>
+        {previewContent ?? ''}
+      </div>
+    );
   };
 
   const renderContent = () => {
@@ -122,29 +186,7 @@ function CodeInput({
       return renderPreviewContent();
     }
 
-    // react-codemirror2 doesn't want event handlers to be passed undefined
-    const eventHandlers: { onBlur?: DomEvent } = {};
-    if (onBlur) {
-      eventHandlers.onBlur = onBlur;
-    }
-
-    return (
-      <CodeMirror
-        value={value}
-        options={{
-          ...defaultCodeMirrorOptions,
-          lineNumbers: false,
-          foldGutter: false,
-          gutters: [],
-          mode,
-          readOnly: disabled ? 'nocursor' : false,
-          ...(codeMirrorOptions || {}),
-        }}
-        {...eventHandlers}
-        onBeforeChange={onBeforeChange}
-        {...props}
-      />
-    );
+    return <div ref={editorRef} />;
   };
 
   const renderNav = () => {
@@ -182,15 +224,12 @@ function CodeInput({
   return (
     <div className={className}>
       <div
-        className={classNames(
-          `form-control p-0 intercode-code-input codemirror-height-${lines || 10}`,
-          formControlClassName,
-        )}
+        className={classNames(`form-control p-0 litform-code-input`, formControlClassName)}
         style={{ overflow: 'hidden' }}
       >
         {renderNav()}
         <div
-          className={classNames('form-control border-0', editorWrapperClassName, {
+          className={classNames(editorWrapperClassName, {
             'bg-disabled': disabled,
           })}
         >
