@@ -50,6 +50,8 @@
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.169",
     "@types/luxon": "^1.26.5",
+    "@types/react-dnd": "^3.0.2",
+    "@types/react-dnd-multi-backend": "^6.0.1",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
@@ -80,6 +82,10 @@
     "react-bootstrap4-modal": "^2.0.0",
     "react-codemirror2": "^7.2.1",
     "react-cool-onclickoutside": "^1.6.2",
+    "react-dnd": "^14.0.2",
+    "react-dnd-html5-backend": "^14.0.0",
+    "react-dnd-multi-backend": "^6.0.2",
+    "react-dnd-touch-backend": "^14.0.0",
     "uuid": "^8.3.2"
   }
 }
