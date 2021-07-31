@@ -10,6 +10,7 @@ export { default as ChoiceSet } from './ChoiceSet';
 export { default as CodeInput } from './CodeInput';
 export { default as Confirm, useConfirm, useGraphQLConfirm } from './Confirm';
 export { default as CopyToClipboardButton } from './CopyToClipboardButton';
+export { default as DndWrapper } from './DndWrapper';
 export { default as DisclosureTriangle } from './DisclosureTriangle';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as ErrorDisplay } from './ErrorDisplay';
@@ -42,6 +43,7 @@ export {
 } from './ToastContext';
 export { default as Tooltip } from './Tooltip';
 export { default as useDebouncedState } from './useDebouncedState';
+export { default as useSortable, buildOptimisticArrayForMove, useSortHover } from './useSortable';
 export { default as useIsMounted } from './useIsMounted';
 export { default as useModal } from './useModal';
 export { useFunctionalStateUpdater, usePropertySetters } from './usePropertySetters';
