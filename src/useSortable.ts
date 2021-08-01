@@ -87,7 +87,7 @@ export default function useSortable<T extends HTMLElement>(
   return [ref, drag, { isDragging }];
 }
 
-export function buildOptimisticArrayForMove<T>(
+export function buildOptimisticArrayForMove<T extends { position: number }>(
   items: T[],
   dragIndex: number,
   hoverIndex: number,
