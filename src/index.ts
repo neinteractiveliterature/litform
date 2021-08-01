@@ -32,7 +32,7 @@ export {
   useToggleOpen,
 } from './PopperUtils';
 export { default as SearchInput } from './SearchInput';
-export { TabBody, TabList, useTabs, useTabsWithRouter } from './Tabs';
+export { TabBody, TabList, Tabs, useTabs, useTabsWithRouter } from './Tabs';
 export { default as Toast, TOAST_FADE_DURATION } from './Toast';
 export {
   ToastContainer,
