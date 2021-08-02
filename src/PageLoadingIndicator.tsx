@@ -6,7 +6,10 @@ export type PageLoadingIndicatorProps = {
   iconSet?: LitformIconSetIdentifier;
 };
 
-function PageLoadingIndicator({ visible, iconSet }: PageLoadingIndicatorProps): JSX.Element {
+function PageLoadingIndicator({
+  visible,
+  iconSet = 'font-awesome-4',
+}: PageLoadingIndicatorProps): JSX.Element {
   const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
 
   useEffect(() => {

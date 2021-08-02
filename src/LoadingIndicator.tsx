@@ -2,7 +2,10 @@ import { getIconClassName, LitformIconSetIdentifier } from './IconSets';
 
 export type LoadingIndicatorProps = { size?: number; iconSet?: LitformIconSetIdentifier };
 
-function LoadingIndicator({ size = 5, iconSet }: LoadingIndicatorProps): JSX.Element {
+function LoadingIndicator({
+  size = 5,
+  iconSet = 'font-awesome-4',
+}: LoadingIndicatorProps): JSX.Element {
   if (iconSet === 'font-awesome-4') {
     return (
       <div className={`d-inline-block display-${size ?? 5}`} aria-label="Loading...">
