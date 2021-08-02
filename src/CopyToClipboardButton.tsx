@@ -1,5 +1,6 @@
 import { useState, ReactNode, HTMLAttributes } from 'react';
 import copy from 'copy-to-clipboard';
+import { getIconClassName, LitformIconSetIdentifier } from './IconSets';
 
 export type CopyToClipboardButtonProps = HTMLAttributes<HTMLButtonElement> & {
   text: string;
@@ -7,6 +8,7 @@ export type CopyToClipboardButtonProps = HTMLAttributes<HTMLButtonElement> & {
   copiedProps?: HTMLAttributes<HTMLButtonElement>;
   defaultText?: ReactNode;
   copiedText?: ReactNode;
+  iconSet?: LitformIconSetIdentifier;
 };
 
 function CopyToClipboardButton({
@@ -15,8 +17,9 @@ function CopyToClipboardButton({
   copiedProps,
   defaultText,
   copiedText,
+  iconSet,
   ...otherProps
-}: CopyToClipboardButtonProps) {
+}: CopyToClipboardButtonProps): JSX.Element {
   const [copied, setCopied] = useState(false);
 
   const onSuccess = () => {
@@ -38,7 +41,7 @@ function CopyToClipboardButton({
 
   return (
     <button {...otherProps} {...(copied ? copiedProps || {} : {})} onClick={copyToClipboard}>
-      <i className="fa fa-copy" />{' '}
+      <i className={getIconClassName('copy', iconSet)} />{' '}
       {copied ? copiedText || 'Copied!' : defaultText || 'Copy to clipboard'}
     </button>
   );

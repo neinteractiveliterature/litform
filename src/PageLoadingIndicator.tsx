@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { getIconClassName, LitformIconSetIdentifier } from './IconSets';
 
 export type PageLoadingIndicatorProps = {
   visible: boolean;
+  iconSet?: LitformIconSetIdentifier;
 };
 
-function PageLoadingIndicator({ visible }: PageLoadingIndicatorProps): JSX.Element {
+function PageLoadingIndicator({ visible, iconSet }: PageLoadingIndicatorProps): JSX.Element {
   const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
 
   useEffect(() => {
@@ -23,7 +25,11 @@ function PageLoadingIndicator({ visible }: PageLoadingIndicatorProps): JSX.Eleme
         visibility: showLoadingIndicator ? 'visible' : 'hidden',
       }}
     >
-      <i className="fa fa-circle-o-notch fa-spin fa-fw" />
+      {iconSet === 'font-awesome-4' ? (
+        <i className={getIconClassName('spinner', iconSet)} />
+      ) : (
+        <div className="spinner-border" role="status" />
+      )}
       <span className="visually-hidden">Loading...</span>
     </div>
   );

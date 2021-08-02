@@ -2,6 +2,7 @@ import { ReactNode, useCallback, useState } from 'react';
 import * as React from 'react';
 import classNames from 'classnames';
 import { useLitformPopperWithAutoClosing } from './PopperUtils';
+import { getIconClassName, LitformIconSetIdentifier } from './IconSets';
 
 // https://stackoverflow.com/questions/36532307/rem-px-in-javascript
 function remToPx(rem: number) {
@@ -13,9 +14,16 @@ export type HelpPopoverProps = {
   className?: string;
   initialVisible?: boolean;
   visibleChanged?: (newVisible: boolean) => void;
+  iconSet?: LitformIconSetIdentifier;
 };
 
-function HelpPopover({ children, className, initialVisible, visibleChanged }: HelpPopoverProps) {
+function HelpPopover({
+  children,
+  className,
+  initialVisible,
+  visibleChanged,
+  iconSet,
+}: HelpPopoverProps): JSX.Element {
   const [visible, setVisibleState] = useState(initialVisible);
   const [toggleButton, setToggleButton] = useState<HTMLSpanElement | null>(null);
   const [popover, setPopover] = useState<HTMLDivElement | null>(null);
@@ -69,7 +77,7 @@ function HelpPopover({ children, className, initialVisible, visibleChanged }: He
         }}
         style={{ width: '1.5rem' }}
       >
-        <i className="fa fa-question-circle" style={{ cursor: 'pointer' }}>
+        <i className={getIconClassName('question-circle', iconSet)} style={{ cursor: 'pointer' }}>
           <span className="visually-hidden">Help</span>
         </i>
       </span>

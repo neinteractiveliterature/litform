@@ -1,6 +1,7 @@
 import { ReactNode, HTMLAttributes } from 'react';
 import useUniqueId from './useUniqueId';
 import useDebouncedState from './useDebouncedState';
+import { getIconClassName, LitformIconSetIdentifier } from './IconSets';
 
 export type SearchInputProps = {
   value?: string;
@@ -10,6 +11,7 @@ export type SearchInputProps = {
   name?: string;
   inputProps?: HTMLAttributes<HTMLInputElement>;
   inputGroupProps?: HTMLAttributes<HTMLDivElement>;
+  iconSet?: LitformIconSetIdentifier;
 };
 
 function SearchInput({
@@ -20,7 +22,8 @@ function SearchInput({
   label,
   inputProps,
   inputGroupProps,
-}: SearchInputProps) {
+  iconSet,
+}: SearchInputProps): JSX.Element {
   const [transientValue, setTransientValue] = useDebouncedState(value ?? '', onChange, wait ?? 100);
   const inputId = useUniqueId(`${name || 'search'}-`);
 
@@ -41,7 +44,7 @@ function SearchInput({
           {...(inputProps || {})}
         />
         <span className="input-group-text search-input-addon">
-          <i className="fa fa-search" />
+          <i className={getIconClassName('search', iconSet)} />
         </span>
       </div>
     </div>
