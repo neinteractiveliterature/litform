@@ -32,6 +32,7 @@ test('it renders a graphql error', async () => {
         message: 'everything is fine',
         name: '',
         networkError: null,
+        clientErrors: [],
       }}
     />,
   );
