@@ -50,7 +50,7 @@
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.169",
     "@types/luxon": "^1.26.5",
-    "@types/react-dnd": "^3.0.2",
+    "@types/react-dnd": "3.0.2",
     "@types/react-dnd-multi-backend": "^6.0.1",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
