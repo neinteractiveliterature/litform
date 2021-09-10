@@ -3400,7 +3400,7 @@ __metadata:
     "@babel/core": 7.15.5
     "@babel/preset-env": 7.15.6
     "@babel/preset-typescript": 7.15.0
-    "@popperjs/core": ^2.9.2
+    "@popperjs/core": ^2.10.1
     "@storybook/addon-actions": ^6.3.6
     "@storybook/addon-essentials": ^6.3.6
     "@storybook/addon-links": ^6.3.6
@@ -3423,6 +3423,7 @@ __metadata:
     babel-plugin-add-import-extension: ^1.5.1
     bootstrap: ^5.0.1
     bootstrap-icons: ^1.5.0
+    classnames: ^2.3.1
     codemirror: ^5.61.0
     copy-to-clipboard: ^3.3.1
     css-loader: ^6.0.0
@@ -3442,6 +3443,7 @@ __metadata:
     react-dnd-multi-backend: ^6.0.2
     react-dnd-touch-backend: ^14.0.0
     react-dom: ^17.0.2
+    react-popper: ^2.2.5
     sass: ^1.32.13
     sass-loader: ^12.0.0
     style-loader: ^3.0.0
@@ -3555,7 +3557,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.5.4, @popperjs/core@npm:^2.6.0, @popperjs/core@npm:^2.9.2":
+"@popperjs/core@npm:^2.10.1":
+  version: 2.10.1
+  resolution: "@popperjs/core@npm:2.10.1"
+  checksum: 55262eb98984a03364a844177a9d4b9ab1c6e3503eaa1ecb086c028b5b6d93985a92b5b5783008962633015fc9f0232fda3ce88f5b17930a909a633387a06505
+  languageName: node
+  linkType: hard
+
+"@popperjs/core@npm:^2.5.4, @popperjs/core@npm:^2.6.0":
   version: 2.9.2
   resolution: "@popperjs/core@npm:2.9.2"
   checksum: a5916302e706b7dfbbbcd8728bafc1682b450d5ec70dd10da84a07c89a419fa72f83cbf990798589e6e69e1b520d6768176ea4bd360d7450d08a2fbc25a14e1c
@@ -14588,7 +14597,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-popper@npm:^2.2.4":
+"react-popper@npm:^2.2.4, react-popper@npm:^2.2.5":
   version: 2.2.5
   resolution: "react-popper@npm:2.2.5"
   dependencies:
