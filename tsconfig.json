@@ -11,10 +11,6 @@
     "target": "ES2015", // specify ECMAScript target version
     "allowJs": true, // allow a partial TypeScript and JavaScript codebase,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "src/@types",
-    ],
     "lib": [
       "DOM",
       "DOM.Iterable",
@@ -25,7 +21,8 @@
     "esModuleInterop": true
   },
   "include": [
-    "./src/"
+    "./src/",
+    "testSetup.ts"
   ],
   "exclude": [
     "./src/__tests__",

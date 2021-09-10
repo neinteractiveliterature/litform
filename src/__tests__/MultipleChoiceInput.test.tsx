@@ -6,6 +6,7 @@ describe('MultipleChoiceInput', () => {
     render(
       <MultipleChoiceInput
         name="pickSomething"
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         onChange={() => {}}
         choices={[
           { label: 'a', value: '1' },
