@@ -3413,7 +3413,7 @@ __metadata:
     "@types/codemirror": ^5.60.0
     "@types/jest": ^27.0.1
     "@types/lodash": ^4.14.169
-    "@types/luxon": ^1.26.5
+    "@types/luxon": ^2.0.0
     "@types/react": ^17.0.20
     "@types/react-dnd": ^3.0.2
     "@types/react-dnd-multi-backend": ^6.0.1
@@ -3436,7 +3436,7 @@ __metadata:
     graphql: ^15.5.0
     jest: 27.1.1
     lodash: ^4.17.21
-    luxon: ^1.27.0
+    luxon: ^2.0.0
     prettier: ^2.3.0
     react: ^17.0.2
     react-bootstrap4-modal: ^2.0.0
@@ -4934,10 +4934,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/luxon@npm:^1.26.5":
-  version: 1.26.5
-  resolution: "@types/luxon@npm:1.26.5"
-  checksum: d6a7eb14e865003384ee8002ac7ee1966afce7d4737d395a9326b8fa632c90d464704ca287e75b483fde53b1ea86c94b7a1224f07d675e940b53408671dd20ce
+"@types/luxon@npm:^2.0.0":
+  version: 2.0.3
+  resolution: "@types/luxon@npm:2.0.3"
+  checksum: dce4b643783dbf7bd97e67197cacbe64a97fbc5c549545cf2d0d8a226f859fe6387bfec64e5a431bc307c9e397a4407d4a8a30b8eb39591e0462efa922f44fa1
   languageName: node
   linkType: hard
 
@@ -12392,10 +12392,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"luxon@npm:^1.27.0":
-  version: 1.27.0
-  resolution: "luxon@npm:1.27.0"
-  checksum: 5e6b17cb01c010c59fc50335c08c58fdf79219b3dc92f968ccedd81cfdfe5db19465108ee9198c4f1882b1fbc6cf33c98b74483b6a18a15656e0e305bade332c
+"luxon@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "luxon@npm:2.0.2"
+  checksum: eb2e366cf41a129704ae3213e0aea3e1504390af2a84322a5bbb6a22c92d96c7cb70e58b941a109c5e1bfbed51784d08130278feeee6cdf169940af90a68ded5
   languageName: node
   linkType: hard
 
