@@ -10,7 +10,6 @@
   "sideEffects": [
     "./lib/LiquidMultiplexModes.js"
   ],
-  "private": false,
   "files": [
     "dist",
     "lib"
