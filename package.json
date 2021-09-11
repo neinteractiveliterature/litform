@@ -24,7 +24,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "postinstall": "husky install",
-    "postpublish": "pinst --enable"
+    "postpublish": "yarn run pinst --enable"
   },
   "peerDependencies": {
     "@apollo/client": "^3.3.18",
