@@ -7,6 +7,7 @@ import {
   useMemo,
   useLayoutEffect,
   useImperativeHandle,
+  forwardRef,
 } from 'react';
 import * as React from 'react';
 import classNames from 'classnames';
@@ -75,22 +76,25 @@ function useCodeMirror(extensions: Extension[]) {
   return [editorRef, editorView] as const;
 }
 
-function CodeInput({
-  onChange,
-  value,
-  getPreviewContent,
-  disabled,
-  extraNavControls,
-  extensions,
-  className,
-  lines,
-  formControlClassName,
-  editorWrapperClassName,
-  children,
-  renderPreview,
-  editButtonText,
-  previewButtonText,
-}: CodeInputProps): JSX.Element {
+export default forwardRef(function CodeInput(
+  {
+    onChange,
+    value,
+    getPreviewContent,
+    disabled,
+    extraNavControls,
+    extensions,
+    className,
+    lines,
+    formControlClassName,
+    editorWrapperClassName,
+    children,
+    renderPreview,
+    editButtonText,
+    previewButtonText,
+  }: CodeInputProps,
+  ref: React.ForwardedRef<EditorView>,
+): JSX.Element {
   const [previewing, setPreviewing] = useState(false);
   const [previewContent, setPreviewContent] = useState<ReactNode | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
@@ -117,8 +121,7 @@ function CodeInput({
   );
 
   const [editorRef, editorView] = useCodeMirror(fullExtensions);
-  const imperativeHandleRef = useRef<EditorView>();
-  useImperativeHandle(imperativeHandleRef, () => editorView);
+  useImperativeHandle(ref, () => editorView);
 
   useEffect(() => {
     valueRef.current = value;
@@ -242,6 +245,4 @@ function CodeInput({
       {children}
     </div>
   );
-}
-
-export default React.forwardRef<EditorView, CodeInputProps>(CodeInput);
+});
