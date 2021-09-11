@@ -6,6 +6,7 @@ import {
   useEffect,
   useMemo,
   useLayoutEffect,
+  useImperativeHandle,
 } from 'react';
 import * as React from 'react';
 import classNames from 'classnames';
@@ -116,6 +117,8 @@ function CodeInput({
   );
 
   const [editorRef, editorView] = useCodeMirror(fullExtensions);
+  const imperativeHandleRef = useRef<EditorView>();
+  useImperativeHandle(imperativeHandleRef, () => editorView);
 
   useEffect(() => {
     valueRef.current = value;
@@ -241,4 +244,4 @@ function CodeInput({
   );
 }
 
-export default CodeInput;
+export default React.forwardRef<EditorView, CodeInputProps>(CodeInput);
