@@ -18,7 +18,7 @@
     "build": "yarn run build:lib && yarn run build:dist",
     "build:dist": "rm -rf dist/* && tsc --outDir dist/ --module commonjs",
     "build:lib": "rm -rf lib/* && tsc --outDir lib/",
-    "prepublishOnly": "yarn run build && pinst --disable",
+    "prepublishOnly": "yarn run build && yarn run pinst --disable",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest",
