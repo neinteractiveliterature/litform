@@ -3906,7 +3906,7 @@ __metadata:
     "@typescript-eslint/parser": ^4.23.0
     babel-loader: 8.2.2
     babel-plugin-add-import-extension: ^1.6.0
-    bootstrap: ^5.0.1
+    bootstrap: ^5.1.0
     bootstrap-icons: ^1.5.0
     classnames: ^2.3.1
     copy-to-clipboard: ^3.3.1
@@ -3914,7 +3914,6 @@ __metadata:
     eslint: ^7.32.0
     eslint-plugin-react: ^7.25.1
     eslint-plugin-react-hooks: ^4.2.0
-    font-awesome: ^4.7.0
     graphql: ^15.5.0
     husky: ^7.0.2
     jest: 27.1.1
@@ -7517,12 +7516,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:^5.0.1":
-  version: 5.0.1
-  resolution: "bootstrap@npm:5.0.1"
+"bootstrap@npm:^5.1.0":
+  version: 5.1.1
+  resolution: "bootstrap@npm:5.1.1"
   peerDependencies:
-    "@popperjs/core": ^2.9.2
-  checksum: 1889c64f71d935ff98632b959dc7f411c7d7b5ea59f9cc91063403c3ec5a880af3275348495f6cc5b04acf87bf6284cbc992f6b41df249d5b5e16a42b81fae2b
+    "@popperjs/core": ^2.10.1
+  checksum: 6429293514bcaaf0072568ec7851a58179c582a966109a55176afd29c03fc502eade0fdc2c46ea49efb24bf111a161c8735e80f3162f6455b81225720c6b556f
   languageName: node
   linkType: hard
 
@@ -10419,13 +10418,6 @@ __metadata:
     inherits: ^2.0.3
     readable-stream: ^2.3.6
   checksum: 42e07747f83bcd4e799da802e621d6039787749ffd41f5517f8c4f786ee967e31ba32b09f8b28a9c6f67bd4f5346772e604202df350e8d99f4141771bae31279
-  languageName: node
-  linkType: hard
-
-"font-awesome@npm:^4.7.0":
-  version: 4.7.0
-  resolution: "font-awesome@npm:4.7.0"
-  checksum: fa223f6e3b27e97d2d09cdbf0c1363e2ad18d2a685fc045f54e86394db59f7c113482a819de3b6489f42a630a8ec5911b8e65718e45f7cace1c0a1b05d7fce08
   languageName: node
   linkType: hard
 
