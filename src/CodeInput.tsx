@@ -34,7 +34,7 @@ function buildHeightTheme(lines: number | undefined) {
 }
 
 export type CodeInputProps = {
-  className: string;
+  className?: string;
   onChange: (value: string) => void;
   getPreviewContent?: (value: string) => Promise<ReactNode>;
   value: string;
