@@ -18,11 +18,13 @@
     "build": "yarn run build:lib && yarn run build:dist",
     "build:dist": "rm -rf dist/* && tsc --outDir dist/ --module commonjs",
     "build:lib": "rm -rf lib/* && tsc --outDir lib/",
-    "prepublishOnly": "yarn run build",
+    "prepublishOnly": "yarn run build && pinst --disable",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "postinstall": "husky install",
+    "postpublish": "pinst --enable"
   },
   "peerDependencies": {
     "@apollo/client": "^3.3.18",
@@ -66,8 +68,11 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "font-awesome": "^4.7.0",
     "graphql": "^15.5.0",
+    "husky": ">=6",
     "jest": "27.1.1",
+    "lint-staged": ">=10",
     "luxon": "^2.0.0",
+    "pinst": ">=2",
     "prettier": "^2.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -94,5 +99,9 @@
     "react-dnd-touch-backend": "^14.0.0",
     "react-popper": "^2.2.5",
     "uuid": "^8.3.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
   }
 }
