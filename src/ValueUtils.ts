@@ -1,13 +1,14 @@
 import escapeRegExp from 'lodash/escapeRegExp.js';
 
-export const onlyOneIsNull = (a: any, b: any) =>
-  (a == null && b != null) || (a != null && b == null);
+export function onlyOneIsNull(a: unknown, b: unknown): boolean {
+  return (a == null && b != null) || (a != null && b == null);
+}
 
 export function chooseAmong<T>(
   values: T[],
   sortFunction: (a: T, b: T) => number,
   allowNull?: boolean,
-) {
+): T {
   let eligibleValues = values;
 
   if (!allowNull) {
@@ -17,9 +18,8 @@ export function chooseAmong<T>(
   return eligibleValues.sort(sortFunction)[0];
 }
 
-export const preferNull =
-  <T>(sortFunction: (a: T, b: T) => number) =>
-  (a: T, b: T) => {
+export function preferNull<T>(sortFunction: (a: T, b: T) => number) {
+  return (a: T, b: T): number => {
     if (a == null) {
       return -1;
     }
@@ -30,16 +30,17 @@ export const preferNull =
 
     return sortFunction(a, b);
   };
+}
 
 export function sortByLocaleString<T>(
   list: T[],
   transform: (item: T) => string,
   options: Intl.CollatorOptions = { sensitivity: 'base' },
-) {
+): T[] {
   return [...list].sort((a, b) => transform(a).localeCompare(transform(b), undefined, options));
 }
 
-export function normalizeTitle(title: string) {
+export function normalizeTitle(title: string): string {
   return title
     .normalize('NFD') // not exactly unaccent but will make the diacritics separate chars
     .replace(/[^0-9a-z ]/gi, '')
@@ -48,12 +49,12 @@ export function normalizeTitle(title: string) {
     .replace(/ /g, '');
 }
 
-export function titleSort<T>(list: T[], transform?: (item: T) => string) {
+export function titleSort<T>(list: T[], transform?: (item: T) => string): T[] {
   const effectiveTransform = transform ?? ((e) => String(e));
   return sortByLocaleString(list, (element) => normalizeTitle(effectiveTransform(element)));
 }
 
-export function findCommonArrayPrefix<T>(a: T[], b: T[]) {
+export function findCommonArrayPrefix<T>(a: T[], b: T[]): T[] {
   let i = 0;
   const prefix: T[] = [];
 
@@ -69,21 +70,21 @@ export function findCommonArrayPrefix<T>(a: T[], b: T[]) {
   return prefix;
 }
 
-export function findCommonStringPrefix(a: string, b: string, delimiter = '') {
+export function findCommonStringPrefix(a: string, b: string, delimiter = ''): string {
   const aArray = a.split(delimiter);
   const bArray = b.split(delimiter);
 
   return findCommonArrayPrefix(aArray, bArray).join(delimiter);
 }
 
-export function findCommonStringSuffix(a: string, b: string, delimiter = '') {
+export function findCommonStringSuffix(a: string, b: string, delimiter = ''): string {
   const aArray = a.split(delimiter).reverse();
   const bArray = b.split(delimiter).reverse();
 
   return findCommonArrayPrefix(aArray, bArray).reverse().join(delimiter);
 }
 
-export function removeCommonStringMiddle(a: string, b: string, delimiter = '') {
+export function removeCommonStringMiddle(a: string, b: string, delimiter = ''): [string, string] {
   const prefix = findCommonStringPrefix(a, b, delimiter);
   const suffix = findCommonStringSuffix(a, b, delimiter);
   const prefixRegExp = new RegExp(`^${escapeRegExp(prefix)}`);
@@ -102,9 +103,10 @@ export function notFalse<TValue>(value: TValue | false): value is TValue {
 
 export type UnwrapPromise<T> = T extends PromiseLike<infer ValueType> ? ValueType : T;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type OmitStrict<T, K extends keyof T> = T extends any ? Pick<T, Exclude<keyof T, K>> : never;
 
-export function parseIntOrNull(stringValue: string) {
+export function parseIntOrNull(stringValue: string): number | null {
   const intValue = parseInt(stringValue, 10);
   if (Number.isNaN(intValue)) {
     return null;
@@ -112,7 +114,7 @@ export function parseIntOrNull(stringValue: string) {
   return intValue;
 }
 
-export function parseFloatOrNull(stringValue: string) {
+export function parseFloatOrNull(stringValue: string): number | null {
   const floatValue = parseFloat(stringValue);
   if (Number.isNaN(floatValue)) {
     return null;

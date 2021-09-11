@@ -6,7 +6,7 @@ export function useAutoClosingPopper(
   setVisible: React.Dispatch<boolean>,
   referenceElement: HTMLElement | undefined | null,
   popperElement: HTMLElement | undefined | null,
-) {
+): void {
   const hide = useCallback(() => {
     setVisible(false);
   }, [setVisible]);
@@ -27,7 +27,7 @@ export function useLitformPopper(
   referenceElement: HTMLElement | undefined | null,
   arrowElement: HTMLElement | undefined | null,
   options?: Parameters<typeof usePopper>[2],
-) {
+): ReturnType<typeof usePopper> {
   return usePopper(referenceElement, popperElement, {
     placement: 'bottom',
     strategy: 'fixed',
@@ -44,7 +44,7 @@ export function useLitformPopperWithAutoClosing(
   arrowElement: HTMLElement | undefined | null,
   setVisible: React.Dispatch<boolean>,
   options?: Parameters<typeof usePopper>[2],
-) {
+): ReturnType<typeof usePopper> {
   useAutoClosingPopper(setVisible, referenceElement, popperElement);
   return useLitformPopper(popperElement, referenceElement, arrowElement, options);
 }
@@ -52,7 +52,7 @@ export function useLitformPopperWithAutoClosing(
 export function useToggleOpen(
   setDropdownOpen: (updater: (prev: boolean) => boolean) => void,
   update: ReturnType<typeof usePopper>['update'],
-) {
+): () => void {
   const toggleOpen = useCallback(() => {
     setDropdownOpen((prev) => !prev);
     if (update) {

@@ -8,20 +8,19 @@ type BootstrapFormSelectOwnProps = Omit<SelectHTMLAttributes<HTMLSelectElement>,
 
 export type BootstrapFormSelectProps = FormGroupWithLabelWrapperProps<BootstrapFormSelectOwnProps>;
 
-function extractSelectElementAttributes(
-  props: BootstrapFormSelectOwnProps,
-): SelectHTMLAttributes<HTMLSelectElement> {
-  const { onValueChange, ...otherProps } = props;
-  return otherProps;
+function partitionSelectElementAttributes(props: BootstrapFormSelectOwnProps) {
+  const { onValueChange, ...selectAttributes } = props;
+  return { onValueChange, selectAttributes };
 }
 
 function BootstrapFormSelect(props: BootstrapFormSelectOwnProps) {
+  const { onValueChange, selectAttributes } = partitionSelectElementAttributes(props);
   const onChangeProp = (event: React.ChangeEvent<HTMLSelectElement>) =>
-    props.onValueChange(event.target.value);
+    onValueChange(event.target.value);
 
   return (
     <select
-      {...extractSelectElementAttributes(props)}
+      {...selectAttributes}
       className={props.className ?? 'form-select'}
       onChange={onChangeProp}
     />

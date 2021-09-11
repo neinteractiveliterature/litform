@@ -4,9 +4,9 @@ export type HelpTextProps = {
   children?: ReactNode;
 };
 
-function HelpText({ children }: HelpTextProps) {
+function HelpText({ children }: HelpTextProps): JSX.Element {
   if (!children) {
-    return null;
+    return <></>;
   }
 
   return <small className="form-text text-muted">{children}</small>;

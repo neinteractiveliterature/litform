@@ -33,10 +33,11 @@ export type ToastContextValue = {
 const ToastContext = React.createContext<ToastContextValue>({
   toastMessages: [],
   addMessage: () => '',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   dismissMessage: () => {},
 });
 
-export function ToastContainer() {
+export function ToastContainer(): JSX.Element {
   const { toastMessages } = useContext(ToastContext);
 
   return (
@@ -56,7 +57,7 @@ export function ToastContainer() {
   );
 }
 
-export function ToastProvider({ children }: { children: React.ReactNode }) {
+export function ToastProvider({ children }: { children: React.ReactNode }): JSX.Element {
   const [toastMessages, setToastMessages] = useState<ToastMessage[]>([]);
 
   const dismissMessage = useCallback((uuid: string) => {
@@ -91,7 +92,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
 
   const contextValue = useMemo<ToastContextValue>(
     () => ({ toastMessages, addMessage, dismissMessage }),
-    [toastMessages],
+    [toastMessages, addMessage, dismissMessage],
   );
 
   useEffect(() => {
@@ -119,12 +120,12 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useToast() {
+export function useToast(): ToastContextValue['addMessage'] {
   const { addMessage } = useContext(ToastContext);
   return addMessage;
 }
 
-export function useToastOnNextPageLoad() {
+export function useToastOnNextPageLoad(): (message: DelayedToastConstructorParams) => void {
   const toastOnNextPageLoad = useCallback((message: DelayedToastConstructorParams) => {
     window.sessionStorage.setItem(TOAST_ON_NEXT_PAGE_LOAD_STORAGE_KEY, JSON.stringify(message));
   }, []);

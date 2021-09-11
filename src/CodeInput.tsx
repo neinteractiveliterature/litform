@@ -59,7 +59,7 @@ function CodeInput({
   editButtonText,
   previewButtonText,
   ...props
-}: CodeInputProps) {
+}: CodeInputProps): JSX.Element {
   const [previewing, setPreviewing] = useState(false);
   const [previewContent, setPreviewContent] = useState<ReactNode | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);

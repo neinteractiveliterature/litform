@@ -10,7 +10,11 @@ export type ButtonWithTooltipProps = {
   tooltipContent: ReactNode;
 };
 
-function ButtonWithTooltip({ children, buttonProps, tooltipContent }: ButtonWithTooltipProps) {
+function ButtonWithTooltip({
+  children,
+  buttonProps,
+  tooltipContent,
+}: ButtonWithTooltipProps): JSX.Element {
   const [dropdownButton, setDropdownButton] = useState<HTMLButtonElement | null>(null);
   const [tooltip, setTooltip] = useState<HTMLDivElement | null>(null);
   const [arrow, setArrow] = useState<HTMLDivElement | null>(null);

@@ -7,6 +7,7 @@ export function useFunctionalStateUpdater<T>(
   setState: Dispatch<T> | undefined,
 ): FunctionalStateUpdater<T> {
   const factory: FunctionalStateUpdater<T> = useMemo(
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     () => (setState ? (updater: (prevState: T) => T) => setState(updater(state)) : () => {}),
     [state, setState],
   );
@@ -50,6 +51,7 @@ export function usePropertySetters<T, Properties extends readonly (keyof T)[]>(
   ...properties: Properties
 ): PropertySetterTuple<T, Properties> {
   const setters = useMemo(
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     () => properties.map((property) => buildPropertySetter(onChange ?? (() => {}), property)),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [JSON.stringify(properties), onChange],

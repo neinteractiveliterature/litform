@@ -17,7 +17,7 @@ function Tooltip({
   attributes,
   state,
   children,
-}: TooltipProps) {
+}: TooltipProps): JSX.Element {
   const placementClass = (state?.placement ?? '').split('-')[0];
 
   return (

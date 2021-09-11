@@ -1,11 +1,11 @@
-import { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import debounce from 'lodash/debounce.js';
 
 export default function useDebouncedState<T>(
   initialState: T | (() => T),
   onChange: (value: T) => void,
   wait?: number,
-) {
+): [T, React.Dispatch<React.SetStateAction<T>>] {
   const [transientValue, setTransientValue] = useState(initialState);
   const transientValueChanged = useMemo(
     () =>
@@ -24,5 +24,5 @@ export default function useDebouncedState<T>(
     return transientValueChanged.cancel;
   }, [transientValue, transientValueChanged]);
 
-  return [transientValue, setTransientValue] as const;
+  return [transientValue, setTransientValue];
 }
