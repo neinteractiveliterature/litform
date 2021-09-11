@@ -8,7 +8,7 @@ export type PageLoadingIndicatorProps = {
 
 function PageLoadingIndicator({
   visible,
-  iconSet = 'font-awesome-4',
+  iconSet = 'bootstrap-icons',
 }: PageLoadingIndicatorProps): JSX.Element {
   const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
 
@@ -28,11 +28,7 @@ function PageLoadingIndicator({
         visibility: showLoadingIndicator ? 'visible' : 'hidden',
       }}
     >
-      {iconSet === 'font-awesome-4' ? (
-        <i className={getIconClassName('spinner', iconSet)} />
-      ) : (
-        <div className="spinner-border" role="status" />
-      )}
+      <div className="spinner-border" role="status" />
       <span className="visually-hidden">Loading...</span>
     </div>
   );
