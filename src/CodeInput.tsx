@@ -13,7 +13,7 @@ import { ApolloError } from '@apollo/client';
 
 import { EditorState } from '@codemirror/state';
 import { EditorView, basicSetup } from '@codemirror/basic-setup';
-import { defaultTabBinding } from '@codemirror/commands';
+import { indentWithTab } from '@codemirror/commands';
 import { keymap } from '@codemirror/view';
 import type { Extension } from '@codemirror/state';
 import type { ViewUpdate } from '@codemirror/view';
@@ -99,7 +99,7 @@ function CodeInput({
 
   const fullExtensions = useMemo(
     () => [
-      keymap.of([defaultTabBinding]),
+      keymap.of([indentWithTab]),
       buildHeightTheme(lines),
       ...(extensions ?? []),
       EditorView.updateListener.of((update: ViewUpdate) => {

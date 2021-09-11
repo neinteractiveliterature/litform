@@ -2,14 +2,7 @@ export type LitformIconName = 'copy' | 'question-circle' | 'spinner' | 'search';
 
 export type LitformIconSet = Record<LitformIconName, string>;
 
-export type LitformIconSetIdentifier = 'font-awesome-4' | 'bootstrap-icons';
-
-export const FontAwesome4Icons: LitformIconSet = {
-  copy: 'fa fa-copy',
-  'question-circle': 'fa fa-question-circle',
-  spinner: 'fa fa-circle-o-notch fa-spin fa-fw',
-  search: 'fa fa-search',
-};
+export type LitformIconSetIdentifier = 'bootstrap-icons';
 
 export const BootstrapIcons: LitformIconSet = {
   copy: 'bi-clipboard',
@@ -19,7 +12,6 @@ export const BootstrapIcons: LitformIconSet = {
 };
 
 export const LitformIconSets: Record<LitformIconSetIdentifier, LitformIconSet> = {
-  'font-awesome-4': FontAwesome4Icons,
   'bootstrap-icons': BootstrapIcons,
 };
 
@@ -27,5 +19,5 @@ export function getIconClassName(
   iconName: LitformIconName,
   iconSetIdentifier?: LitformIconSetIdentifier,
 ): string {
-  return LitformIconSets[iconSetIdentifier ?? 'font-awesome-4'][iconName];
+  return LitformIconSets[iconSetIdentifier ?? 'bootstrap-icons'][iconName];
 }

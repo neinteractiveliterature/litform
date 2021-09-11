@@ -6,7 +6,7 @@ export default {
   component: PageLoadingIndicator,
   argTypes: {
     visible: { control: 'boolean' },
-    iconSet: { control: 'radio', options: ['bootstrap-icons', 'font-awesome-4'] },
+    iconSet: { control: 'radio', options: ['bootstrap-icons'] },
     // label: { control: 'text' },
     // hideLabel: { control: 'boolean' },
     // helpText: { control: 'text' },
