@@ -20,7 +20,7 @@ function BooleanInput({
   falseLabel,
   falseBeforeTrue,
   ...otherProps
-}: BooleanInputProps) {
+}: BooleanInputProps): JSX.Element {
   const choices = useMemo(() => {
     const workingChoices = [
       { label: trueLabel || 'Yes', value: 'true' },

@@ -27,7 +27,7 @@ export type BootstrapFormCheckboxProps = InputHTMLAttributes<HTMLInputElement> &
   inputClassName?: string;
 };
 
-function BootstrapFormCheckbox(props: BootstrapFormCheckboxProps) {
+function BootstrapFormCheckbox(props: BootstrapFormCheckboxProps): JSX.Element {
   const { className, inputClassName, label, onChange, onCheckedChange, type, ...otherProps } =
     props;
 
@@ -38,7 +38,8 @@ function BootstrapFormCheckbox(props: BootstrapFormCheckboxProps) {
       ? (event: ChangeEvent<HTMLInputElement>) => {
           onCheckedChange(event.target.checked);
         }
-      : () => {});
+      : // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {});
 
   return (
     <div className={classnames('form-check', className)}>

@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react';
+import { TextareaHTMLAttributes } from 'react';
 import * as React from 'react';
 import useUniqueId from './useUniqueId';
 import { FormGroupWithLabelWrapper, FormGroupWithLabelWrapperProps } from './FormGroupWithLabel';
@@ -13,18 +13,17 @@ type BootstrapFormTextareaOwnProps = Omit<
 export type BootstrapFormTextareaProps =
   FormGroupWithLabelWrapperProps<BootstrapFormTextareaOwnProps>;
 
-function extractTextareaElementAttributes(
-  props: BootstrapFormTextareaOwnProps,
-): InputHTMLAttributes<HTMLTextAreaElement> {
-  const { onTextChange, ...otherProps } = props;
-  return otherProps;
+function partitionTextareaElementAttributes(props: BootstrapFormTextareaOwnProps) {
+  const { onTextChange, ...textareaAttributes } = props;
+  return { onTextChange, textareaAttributes };
 }
 
 function BootstrapFormTextarea(props: BootstrapFormTextareaOwnProps) {
   const { name } = props;
   const inputId = useUniqueId(`${name}-`);
+  const { onTextChange, textareaAttributes } = partitionTextareaElementAttributes(props);
   const onChangeProp = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
-    props.onTextChange(event.target.value);
+    onTextChange(event.target.value);
 
   return (
     <textarea
@@ -32,7 +31,7 @@ function BootstrapFormTextarea(props: BootstrapFormTextareaOwnProps) {
       id={inputId}
       name={name}
       onChange={onChangeProp}
-      {...extractTextareaElementAttributes(props)}
+      {...textareaAttributes}
     />
   );
 }

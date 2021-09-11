@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 
 export const TOAST_FADE_DURATION = 350;
@@ -19,7 +19,7 @@ export default function Toast({
   close,
   autoCloseAfter,
   justNowText,
-}: ToastProps) {
+}: ToastProps): JSX.Element {
   const [timestamp, setTimestamp] = useState(() => DateTime.now());
   const [formattedTimeAgo, setFormattedTimeAgo] = useState<string | null>(null);
   const justNow = justNowText || 'just now';
@@ -48,11 +48,11 @@ export default function Toast({
   useEffect(() => {
     if (visible) {
       const handle = window.setInterval(() => {
-        if (autoCloseAfter && timestamp.diffNow('millisecond').milliseconds >= autoCloseAfter) {
+        if (autoCloseAfter && timestamp.diffNow('milliseconds').milliseconds >= autoCloseAfter) {
           close();
         }
 
-        if (timestamp.diffNow('minute').minutes < 1) {
+        if (timestamp.diffNow('minutes').minutes < 1) {
           setFormattedTimeAgo(justNow);
         } else {
           setFormattedTimeAgo(timestamp.toRelative());
@@ -62,7 +62,7 @@ export default function Toast({
         window.clearInterval(handle);
       };
     }
-  }, [timestamp, visible, close]);
+  }, [timestamp, visible, close, autoCloseAfter, justNow]);
 
   return (
     <div

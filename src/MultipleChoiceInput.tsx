@@ -8,16 +8,18 @@ export type MultipleChoiceInputProps = ChoiceSetProps & {
   helpText?: ReactNode;
 };
 
-const MultipleChoiceInput = ({
+function MultipleChoiceInput({
   caption,
   helpText,
   ...choiceSetProps
-}: MultipleChoiceInputProps) => (
-  <fieldset className="mb-3">
-    <legend className="col-form-label">{caption}</legend>
-    <ChoiceSet {...choiceSetProps} />
-    <HelpText>{helpText}</HelpText>
-  </fieldset>
-);
+}: MultipleChoiceInputProps): JSX.Element {
+  return (
+    <fieldset className="mb-3">
+      <legend className="col-form-label">{caption}</legend>
+      <ChoiceSet {...choiceSetProps} />
+      <HelpText>{helpText}</HelpText>
+    </fieldset>
+  );
+}
 
 export default MultipleChoiceInput;

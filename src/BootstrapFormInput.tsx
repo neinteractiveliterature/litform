@@ -12,18 +12,16 @@ type BootstrapFormInputOwnProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'o
 
 export type BootstrapFormInputProps = FormGroupWithLabelWrapperProps<BootstrapFormInputOwnProps>;
 
-function extractInputElementAttributes(
-  props: BootstrapFormInputOwnProps,
-): InputHTMLAttributes<HTMLInputElement> {
-  const { onTextChange, ...otherProps } = props;
-  return otherProps;
+function partitionInputElementAttributes(props: BootstrapFormInputOwnProps) {
+  const { onTextChange, ...inputAttributes } = props;
+  return { onTextChange, inputAttributes };
 }
 
 function BootstrapFormInput(props: BootstrapFormInputOwnProps) {
-  const inputAttributes = extractInputElementAttributes(props);
+  const { onTextChange, inputAttributes } = partitionInputElementAttributes(props);
 
   const onChangeProp = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.onTextChange(event.target.value);
+    onTextChange(event.target.value);
   };
 
   return (

@@ -2,7 +2,7 @@ export type DisclosureTriangleProps = {
   expanded: boolean;
 };
 
-function DisclosureTriangle({ expanded }: DisclosureTriangleProps) {
+function DisclosureTriangle({ expanded }: DisclosureTriangleProps): JSX.Element {
   if (expanded) {
     return <>▼</>;
   }

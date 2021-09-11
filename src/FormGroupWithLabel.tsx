@@ -55,7 +55,7 @@ function FormGroupWithLabel({
   wrapperDivClassName,
   labelClassName,
   invalidFeedback,
-}: FormGroupWithLabelProps) {
+}: FormGroupWithLabelProps): JSX.Element {
   const id = useUniqueId(`${name || 'input'}-`);
 
   return (
