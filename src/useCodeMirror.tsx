@@ -118,6 +118,7 @@ export function useStandardCodeMirrorExtensions({
       ...(enableIndentWithTab ? [keymap.of([indentWithTab])] : []),
       theme ?? bootstrapLightTheme,
       buildHeightTheme(lines),
+      EditorView.lineWrapping,
       onChangeExtension,
     ],
     [enableIndentWithTab, theme, lines, onChangeExtension],
