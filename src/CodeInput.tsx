@@ -2,7 +2,6 @@ import { useState, useCallback, ReactNode, useEffect } from 'react';
 import * as React from 'react';
 import classNames from 'classnames';
 import { ApolloError } from '@apollo/client';
-import { EditorView } from '@codemirror/basic-setup';
 
 import ErrorDisplay from './ErrorDisplay';
 import LoadingIndicator from './LoadingIndicator';
