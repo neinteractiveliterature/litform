@@ -1,8 +1,11 @@
 import { Meta, Story } from '@storybook/react';
-import CodeInput, { CodeInputProps } from '../CodeInput';
-import { javascript } from '@codemirror/lang-javascript';
+import CodeInput from '../CodeInput';
+import { markdown } from '@codemirror/lang-markdown';
 import { oneDark } from '@codemirror/theme-one-dark';
-import { useMemo } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { useCallback, useMemo } from 'react';
+import { useStandardCodeMirror } from '../useCodeMirror';
+import { useArgs } from '@storybook/addons';
 
 export default {
   title: 'Forms/CodeInput',
@@ -20,30 +23,44 @@ export default {
   },
 } as Meta;
 
-const Template: Story<CodeInputProps> = (args, context) => {
-  const extensions = useMemo(
-    () => [javascript(), ...(context.parameters.darkTheme ? [oneDark] : [])],
-    [context.parameters.darkTheme],
+type CodeInputStoryArgs = {
+  value: string;
+  lines: number;
+};
+
+const Template: Story<CodeInputStoryArgs> = (args, context) => {
+  const [, updateArgs] = useArgs();
+  const onChange = useCallback(
+    (value) => {
+      updateArgs({ value });
+    },
+    [updateArgs],
   );
+  const extensions = useMemo(() => [markdown()], []);
+  const [editorRef] = useStandardCodeMirror({
+    extensions,
+    lines: args.lines,
+    value: args.value,
+    onChange,
+    theme: context.parameters.darkTheme ? oneDark : undefined,
+  });
+
   return (
     <CodeInput
       {...args}
-      extensions={extensions}
-      getPreviewContent={async (text) => text}
-      onChange={(newValue) => {
-        console.log(`Value changed to: ${newValue}`);
-      }}
+      value={args.value}
+      editorRef={editorRef}
+      getPreviewContent={async (markdownContent) => (
+        <ReactMarkdown>{markdownContent}</ReactMarkdown>
+      )}
     />
   );
 };
 
 export const Basic = Template.bind({});
 Basic.args = {
-  value: `function addNumbers(a, b) {
-  return a + b;
-}`,
+  value: `This is a **Markdown** editor with preview capabilities.  Neat, right?`,
   lines: 10,
-  // text: 'This is the text copied to the clipboard by the button.',
 };
 
 Basic.parameters = {
@@ -56,11 +73,8 @@ Basic.parameters = {
 
 export const DarkTheme = Template.bind({});
 DarkTheme.args = {
-  value: `function addNumbers(a, b) {
-  return a + b;
-}`,
+  value: `This is a **Markdown** editor with preview capabilities.  Neat, right?`,
   lines: 10,
-  // text: 'This is the text copied to the clipboard by the button.',
 };
 
 DarkTheme.parameters = {

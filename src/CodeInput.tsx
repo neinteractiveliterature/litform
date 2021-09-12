@@ -1,48 +1,21 @@
-import {
-  useState,
-  useCallback,
-  ReactNode,
-  useRef,
-  useEffect,
-  useMemo,
-  useLayoutEffect,
-  useImperativeHandle,
-  forwardRef,
-} from 'react';
+import { useState, useCallback, ReactNode, useEffect } from 'react';
 import * as React from 'react';
 import classNames from 'classnames';
 import { ApolloError } from '@apollo/client';
-
-import { EditorState } from '@codemirror/state';
-import { EditorView, basicSetup } from '@codemirror/basic-setup';
-import { indentWithTab } from '@codemirror/commands';
-import { keymap } from '@codemirror/view';
-import type { Extension } from '@codemirror/state';
-import type { ViewUpdate } from '@codemirror/view';
+import { EditorView } from '@codemirror/basic-setup';
 
 import ErrorDisplay from './ErrorDisplay';
 import LoadingIndicator from './LoadingIndicator';
-
-function getStyleForLines(lines: number | undefined) {
-  const height = `${(lines ?? 6) * 1.4}rem`;
-  return { minHeight: height };
-}
-
-function buildHeightTheme(lines: number | undefined) {
-  return EditorView.theme({
-    '.cm-content, .cm-gutter': getStyleForLines(lines),
-  });
-}
+import { getStyleForLines } from './useCodeMirror';
 
 export type CodeInputProps = {
-  className?: string;
-  onChange: (value: string) => void;
-  getPreviewContent?: (value: string) => Promise<ReactNode>;
+  editorRef: React.RefCallback<HTMLElement | null>;
   value: string;
+  className?: string;
+  getPreviewContent?: (value: string) => Promise<ReactNode>;
   editButtonText?: string;
   previewButtonText?: string;
   disabled?: boolean;
-  extensions?: Extension[];
   extraNavControls?: ReactNode;
   lines?: number;
   formControlClassName?: string;
@@ -51,93 +24,29 @@ export type CodeInputProps = {
   renderPreview?: (previewContent: ReactNode) => ReactNode;
 };
 
-function useCodeMirror(extensions: Extension[]) {
-  const editorView = useMemo<EditorView>(() => {
-    const initialState = EditorState.create({
-      extensions: [basicSetup, ...extensions],
-    });
-
-    return new EditorView({ state: initialState });
-  }, [extensions]);
-
-  useLayoutEffect(() => {
-    return () => {
-      editorView.dom.parentElement?.removeChild(editorView.dom);
-    };
-  }, [editorView]);
-
-  const editorRef = useCallback<React.RefCallback<HTMLElement>>(
-    (element) => {
-      element?.appendChild(editorView.dom);
-    },
-    [editorView],
-  );
-
-  return [editorRef, editorView] as const;
-}
-
-export default forwardRef(function CodeInput(
-  {
-    onChange,
-    value,
-    getPreviewContent,
-    disabled,
-    extraNavControls,
-    extensions,
-    className,
-    lines,
-    formControlClassName,
-    editorWrapperClassName,
-    children,
-    renderPreview,
-    editButtonText,
-    previewButtonText,
-  }: CodeInputProps,
-  ref: React.ForwardedRef<EditorView>,
-): JSX.Element {
+export default function CodeInput({
+  editorRef,
+  value,
+  getPreviewContent,
+  disabled,
+  extraNavControls,
+  className,
+  lines,
+  formControlClassName,
+  editorWrapperClassName,
+  children,
+  renderPreview,
+  editButtonText,
+  previewButtonText,
+}: CodeInputProps): JSX.Element {
   const [previewing, setPreviewing] = useState(false);
   const [previewContent, setPreviewContent] = useState<ReactNode | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
   const [previewError, setPreviewError] = useState<ApolloError | null>(null);
-  const valueRef = useRef<string>(value);
-  const onChangeRef = useRef<typeof onChange>(onChange);
-
-  const fullExtensions = useMemo(
-    () => [
-      keymap.of([indentWithTab]),
-      buildHeightTheme(lines),
-      ...(extensions ?? []),
-      EditorView.updateListener.of((update: ViewUpdate) => {
-        if (update.docChanged) {
-          const newDoc = update.state.doc.toString();
-          if (newDoc !== valueRef.current) {
-            onChangeRef.current(update.state.doc.toString());
-          }
-          setPreviewContent(null);
-        }
-      }),
-    ],
-    [extensions, lines],
-  );
-
-  const [editorRef, editorView] = useCodeMirror(fullExtensions);
-  useImperativeHandle(ref, () => editorView);
 
   useEffect(() => {
-    valueRef.current = value;
-    if (editorView && value !== editorView.state.doc.toString()) {
-      editorView.dispatch({
-        changes: [
-          { from: 0, to: editorView.state.doc.length },
-          { from: 0, insert: value },
-        ],
-      });
-    }
-  }, [value, editorView]);
-
-  useEffect(() => {
-    onChangeRef.current = onChange;
-  }, [onChange]);
+    setPreviewContent(null);
+  }, [value]);
 
   const editTabClicked = useCallback((event) => {
     event.preventDefault();
@@ -245,4 +154,4 @@ export default forwardRef(function CodeInput(
       {children}
     </div>
   );
-});
+}

@@ -43,6 +43,19 @@ export {
   useToastOnNextPageLoad,
 } from './ToastContext';
 export { default as Tooltip } from './Tooltip';
+export {
+  UseStandardCodeMirrorExtensionsOptions,
+  bootstrapLightEditorViewTheme,
+  bootstrapLightHighlightStyle,
+  bootstrapLightTheme,
+  buildHeightTheme,
+  getStyleForLines,
+  useCodeMirror,
+  useCodeMirrorOnChangeExtension,
+  useControlledCodeMirror,
+  useStandardCodeMirror,
+  useStandardCodeMirrorExtensions,
+} from './useCodeMirror';
 export { default as useDebouncedState } from './useDebouncedState';
 export { default as useSortable, buildOptimisticArrayForMove, useSortHover } from './useSortable';
 export { default as useIsMounted } from './useIsMounted';

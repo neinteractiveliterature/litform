@@ -14,5 +14,17 @@ module.exports = {
     //   shouldExtractLiteralValuesFromEnum: true,
     //   propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     // },
+    webpackFinal: (config) => {
+      return {
+        ...config,
+        resolve: {
+          ...config.resolve,
+          fallback: {
+            ...config.fallback,
+            assert: require.resolve('assert'),
+          },
+        },
+      };
+    },
   },
 };
