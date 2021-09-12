@@ -142,7 +142,11 @@ export function useCodeMirror(extensions: Extension[]): [RefCallback<HTMLElement
 
   const editorRef = useCallback<React.RefCallback<HTMLElement>>(
     (element) => {
-      element?.appendChild(editorView.dom);
+      if (element) {
+        element.appendChild(editorView.dom);
+      } else {
+        editorView.dom.remove();
+      }
     },
     [editorView],
   );
