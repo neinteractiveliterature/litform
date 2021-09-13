@@ -22,6 +22,7 @@ export {
 export { default as HelpPopover } from './HelpPopover';
 export { default as HelpText } from './HelpText';
 export { BootstrapIcons, LitformIconSets, getIconClassName } from './IconSets';
+export { LiquidLanguageConfig, liquid, liquidLanguage } from './liquid';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as LoadQueryWrapper } from './LoadQueryWrapper';
 export { default as MultipleChoiceInput } from './MultipleChoiceInput';

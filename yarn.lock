@@ -7210,7 +7210,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-jest@npm:^27.2.0":
+"babel-jest@npm:^27.1.1, babel-jest@npm:^27.2.0":
   version: 27.2.0
   resolution: "babel-jest@npm:27.2.0"
   dependencies:
