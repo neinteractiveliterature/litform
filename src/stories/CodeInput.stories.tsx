@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { useCallback, useMemo } from 'react';
 import { useStandardCodeMirror } from '../useCodeMirror';
 import { useArgs } from '@storybook/addons';
+import { liquid } from '../liquid';
 
 export default {
   title: 'Forms/CodeInput',
@@ -36,7 +37,10 @@ const Template: Story<CodeInputStoryArgs> = (args, context) => {
     },
     [updateArgs],
   );
-  const extensions = useMemo(() => [markdown()], []);
+  const extensions = useMemo(
+    () => [context.parameters.languageExtension ?? markdown()],
+    [context.parameters.languageExtension],
+  );
   const [editorRef] = useStandardCodeMirror({
     extensions,
     lines: args.lines,
@@ -79,6 +83,28 @@ DarkTheme.args = {
 
 DarkTheme.parameters = {
   darkTheme: true,
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
+};
+
+export const Liquid = Template.bind({});
+Liquid.args = {
+  value: `<p>This is a Liquid editor showing off the mixed HTML/Markdown mode.</p>
+
+<p>This is a Liquid variable substitution with a filter: {{ x | downcase }}</p>
+
+<ul>
+  {% for value in array %}
+  <li>{{ value }}</li>
+  {% endfor %}
+</ul>`,
+  lines: 10,
+};
+Liquid.parameters = {
+  languageExtension: liquid(),
   docs: {
     source: {
       type: 'code',

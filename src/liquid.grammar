@@ -1,0 +1,75 @@
+@skip {} {
+  @top Template {
+    Content* eof
+  }
+}
+
+Content { LiquidTag | LiquidObject | Text }
+
+Identifier { identifier }
+
+expression {
+  Identifier (PropertyAccessor | IndexAccessor)* |
+  Number |
+  Bareword { bareword }
+}
+
+PropertyAccessor {
+  "." Identifier
+}
+
+IndexAccessor {
+  "[" Number "]"
+}
+
+LiquidFilter {
+  LiquidFilterSeparator { "|" }
+  FilterName { Identifier }
+  ( ":" FilterArg { expression })?
+}
+
+LiquidObject {
+  LiquidObjectOpen { "{{" }
+  expression
+  LiquidFilter*
+  LiquidObjectClose { "}}" }
+}
+
+LiquidTag {
+  LiquidTagOpen { "{%" }
+  TagName { identifier }
+  TagArgs { expression* }
+  LiquidFilter*
+  LiquidTagClose { "%}" }
+}
+
+@skip {
+  whitespace
+}
+
+@skip {} {
+  Text { textElement }
+}
+
+@tokens {
+  whitespace { std.whitespace+ }
+  letter { $[_a-zA-Z\u00A1-\u00ff] }
+  identifier { letter (letter | std.digit)* }
+  bareword { ![\.\[%}|] }
+
+  Number { std.digit+ }
+
+  @precedence {
+    whitespace, identifier, Number, bareword
+  }
+
+  textElement {
+    ![{] textElement? | "{" textLess
+  }
+
+  textLess {
+    ![{%] textElement?
+  }
+}
+
+@external tokens eofToken from "./liquidTokens" { eof }
