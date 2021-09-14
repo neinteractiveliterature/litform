@@ -125,9 +125,14 @@ export function useStandardCodeMirrorExtensions({
   );
 }
 
-export function useCodeMirror(extensions: Extension[]): [RefCallback<HTMLElement>, EditorView] {
+export function useCodeMirror(
+  extensions: Extension[],
+  initialDoc?: string,
+): [RefCallback<HTMLElement>, EditorView] {
+  const initialDocRef = useRef<string | undefined>(initialDoc);
   const editorView = useMemo<EditorView>(() => {
     const initialState = EditorState.create({
+      doc: initialDocRef.current,
       extensions: [basicSetup, ...extensions],
     });
 
