@@ -168,7 +168,7 @@ export function useStandardCodeMirror(
     [standardExtensions, options.extensions],
   );
 
-  const [editorRef, editorView] = useCodeMirror(fullExtensions);
+  const [editorRef, editorView] = useCodeMirror(fullExtensions, options.value);
   useControlledCodeMirror(editorView, options.value);
   return [editorRef, editorView];
 }
