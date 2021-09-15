@@ -9,9 +9,17 @@ Content { LiquidTag | LiquidObject | Text }
 Identifier { identifier }
 
 expression {
+  ParenthesizedExpression |
   Identifier (PropertyAccessor | IndexAccessor)* |
   Number |
   Bareword { bareword }
+}
+
+ParenthesizedExpression {
+  ParenOpen { "(" }
+  expression
+  LiquidFilter*
+  ParenClose { ")" }
 }
 
 PropertyAccessor {
@@ -19,7 +27,9 @@ PropertyAccessor {
 }
 
 IndexAccessor {
-  "[" Number "]"
+  IndexOpen { "[" }
+  Number
+  IndexClose { "]" }
 }
 
 LiquidFilter {
@@ -55,7 +65,7 @@ LiquidTag {
   whitespace { std.whitespace+ }
   letter { $[_a-zA-Z\u00A1-\u00ff] }
   identifier { letter (letter | std.digit)* }
-  bareword { ![\.\[%}|] }
+  bareword { ![\.\[%}|\(\)] }
 
   Number { std.digit+ }
 
