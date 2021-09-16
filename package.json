@@ -64,8 +64,6 @@
     "@types/luxon": "^2.0.0",
     "@types/mdx-js__react": "^1",
     "@types/react": "^17.0.20",
-    "@types/react-dnd": "^3.0.2",
-    "@types/react-dnd-multi-backend": "^6.0.1",
     "@types/testing-library__jest-dom": "^5.14.1",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
@@ -115,9 +113,6 @@
     "react-bootstrap4-modal": "^2.0.0",
     "react-cool-onclickoutside": "^1.6.2",
     "react-dnd": "^14.0.3",
-    "react-dnd-html5-backend": "^14.0.1",
-    "react-dnd-multi-backend": "^7.0.0-alpha.4",
-    "react-dnd-touch-backend": "^14.1.0",
     "react-popper": "^2.2.5",
     "uuid": "^8.3.2"
   },

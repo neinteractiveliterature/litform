@@ -10,7 +10,6 @@ export { default as ChoiceSet } from './ChoiceSet';
 export { default as CodeInput } from './CodeInput';
 export { default as Confirm, useConfirm, useGraphQLConfirm } from './Confirm';
 export { default as CopyToClipboardButton } from './CopyToClipboardButton';
-export { default as DndWrapper } from './DndWrapper';
 export { default as DisclosureTriangle } from './DisclosureTriangle';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as ErrorDisplay } from './ErrorDisplay';

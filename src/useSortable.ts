@@ -1,10 +1,14 @@
 import { useCallback, useRef, RefObject, MutableRefObject } from 'react';
-import {
-  useDrag,
-  useDrop,
+import type {
   DragSourceOptions,
   DragElementWrapper,
   DropTargetMonitor,
+  FactoryOrInstance,
+  DragSourceHookSpec,
+  ConnectDragSource,
+  ConnectDragPreview,
+  DropTargetHookSpec,
+  ConnectDropTarget,
 } from 'react-dnd';
 
 export type MoveItemFunction = (dragIndex: number, hoverIndex: number) => void;
@@ -65,6 +69,14 @@ export function useSortHover<T extends HTMLElement, DragObject extends { index: 
 }
 
 export default function useSortable<T extends HTMLElement>(
+  useDrag: <DragObject, DropResult, CollectedProps>(
+    specArg: FactoryOrInstance<DragSourceHookSpec<DragObject, DropResult, CollectedProps>>,
+    deps?: unknown[],
+  ) => [CollectedProps, ConnectDragSource, ConnectDragPreview],
+  useDrop: <DragObject, DropResult, CollectedProps>(
+    specArg: FactoryOrInstance<DropTargetHookSpec<DragObject, DropResult, CollectedProps>>,
+    deps?: unknown[],
+  ) => [CollectedProps, ConnectDropTarget],
   index: number,
   moveItem: MoveItemFunction,
   itemType: string,
