@@ -112,7 +112,6 @@
     "luxon": "^2.0.0",
     "react-bootstrap4-modal": "^2.0.0",
     "react-cool-onclickoutside": "^1.6.2",
-    "react-dnd": "^14.0.3",
     "react-popper": "^2.2.5",
     "uuid": "^8.3.2"
   },

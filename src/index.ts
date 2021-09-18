@@ -33,6 +33,7 @@ export {
   useToggleOpen,
 } from './PopperUtils';
 export { default as SearchInput } from './SearchInput';
+export { buildOptimisticArrayForMove } from './SortingUtils';
 export { TabBody, TabList, Tabs, useTabs, useTabsWithRouter } from './Tabs';
 export { default as Toast, TOAST_FADE_DURATION } from './Toast';
 export {
@@ -57,7 +58,6 @@ export {
   useStandardCodeMirrorExtensions,
 } from './useCodeMirror';
 export { default as useDebouncedState } from './useDebouncedState';
-export { default as useSortable, buildOptimisticArrayForMove, useSortHover } from './useSortable';
 export { default as useIsMounted } from './useIsMounted';
 export { default as useModal } from './useModal';
 export { useFunctionalStateUpdater, usePropertySetters } from './usePropertySetters';
