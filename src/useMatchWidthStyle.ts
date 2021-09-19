@@ -1,10 +1,10 @@
 import { RefObject, useRef } from 'react';
 
-export default function useMatchWidthStyle(): [
-  RefObject<HTMLElement>,
+export default function useMatchWidthStyle<ElementType extends HTMLElement>(): [
+  RefObject<ElementType>,
   { width: string } | Record<string, never>,
 ] {
-  const matchElementRef = useRef<HTMLElement>(null);
+  const matchElementRef = useRef<ElementType>(null);
 
   return [
     matchElementRef,
