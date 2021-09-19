@@ -106,6 +106,11 @@ export type UnwrapPromise<T> = T extends PromiseLike<infer ValueType> ? ValueTyp
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type OmitStrict<T, K extends keyof T> = T extends any ? Pick<T, Exclude<keyof T, K>> : never;
 
+// https://stackoverflow.com/questions/46583883/typescript-pick-properties-with-a-defined-type
+export type KeysOfType<T, U> = {
+  [P in keyof T]: T[P] extends U ? P : never;
+}[keyof T];
+
 export function parseIntOrNull(stringValue: string): number | null {
   const intValue = parseInt(stringValue, 10);
   if (Number.isNaN(intValue)) {
