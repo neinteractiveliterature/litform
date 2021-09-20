@@ -25,6 +25,12 @@ export { LiquidLanguageConfig, liquid, liquidLanguage } from './liquid';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as LoadQueryWrapper } from './LoadQueryWrapper';
 export { default as MultipleChoiceInput } from './MultipleChoiceInput';
+export {
+  addNewObjectToReferenceArrayModifier,
+  addNewObjectToReferenceArrayUpdater,
+  deleteObjectFromReferenceArrayModifier,
+  deleteObjectFromReferenceArrayUpdater,
+} from './MutationModifierHelpers';
 export { default as PageLoadingIndicator } from './PageLoadingIndicator';
 export {
   useAutoClosingPopper,
