@@ -1,0 +1,81 @@
+<!--- FormsIntro.stories.mdx -->
+
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Forms/Introduction" />
+
+# Forms in Litform
+
+Litform provides a set of components for building forms using Bootstrap's standard styling. All
+of Litform's form components are built for accessibility and sticking with Bootstrap's defaults as
+much as possible.
+
+All Litform form components are _controlled_, meaning they expect a value and a change handler to be
+passed in (and don't manage their own state for the value of the form element).
+
+## Form groups (with labels)
+
+The fundamental building block of form elements in Litform is a form group. This corresponds to the
+(now-removed) `form-group` class in Bootstrap. A form group includes a wrapper `<div>`, a `<label>`,
+a form element, and optionally help text and invalid input feedback.
+
+Litform provides a low-level component called `<FormGroupWithLabel>` that implements this pattern.
+As its `children` prop, `<FormGroupWithLabel>` expects a render function that accepts a parameter
+called `id`, which will be a string containing the `id` to use for the form element. This is how
+Litform connects the `<label>` tag to the form element. The `id` is generated automatically and is
+guaranteed to be unique for the page.
+
+You probably don't need to use `<FormGroupWithLabel>` directly. Instead, use the basic form element
+components (described below) that are built on it.
+
+## Basic form elements
+
+Litform's basic form element components are:
+
+- BootstrapFormCheckbox (check boxes and radio buttons)
+- BootstrapFormInput (text, number, email, etc. inputs)
+- BootstrapFormSelect (dropdown selectors)
+- BootstrapFormTextarea (multi-line text areas)
+
+These correspond roughly to the basic HTML form input tags (with the exception of the fact that
+there are separate components for checkbox/radio and text `<input>`s). You can pass in almost any
+props that you could use with the underlying HTML tag. The only exception to this is `onChange`.
+In order to make these components easier to work with, Litform abstracts away the React change event
+and replaces it with a similarly-named prop that takes a more primitive argument:
+
+- BootstrapFormCheckbox: `onCheckedChange={(checked: boolean) => { ... }}`
+- BootstrapFormInput: `onTextChange={(text: string) => { ... }}`
+- BootstrapFormSelect: `onValueChange={(value: string) => { ... }}`
+- BootstrapFormTextarea: `onTextChange={(text: string) => { ... }}`
+
+All of these components are built on `<FormGroupWithLabel>`, so they expect to receive a `label`
+prop and can take `helpText` and `invalidFeedback` as appropriate.
+
+## ChoiceSets and MultipleChoiceInputs
+
+It's often useful to combine several check boxes or radio buttons into a logical grouping that
+represents a single value (or set of values) that can be selected. Litform provides two components
+for this: `<ChoiceSet>` and `<MultipleChoiceInput>`.
+
+`<ChoiceSet>` is a lower-level component that simply renders the set of radio buttons or check
+boxes. It takes a `choices` prop, which is an array of objects with `label` and `value` keys.
+It takes a `multiple` prop, which defaults to false (which will cause it to render radio
+buttons; if `multiple` is true then it will render check boxes). It also takes `value` and
+`onChange` props that let you treat the choice set as having a single value (a string in the case
+of radio buttons, or an array of strings in the case of check boxes).
+
+`<MultipleChoiceInput>` wraps `<ChoiceSet>` in a `<fieldset>` tag with a legend. This is very
+nearly equivalent to what `<FormGroupWithLabel>` does, but slightly different because the markup
+for doing this accessibly differs.
+
+## CodeInput
+
+Litform also ships with a wrapper for CodeMirror 6 called `<CodeInput>`. This is a fairly lightweight
+wrapper component that injects CodeMirror into the page. It has a set of companion hooks; the
+easiest one to use for most cases is `useStandardCodeMirror`. This hook will automatically
+generate a series of CodeMirror extensions that are generally useful for Litform-based apps,
+including a syntax highlighting theme that picks up whatever colors are being used by your site's
+Bootstrap theme.
+
+CodeMirror 6 is still in pre-release, and this set of components and hooks is very much in flux due
+to that.
