@@ -63,6 +63,7 @@
     "@types/lodash": "^4.14.169",
     "@types/luxon": "^2.0.0",
     "@types/mdx-js__react": "^1",
+    "@types/node": "^16.9.4",
     "@types/react": "^17.0.20",
     "@types/testing-library__jest-dom": "^5.14.1",
     "@types/uuid": "^8.3.0",
@@ -118,5 +119,8 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
     "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
+  },
+  "resolutions": {
+    "webpack": ">= 5"
   }
 }

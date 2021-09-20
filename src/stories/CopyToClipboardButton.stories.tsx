@@ -13,7 +13,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `A <button> tag which, when clicked, will copy some specified text to the
+        component: `A \`<button>\` tag which, when clicked, will copy some specified text to the
         user's clipboard, and then display a message (by default, "Copied!").`,
       },
     },
@@ -25,4 +25,5 @@ const Template: Story<CopyToClipboardButtonProps> = (args) => <CopyToClipboardBu
 export const Basic = Template.bind({});
 Basic.args = {
   text: 'This is the text copied to the clipboard by the button.',
+  className: 'btn btn-secondary',
 };

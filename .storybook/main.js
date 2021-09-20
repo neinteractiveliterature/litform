@@ -8,12 +8,13 @@ module.exports = {
     check: false,
     checkOptions: {},
     // temp disable react-docgen-typescript pending https://github.com/styleguidist/react-docgen-typescript/issues/356#issuecomment-850400428
-    reactDocgen: 'none',
-    // reactDocgen: 'react-docgen-typescript',
-    // reactDocgenTypescriptOptions: {
-    //   shouldExtractLiteralValuesFromEnum: true,
-    //   propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
-    // },
+    // reactDocgen: 'none',
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      include: ['**/*.tsx', '**/.yarn/__virtual__/**/*.tsx'],
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+    },
     webpackFinal: (config) => {
       return {
         ...config,

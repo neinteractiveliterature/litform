@@ -14,8 +14,8 @@ export default {
     docs: {
       description: {
         component: `An \`<input>\` tag and a matching \`<label>\`, styled for Bootstrap.  All normal
-          properties of \`<input>\` are supported, so you can pass \`value={...}\`,
-          \`onChange={...}\`, etc.`,
+          properties of \`<input>\` except \`onChange\` are supported, so you can pass \`value={...}\`,
+          \`className={...}\`, etc.  To listen for changes, use \`onTextChange\`.`,
       },
     },
   },
