@@ -11,11 +11,13 @@ export function addNewObjectToReferenceArrayModifier<Q, T extends { id: string }
   cache: ApolloCache<Q>,
   newObject: T,
   fragment: DocumentNode,
+  fragmentName?: string,
 ): Modifier<(Reference | undefined)[]> {
   const modifier: Modifier<(Reference | undefined)[]> = (existingObjectRefs, { readField }) => {
     const newObjectRef = cache.writeFragment({
       data: newObject,
       fragment: fragment,
+      fragmentName: fragmentName,
     });
 
     if (existingObjectRefs.some((ref: Reference) => readField('id', ref) === newObject.id)) {
@@ -33,6 +35,7 @@ export function addNewObjectToReferenceArrayUpdater<Q, T extends { id: string }>
   fieldName: string,
   getNewObject: (data: Q) => T | undefined,
   fragment: DocumentNode,
+  fragmentName?: string,
 ): MutationUpdaterFn<Q> {
   const updater: MutationUpdaterFn<Q> = (cache, result) => {
     const data = result.data;
@@ -43,7 +46,12 @@ export function addNewObjectToReferenceArrayUpdater<Q, T extends { id: string }>
         cache.modify({
           id: cache.identify(containingObject),
           fields: {
-            [fieldName]: addNewObjectToReferenceArrayModifier(cache, newObject, fragment),
+            [fieldName]: addNewObjectToReferenceArrayModifier(
+              cache,
+              newObject,
+              fragment,
+              fragmentName,
+            ),
           },
         });
       }
