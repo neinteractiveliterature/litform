@@ -30,6 +30,8 @@ export {
   addNewObjectToReferenceArrayUpdater,
   deleteObjectFromReferenceArrayModifier,
   deleteObjectFromReferenceArrayUpdater,
+  useCreateMutationWithReferenceArrayUpdater,
+  useDeleteMutationWithReferenceArrayUpdater,
 } from './MutationModifierHelpers';
 export { default as PageLoadingIndicator } from './PageLoadingIndicator';
 export {
