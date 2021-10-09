@@ -69,7 +69,7 @@ export function useCreateMutationWithReferenceArrayUpdater<
   TVariables,
   ContainerType extends Record<FieldName, ItemType[]>,
   FieldName extends keyof ContainerType & string,
-  ItemType extends { id: string },
+  ItemType extends { id: string } = ContainerType[FieldName][number],
 >(
   useMutationFunction: (
     options?: MutationHookOptions<TData, TVariables>,
@@ -124,7 +124,7 @@ export function useDeleteMutationWithReferenceArrayUpdater<
   TVariables,
   ContainerType extends Record<FieldName, ItemType[]>,
   FieldName extends keyof ContainerType & string,
-  ItemType extends { id: string },
+  ItemType extends { id: string } = ContainerType[FieldName][number],
 >(
   useMutationFunction: (
     options?: MutationHookOptions<TData, TVariables>,
