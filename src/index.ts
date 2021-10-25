@@ -47,6 +47,14 @@ export {
   useArrayBasicSortableHandlers,
   useBasicSortableHandlers,
 } from './SortingUtils';
+export {
+  findCommonArrayPrefix,
+  findCommonStringPrefix,
+  findCommonStringSuffix,
+  normalizeTitle,
+  removeCommonStringMiddle,
+  titleSort,
+} from './StringUtils';
 export { TabBody, TabList, Tabs, useTabs, useTabsWithRouter } from './Tabs';
 export { default as Toast, TOAST_FADE_DURATION } from './Toast';
 export {
@@ -80,17 +88,11 @@ export {
   parseIntOrNull,
   parseFloatOrNull,
   chooseAmong,
-  findCommonArrayPrefix,
-  findCommonStringPrefix,
-  findCommonStringSuffix,
-  normalizeTitle,
   notEmpty,
   notFalse,
   onlyOneIsNull,
   preferNull,
-  removeCommonStringMiddle,
   sortByLocaleString,
-  titleSort,
   KeysOfType,
   OmitStrict,
   UnwrapPromise,
