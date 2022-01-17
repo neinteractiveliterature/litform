@@ -3790,7 +3790,7 @@ __metadata:
     react-bootstrap4-modal: ^2.0.0
     react-cool-onclickoutside: ^1.7.0
     react-dom: ^17.0.2
-    react-markdown: ^7.0.1
+    react-markdown: ^8.0.0
     react-popper: ^2.2.5
     sass: ^1.42.1
     sass-loader: ^12.1.0
@@ -10193,6 +10193,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hast-util-whitespace@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "hast-util-whitespace@npm:2.0.0"
+  checksum: abeb5386075bfb0facfce89eed0e13d2cb27a0910cec8fd234b48821a1538387a73fa7f458842e8c404148dc69434acbc10488d75b02817e460652c2c894c024
+  languageName: node
+  linkType: hard
+
 "hastscript@npm:^6.0.0":
   version: 6.0.0
   resolution: "hastscript@npm:6.0.0"
@@ -12620,20 +12627,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdast-util-to-hast@npm:^11.0.0":
-  version: 11.2.0
-  resolution: "mdast-util-to-hast@npm:11.2.0"
+"mdast-util-to-hast@npm:^12.1.0":
+  version: 12.1.0
+  resolution: "mdast-util-to-hast@npm:12.1.0"
   dependencies:
     "@types/hast": ^2.0.0
     "@types/mdast": ^3.0.0
     "@types/mdurl": ^1.0.0
     mdast-util-definitions: ^5.0.0
     mdurl: ^1.0.0
+    micromark-util-sanitize-uri: ^1.0.0
     unist-builder: ^3.0.0
     unist-util-generated: ^2.0.0
     unist-util-position: ^4.0.0
-    unist-util-visit: ^3.0.0
-  checksum: b7259b7d45ce3c40676e5f70ce4db638e22f8addd11946c5c4368315e9210e40d99f78e66749585002b8eba52917100c533d435b459b930fe415cea10fa2f7cd
+    unist-util-visit: ^4.0.0
+  checksum: d20202a5266ab485f04ec13b4cb55def308d96023cff417446cc43d11778092c72664cfde49fe9af14016d38dd21b765c7ca865a0cfa41b9b0ab420a05749b2a
   languageName: node
   linkType: hard
 
@@ -14737,18 +14745,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-markdown@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "react-markdown@npm:7.0.1"
+"react-markdown@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "react-markdown@npm:8.0.0"
   dependencies:
     "@types/hast": ^2.0.0
     "@types/unist": ^2.0.0
     comma-separated-tokens: ^2.0.0
+    hast-util-whitespace: ^2.0.0
     prop-types: ^15.0.0
     property-information: ^6.0.0
     react-is: ^17.0.0
     remark-parse: ^10.0.0
-    remark-rehype: ^9.0.0
+    remark-rehype: ^10.0.0
     space-separated-tokens: ^2.0.0
     style-to-object: ^0.3.0
     unified: ^10.0.0
@@ -14757,7 +14766,7 @@ __metadata:
   peerDependencies:
     "@types/react": ">=16"
     react: ">=16"
-  checksum: fba9f0c8dca9b77a01dac1ecd7d01aef9054127712b77f63d281cd76e8f992b8bddc477ee3cd91c93d88853a2814260676c3220d242ba2caf01d68fa686e8917
+  checksum: 61412ecd18443e6f074932d7f2b142d20fc27d1c2042793fce65c28d2d18968419e85700b8f4a3c5f1819d8ac95cca1ee2959b8ca3c18dd8544130fdc1f28bdb
   languageName: node
   linkType: hard
 
@@ -15101,15 +15110,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-rehype@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "remark-rehype@npm:9.0.0"
+"remark-rehype@npm:^10.0.0":
+  version: 10.1.0
+  resolution: "remark-rehype@npm:10.1.0"
   dependencies:
     "@types/hast": ^2.0.0
     "@types/mdast": ^3.0.0
-    mdast-util-to-hast: ^11.0.0
+    mdast-util-to-hast: ^12.1.0
     unified: ^10.0.0
-  checksum: 7b0bb7eb10689786ad967e945eafdcb7f91c00c29e76f531417cf5e75c3547a5e75cf7ce3370f71d0282f50983121af8d88e8eb43548482c76f253a45f1625f1
+  checksum: b9ac8acff3383b204dfdc2599d0bdf86e6ca7e837033209584af2e6aaa6a9013e519a379afa3201299798cab7298c8f4b388de118c312c67234c133318aec084
   languageName: node
   linkType: hard
 
