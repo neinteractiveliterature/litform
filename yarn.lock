@@ -34,9 +34,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/cli@npm:7.16.8":
-  version: 7.16.8
-  resolution: "@babel/cli@npm:7.16.8"
+"@babel/cli@npm:7.17.0":
+  version: 7.17.0
+  resolution: "@babel/cli@npm:7.17.0"
   dependencies:
     "@nicolo-ribaudo/chokidar-2": 2.1.8-no-fsevents.3
     chokidar: ^3.4.0
@@ -57,7 +57,7 @@ __metadata:
   bin:
     babel: ./bin/babel.js
     babel-external-helpers: ./bin/babel-external-helpers.js
-  checksum: bb0cf50ff502a30e92918cf644192351023a9ef615acc3e7774abbd0327948d93e58ab3a8d31f52c18e2f04df8af10186b89421c28f4f0a2eee6b1ddce17a8ef
+  checksum: 0d43d42d7aa48dd6f7c65f4f8273072c1e0161a5df08e7808b28e5b007104d92bb7ec36724f4f275b5cc3e636f0e077217ac21593b41decd6025a2a065713b97
   languageName: node
   linkType: hard
 
@@ -3751,7 +3751,7 @@ __metadata:
   resolution: "@neinteractiveliterature/litform@workspace:."
   dependencies:
     "@apollo/client": 3.5.8
-    "@babel/cli": 7.16.8
+    "@babel/cli": 7.17.0
     "@babel/core": ^7.15.8
     "@babel/preset-env": 7.16.11
     "@babel/preset-react": ^7.14.5
