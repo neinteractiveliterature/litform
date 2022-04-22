@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { GraphQLError } from 'graphql';
 import ErrorDisplay from '../ErrorDisplay';
 
 test('it renders a string error', () => {
@@ -7,27 +8,11 @@ test('it renders a string error', () => {
   expect(container.innerHTML).toMatch(/everything is borked/);
 });
 
-const APOLLO_ERROR_FIELDS = {
-  extensions: undefined,
-  locations: [],
-  name: '',
-  nodes: undefined,
-  originalError: null,
-  path: undefined,
-  positions: undefined,
-  source: undefined,
-};
 test('it renders a graphql error', () => {
   const { getAllByText } = render(
     <ErrorDisplay
       graphQLError={{
-        graphQLErrors: [
-          {
-            ...APOLLO_ERROR_FIELDS,
-            message: 'everything ',
-          },
-          { ...APOLLO_ERROR_FIELDS, message: 'is borked' },
-        ],
+        graphQLErrors: [new GraphQLError('everything ', {}), new GraphQLError('is borked', {})],
         extraInfo: undefined,
         message: 'everything is fine',
         name: '',

@@ -69,7 +69,7 @@ export function useBasicSortableHandlers<ItemType>(
 
 export function useArrayBasicSortableHandlers<
   IdType extends { toString(): string },
-  ItemType,
+  ItemType extends { [x in IdProperty]: IdType },
   IdProperty extends KeysOfType<ItemType, IdType>,
 >(
   array: ItemType[],
@@ -78,7 +78,7 @@ export function useArrayBasicSortableHandlers<
 ): BasicSortableHandlers<ItemType> {
   const getItem = useCallback(
     (id: string) => {
-      const item = array.find((item) => (item[idProperty] as IdType).toString() === id);
+      const item = array.find((item) => item[idProperty].toString() === id);
       if (!item) {
         throw new Error(`No item with ID ${id} in array`);
       }
@@ -88,7 +88,7 @@ export function useArrayBasicSortableHandlers<
   );
 
   const getItemIndex = useCallback(
-    (id: string) => array.findIndex((item) => (item[idProperty] as IdType).toString() === id),
+    (id: string) => array.findIndex((item) => item[idProperty].toString() === id),
     [array, idProperty],
   );
 

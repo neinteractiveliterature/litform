@@ -21,8 +21,9 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonWithTooltipProps> = (args) => (
+const Template: Story<Partial<ButtonWithTooltipProps>> = (args) => (
   <ButtonWithTooltip
+    buttonProps={{}}
     tooltipContent={
       <>
         You can put <strong>any content you want</strong> in the tooltip.
