@@ -14,8 +14,8 @@ If you're not sure, then take a look at our <a href="{% page_url proposalfaq %}"
 
   const tree = languageSupport.language.parser.parse(content);
   tree.iterate({
-    enter(type) {
-      expect(type.isError).toBeFalsy();
+    enter(node) {
+      expect(node.type.isError).toBeFalsy();
     },
   });
 });
@@ -26,8 +26,8 @@ it('parses a Markdown document', () => {
 
   const tree = languageSupport.language.parser.parse(content);
   tree.iterate({
-    enter(type) {
-      expect(type.isError).toBeFalsy();
+    enter(node) {
+      expect(node.type.isError).toBeFalsy();
     },
   });
 });

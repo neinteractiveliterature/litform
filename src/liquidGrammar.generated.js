@@ -2,7 +2,7 @@
 import { LRParser } from '@lezer/lr';
 import { eofToken } from './liquidTokens';
 export const parser = LRParser.deserialize({
-  version: 13,
+  version: 14,
   states:
     "(^OVOXOOOOQO'#C`'#C`OeQQO'#C_OOQO'#Cs'#CsOjQQO'#CrOOOW'#Cu'#CuOOOW'#C^'#C^OOOW'#Cv'#CvOVOXOOQOOOOOOOQO'#Ca'#CaOxQQO,58yOOQO'#Cd'#CdOOQO'#Ch'#ChOjQQO'#CcOOQO'#Cp'#CpOOQO'#DQ'#DQO!^QQO'#DQO#OQQO,59^OOOW-E6t-E6tOOQO'#Cw'#CwO#WQQO'#CbO#lQQO1G.eO#tQQO,58}O#|QQO'#CkOOQO'#Cm'#CmO$RQQO'#ClOOQO'#Cy'#CyO$WQQO,59lOOQO'#Cf'#CfO#|QQO'#CeOOQO'#Cx'#CxO#OQQO1G.xOOOW'#Ct'#CtOOOW1G.x1G.xOOQO-E6u-E6uO#lQQO7+$POOOW'#Cq'#CqOOOW7+$P7+$PO#tQQO1G.iOOQO'#Cj'#CjOOQO1G.i1G.iOOQO,59V,59VO$xQSO,59WOOQO-E6w-E6wOOQO'#Cg'#CgO$}QSO,59POOQO-E6v-E6vOOOW7+$d7+$dOOOW<<Gk<<GkOOQO7+$T7+$TOOQO'#Co'#CoOOQO1G.r1G.rOjQQO1G.kOOQO'#Ci'#CiOOQO7+$V7+$V",
   stateData:

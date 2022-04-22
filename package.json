@@ -7,9 +7,7 @@
   "module": "lib",
   "main": "dist",
   "repository": "https://github.com/neinteractiveliterature/litform",
-  "sideEffects": [
-    "./lib/LiquidMultiplexModes.js"
-  ],
+  "sideEffects": [],
   "files": [
     "dist",
     "lib"
@@ -17,8 +15,8 @@
   "scripts": {
     "build": "yarn run build:lib && yarn run build:dist",
     "build:grammars": "lezer-generator src/liquid.grammar -o src/liquidGrammar.generated.js",
-    "build:dist": "rm -rf dist/* && tsc --outDir dist/ --module commonjs",
-    "build:lib": "rm -rf lib/* && tsc --outDir lib/",
+    "build:dist": "rm -rf dist && tsc -p tsconfig.build.json --outDir dist/ --module commonjs",
+    "build:lib": "rm -rf lib && tsc -p tsconfig.build.json --outDir lib/",
     "prepublishOnly": "yarn run build && yarn run pinst --disable",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -65,10 +63,10 @@
     "@types/mdx-js__react": "^1.5.5",
     "@types/node": "^16.10.3",
     "@types/react": "^17.0.27",
-    "@types/testing-library__jest-dom": "^5.14.1",
-    "@types/uuid": "^8.3.1",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
+    "@types/testing-library__jest-dom": "^5.14.3",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
     "assert": "^2.0.0",
     "babel-jest": "^27.5.1",
     "babel-loader": "8.2.5",
@@ -92,8 +90,7 @@
     "sass": "^1.50.1",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
-    "ts-jest": "^27.1.4",
-    "ts-node": "^10.7.0",
+    "style-mod": "^4.0.0",
     "typescript": "^4.6.3",
     "webpack": "^5.72.0"
   },
@@ -104,7 +101,7 @@
     "@codemirror/lang-html": "^0.20.0",
     "@codemirror/language": "^0.20.0",
     "@codemirror/state": "^0.20.0",
-    "@codemirror/view": "^0.20.1",
+    "@codemirror/view": "^0.20.2",
     "@lezer/lr": "^0.16.2",
     "@popperjs/core": "^2.11.5",
     "classnames": "^2.3.1",

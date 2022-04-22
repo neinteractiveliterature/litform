@@ -11,20 +11,10 @@
     "target": "ES2015", // specify ECMAScript target version
     "allowJs": true, // allow a partial TypeScript and JavaScript codebase,
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2016"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ES2016"],
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
-  "include": [
-    "./src/"
-  ],
-  "exclude": [
-    "./src/__tests__",
-    "./src/stories"
-  ]
+  "include": ["./src/"]
 }
