@@ -17,13 +17,13 @@
     "build:grammars": "lezer-generator src/liquid.grammar -o src/liquidGrammar.generated.js",
     "build:dist": "rm -rf dist && tsc -p tsconfig.build.json --outDir dist/ --module commonjs",
     "build:lib": "rm -rf lib && tsc -p tsconfig.build.json --outDir lib/",
-    "prepublishOnly": "yarn run build && yarn run pinst --disable",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest",
     "test:watch": "jest --watch",
     "postinstall": "husky install",
-    "postpublish": "yarn run pinst --enable"
+    "prepack": "yarn run build && pinst --disable",
+    "postpack": "pinst --enable"
   },
   "peerDependencies": {
     "@apollo/client": "^3.3.18",
