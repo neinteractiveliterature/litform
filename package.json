@@ -90,7 +90,6 @@
     "sass": "^1.50.1",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
-    "style-mod": "^4.0.0",
     "typescript": "^4.6.3",
     "webpack": "^5.72.0"
   },
@@ -111,6 +110,7 @@
     "react-bootstrap4-modal": "^2.0.0",
     "react-cool-onclickoutside": "^1.7.0",
     "react-popper": "^2.2.5",
+    "style-mod": "^4.0.0",
     "uuid": "^8.3.2"
   },
   "lint-staged": {
