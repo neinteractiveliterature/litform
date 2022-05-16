@@ -20,7 +20,7 @@ export type PropertySetter<T, F extends keyof T> = Dispatch<SetStateAction<T[F]>
 function buildPropertySetter<T, F extends keyof T>(
   setState: FunctionalStateUpdater<T>,
   property: F,
-) {
+): Dispatch<SetStateAction<T[F]>> {
   const calculateNewState = (prevState: T, valueOrUpdater: SetStateAction<T[F]>): T => {
     if (typeof valueOrUpdater === 'function') {
       return {
@@ -46,17 +46,23 @@ type PropertySetterTuple<T, Properties extends readonly (keyof T)[]> = {
     : never;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+function noop() {}
+
 export function usePropertySetters<T, Properties extends readonly (keyof T)[]>(
   onChange: FunctionalStateUpdater<T> | undefined | null,
   ...properties: Properties
 ): PropertySetterTuple<T, Properties> {
   const setters = useMemo(
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    () => properties.map((property) => buildPropertySetter(onChange ?? (() => {}), property)),
+    () => properties.map((property) => buildPropertySetter(onChange ?? noop, property)),
+    // We don't want the identity of the setter functions to change on every call to this,
+    // but the identiy of the properties array does change because it's a spread.
+    // So instead we use the JSON-encoded properties array as a dependency.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [JSON.stringify(properties), onChange],
   );
 
-  // TODO: figure out if there is an actual way to do this and make it type check properly
+  // TODO: when typescript issue 27995 is fixed, we might no longer need the PropertySetterTuple
+  // hack above, so we might not need this hack either
   return setters as unknown as PropertySetterTuple<T, Properties>;
 }
