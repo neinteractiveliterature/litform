@@ -4,6 +4,7 @@ import { ConfirmModal } from 'react-bootstrap4-modal';
 
 import useModal from './useModal';
 import ErrorDisplay from './ErrorDisplay';
+import { ApolloError } from '@apollo/client';
 
 export type ConfirmModalState = {
   action: () => any;
@@ -94,7 +95,10 @@ export function useConfirm(): ConfirmFunction {
 
 export function useGraphQLConfirm(): ConfirmFunction {
   const confirm = useConfirm();
-  const defaultRenderError = useCallback((error) => <ErrorDisplay graphQLError={error} />, []);
+  const defaultRenderError = useCallback(
+    (error: ApolloError) => <ErrorDisplay graphQLError={error} />,
+    [],
+  );
   const augmentedConfirmWithDefaults = useMemo(() => {
     const confirmWithDefaults = (options: ConfirmModalState) =>
       confirm({ renderError: defaultRenderError, ...options });

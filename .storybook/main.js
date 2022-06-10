@@ -23,6 +23,7 @@ module.exports = {
           fallback: {
             ...config.fallback,
             assert: require.resolve('assert'),
+            util: require.resolve('util'),
           },
         },
       };
