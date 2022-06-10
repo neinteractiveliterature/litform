@@ -1,9 +1,10 @@
 import { useCallback, useMemo, useEffect, useRef, useLayoutEffect, RefCallback } from 'react';
 import { EditorState, Extension } from '@codemirror/state';
-import { EditorView, basicSetup } from '@codemirror/basic-setup';
+import { EditorView, basicSetup } from 'codemirror';
 import { indentWithTab } from '@codemirror/commands';
-import { HighlightStyle, tags } from '@codemirror/highlight';
 import { keymap, ViewUpdate } from '@codemirror/view';
+import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
+import { tags } from '@lezer/highlight';
 
 export const bootstrapLightEditorViewTheme = EditorView.theme({
   '&': {
@@ -39,7 +40,10 @@ export const bootstrapLightHighlightStyle = HighlightStyle.define([
   { tag: tags.invalid, backgroundColor: 'var(--bs-danger)' },
 ]);
 
-export const bootstrapLightTheme = [bootstrapLightEditorViewTheme, bootstrapLightHighlightStyle];
+export const bootstrapLightTheme: Extension = [
+  bootstrapLightEditorViewTheme,
+  syntaxHighlighting(bootstrapLightHighlightStyle),
+];
 
 export function getStyleForLines(lines: number | undefined): { minHeight: string } {
   const height = `${(lines ?? 6) * 1.4}rem`;

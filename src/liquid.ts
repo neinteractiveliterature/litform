@@ -2,7 +2,7 @@ import { Language, LanguageSupport, LRLanguage } from '@codemirror/language';
 import { parseMixed, ParseWrapper } from '@lezer/common';
 import { html } from '@codemirror/lang-html';
 import { parser } from './liquidGrammar.generated';
-import { styleTags, tags } from '@codemirror/highlight';
+import { styleTags, tags } from '@lezer/highlight';
 
 export const liquidLanguage = LRLanguage.define({
   parser: parser.configure({
