@@ -1,4 +1,4 @@
-import { createContext, useContext, ReactNode } from 'react';
+import { createContext, useContext, ReactNode, useCallback } from 'react';
 import { Modal } from 'react-bootstrap4-modal';
 
 import useModal from './useModal';
@@ -24,7 +24,7 @@ export type AlertProviderProps = {
 
 export function AlertProvider({ children, okText }: AlertProviderProps): JSX.Element {
   const modal = useModal<AlertState>();
-  const alert = modal.open;
+  const alert = useCallback((message?: ReactNode) => modal.open({ message }), [modal.open]);
 
   return (
     <AlertContext.Provider value={{ alert }}>

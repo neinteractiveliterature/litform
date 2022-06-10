@@ -32,7 +32,7 @@ type CodeInputStoryArgs = {
 const Template: Story<CodeInputStoryArgs> = (args, context) => {
   const [, updateArgs] = useArgs();
   const onChange = useCallback(
-    (value) => {
+    (value: string) => {
       updateArgs({ value });
     },
     [updateArgs],

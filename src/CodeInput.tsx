@@ -47,7 +47,7 @@ export default function CodeInput({
     setPreviewContent(null);
   }, [value]);
 
-  const editTabClicked = useCallback((event) => {
+  const editTabClicked = useCallback((event: React.MouseEvent) => {
     event.preventDefault();
     setPreviewing(false);
   }, []);
