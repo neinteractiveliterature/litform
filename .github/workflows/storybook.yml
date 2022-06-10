@@ -20,10 +20,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-tsc-yarn-${{ github.ref }}-
           ${{ runner.os }}-tsc-yarn-
-    - name: install node v14
-      uses: actions/setup-node@v2
+    - name: install node
+      uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version-file: .node-version
     - name: yarn install
       run: yarn install
     - name: Build Storybook
