@@ -3938,7 +3938,7 @@ __metadata:
     "@storybook/theming": ^6.5.8
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
-    "@types/jest": ^28.1.1
+    "@types/jest": ^29.0.0
     "@types/lodash": ^4.14.182
     "@types/luxon": ^2.3.2
     "@types/mdx-js__react": ^1.5.5
@@ -5580,13 +5580,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^28.1.1":
-  version: 28.1.1
-  resolution: "@types/jest@npm:28.1.1"
+"@types/jest@npm:^29.0.0":
+  version: 29.0.0
+  resolution: "@types/jest@npm:29.0.0"
   dependencies:
-    jest-matcher-utils: ^27.0.0
-    pretty-format: ^27.0.0
-  checksum: 0a8b045a7b660372decc807c390d3f99a2b12bb1659a1cd593afe04557f4b7c235b0576a5e35b1577710d20e42759d3d8755eb8bed6edc8733f47007e75a5509
+    expect: ^29.0.0
+    pretty-format: ^29.0.0
+  checksum: b20c4b38c7c963862d82c21c0a1ae2b96015afb1511c835da43e8fd53659ca884f8103a2159be2ce74d2888472a1ac93d20d08ec1ac0970385cbb74c46d47585
   languageName: node
   linkType: hard
 
@@ -9362,7 +9362,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect@npm:^29.0.1":
+"expect@npm:^29.0.0, expect@npm:^29.0.1":
   version: 29.0.1
   resolution: "expect@npm:29.0.1"
   dependencies:
