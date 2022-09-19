@@ -15,6 +15,9 @@ module.exports = {
       include: ['**/*.tsx', '**/.yarn/__virtual__/**/*.tsx'],
       propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
+    reactOptions: {
+      strictMode: true,
+    },
     webpackFinal: (config) => {
       return {
         ...config,

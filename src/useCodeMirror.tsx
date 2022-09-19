@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useEffect, useRef, useLayoutEffect, RefCallback } from 'react';
+import { useMemo, useEffect, useRef, useLayoutEffect, RefObject } from 'react';
 import { EditorState, Extension } from '@codemirror/state';
 import { EditorView, basicSetup } from 'codemirror';
 import { indentWithTab } from '@codemirror/commands';
@@ -132,7 +132,7 @@ export function useStandardCodeMirrorExtensions({
 export function useCodeMirror(
   extensions: Extension[],
   initialDoc?: string,
-): [RefCallback<HTMLElement>, EditorView] {
+): [RefObject<HTMLElement>, EditorView] {
   const initialDocRef = useRef<string | undefined>(initialDoc);
   const editorView = useMemo<EditorView>(() => {
     const initialState = EditorState.create({
@@ -142,23 +142,17 @@ export function useCodeMirror(
 
     return new EditorView({ state: initialState });
   }, [extensions]);
+  const editorRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
-    return () => {
-      editorView.dom.parentElement?.removeChild(editorView.dom);
-    };
+    const parent = editorRef.current;
+    if (parent) {
+      parent.appendChild(editorView.dom);
+      return () => {
+        parent.removeChild(editorView.dom);
+      };
+    }
   }, [editorView]);
-
-  const editorRef = useCallback<React.RefCallback<HTMLElement>>(
-    (element) => {
-      if (element) {
-        element.appendChild(editorView.dom);
-      } else {
-        editorView.dom.remove();
-      }
-    },
-    [editorView],
-  );
 
   return [editorRef, editorView];
 }
