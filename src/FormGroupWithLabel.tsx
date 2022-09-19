@@ -1,6 +1,5 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useId } from 'react';
 
-import useUniqueId from './useUniqueId';
 import HelpText from './HelpText';
 
 export type FormGroupWithLabelProps = {
@@ -10,8 +9,6 @@ export type FormGroupWithLabelProps = {
   children: (id: string) => ReactNode;
   /** the content of the label that will appear with the element */
   label: ReactNode;
-  /** the name of the input (also used for generating an id) */
-  name?: string;
   /** if present, this content will appear below the input */
   helpText?: ReactNode;
   /** the class name to apply to the wrapper div; will use 'mb-3' if not specified */
@@ -31,32 +28,21 @@ export function extractFormGroupWithLabelProps<T extends Omit<FormGroupWithLabel
   Omit<FormGroupWithLabelProps, 'children'>,
   Omit<T, keyof Omit<FormGroupWithLabelProps, 'children'>>,
 ] {
-  const {
-    label,
-    name,
-    helpText,
-    wrapperDivClassName,
-    labelClassName,
-    invalidFeedback,
-    ...otherProps
-  } = props;
+  const { label, helpText, wrapperDivClassName, labelClassName, invalidFeedback, ...otherProps } =
+    props;
 
-  return [
-    { label, name, helpText, wrapperDivClassName, labelClassName, invalidFeedback },
-    otherProps,
-  ];
+  return [{ label, helpText, wrapperDivClassName, labelClassName, invalidFeedback }, otherProps];
 }
 
 function FormGroupWithLabel({
   children,
   label,
-  name,
   helpText,
   wrapperDivClassName,
   labelClassName,
   invalidFeedback,
 }: FormGroupWithLabelProps): JSX.Element {
-  const id = useUniqueId(`${name || 'input'}-`);
+  const id = useId();
 
   return (
     <div className={wrapperDivClassName ?? 'mb-3'}>

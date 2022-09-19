@@ -1,5 +1,4 @@
-import { ReactNode, HTMLAttributes } from 'react';
-import useUniqueId from './useUniqueId';
+import { ReactNode, HTMLAttributes, useId } from 'react';
 import useDebouncedState from './useDebouncedState';
 import { getIconClassName, LitformIconSetIdentifier } from './IconSets';
 
@@ -25,7 +24,7 @@ function SearchInput({
   iconSet,
 }: SearchInputProps): JSX.Element {
   const [transientValue, setTransientValue] = useDebouncedState(value ?? '', onChange, wait ?? 100);
-  const inputId = useUniqueId(`${name || 'search'}-`);
+  const inputId = useId();
 
   return (
     <div>
