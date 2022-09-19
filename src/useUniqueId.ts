@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useId } from 'react';
 
-let idCounter = 0;
-
-export default function useUniqueId(prefix: string): string {
-  const [id] = useState(() => `${prefix}-${++idCounter}`); // don't care about setting this, it won't change
-  return id;
+/**
+ * @deprecated Use React 18's built-in useId hook instead.
+ * @returns A unique ID
+ */
+export default function useUniqueId(): string {
+  return useId();
 }

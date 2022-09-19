@@ -1,7 +1,5 @@
-import { ReactNode, ChangeEvent, InputHTMLAttributes } from 'react';
+import { ReactNode, ChangeEvent, InputHTMLAttributes, useId } from 'react';
 import classnames from 'classnames';
-
-import useUniqueId from './useUniqueId';
 
 export type BootstrapFormCheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   /** the content of the label that will appear beside the element */
@@ -31,7 +29,7 @@ function BootstrapFormCheckbox(props: BootstrapFormCheckboxProps): JSX.Element {
   const { className, inputClassName, label, onChange, onCheckedChange, type, ...otherProps } =
     props;
 
-  const inputId = useUniqueId(otherProps.name ? `${otherProps.name}-` : 'checkbox-');
+  const inputId = useId();
   const onChangeProp =
     onChange ||
     (onCheckedChange

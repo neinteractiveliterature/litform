@@ -28,7 +28,7 @@
   "peerDependencies": {
     "@apollo/client": "^3.3.18",
     "graphql": "^15.5.0",
-    "react": "*"
+    "react": ">= 18"
   },
   "devDependencies": {
     "@apollo/client": "3.6.9",
@@ -87,8 +87,8 @@
     "luxon": "^2.4.0",
     "pinst": "^3.0.0",
     "prettier": "^2.6.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-markdown": "^8.0.3",
     "sass": "^1.52.3",
     "sass-loader": "^13.0.0",
