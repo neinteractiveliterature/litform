@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useRef, useLayoutEffect, RefObject } from 'react';
+import { useMemo, useEffect, useRef, RefCallback, useCallback } from 'react';
 import { EditorState, Extension } from '@codemirror/state';
 import { EditorView, basicSetup } from 'codemirror';
 import { indentWithTab } from '@codemirror/commands';
@@ -129,10 +129,15 @@ export function useStandardCodeMirrorExtensions({
   );
 }
 
-export function useCodeMirror(
+export type UseCodeMirrorResult<ElementType extends HTMLElement> = [
+  RefCallback<ElementType>,
+  EditorView,
+];
+
+export function useCodeMirror<ElementType extends HTMLElement>(
   extensions: Extension[],
   initialDoc?: string,
-): [RefObject<HTMLElement>, EditorView] {
+): UseCodeMirrorResult<ElementType> {
   const initialDocRef = useRef<string | undefined>(initialDoc);
   const editorView = useMemo<EditorView>(() => {
     const initialState = EditorState.create({
@@ -142,31 +147,30 @@ export function useCodeMirror(
 
     return new EditorView({ state: initialState });
   }, [extensions]);
-  const editorRef = useRef<HTMLElement>(null);
-
-  useLayoutEffect(() => {
-    const parent = editorRef.current;
-    if (parent) {
-      parent.appendChild(editorView.dom);
-      return () => {
-        parent.removeChild(editorView.dom);
-      };
-    }
-  }, [editorView]);
+  const editorRef: RefCallback<ElementType> = useCallback(
+    (parent: ElementType) => {
+      if (parent && parent !== editorView.dom.parentElement) {
+        parent.appendChild(editorView.dom);
+      } else if (editorView.dom.parentElement) {
+        editorView.dom.parentElement.removeChild(editorView.dom);
+      }
+    },
+    [editorView],
+  );
 
   return [editorRef, editorView];
 }
 
-export function useStandardCodeMirror(
+export function useStandardCodeMirror<ElementType extends HTMLElement = HTMLDivElement>(
   options: UseStandardCodeMirrorExtensionsOptions & { extensions: Extension[] },
-): ReturnType<typeof useCodeMirror> {
+): UseCodeMirrorResult<ElementType> {
   const standardExtensions = useStandardCodeMirrorExtensions(options);
   const fullExtensions = useMemo(
     () => [...standardExtensions, ...options.extensions],
     [standardExtensions, options.extensions],
   );
 
-  const [editorRef, editorView] = useCodeMirror(fullExtensions, options.value);
+  const [editorRef, editorView] = useCodeMirror<ElementType>(fullExtensions, options.value);
   useControlledCodeMirror(editorView, options.value);
   return [editorRef, editorView];
 }

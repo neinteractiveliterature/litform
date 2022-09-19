@@ -8,7 +8,7 @@ import LoadingIndicator from './LoadingIndicator';
 import { getStyleForLines } from './useCodeMirror';
 
 export type CodeInputProps = {
-  editorRef: React.RefCallback<HTMLElement | null>;
+  editorRef: React.Ref<HTMLDivElement>;
   value: string;
   className?: string;
   getPreviewContent?: (value: string) => Promise<ReactNode>;
