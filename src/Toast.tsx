@@ -4,8 +4,8 @@ import { DateTime } from 'luxon';
 export const TOAST_FADE_DURATION = 350;
 
 export type ToastProps = {
-  title: ReactNode;
-  children: ReactNode;
+  title: ReactNode | ReactNode[];
+  children: ReactNode | ReactNode[];
   visible: boolean;
   close: () => void;
   autoCloseAfter?: number;

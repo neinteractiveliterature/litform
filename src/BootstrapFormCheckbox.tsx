@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 export type BootstrapFormCheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   /** the content of the label that will appear beside the element */
-  label: ReactNode;
+  label: ReactNode | ReactNode[];
   /** whether or not the element is checked */
   checked: boolean;
   /**

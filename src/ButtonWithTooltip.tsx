@@ -5,9 +5,9 @@ import { useLitformPopper } from './PopperUtils';
 import Tooltip from './Tooltip';
 
 export type ButtonWithTooltipProps = {
-  children: ReactNode;
+  children: ReactNode | ReactNode[];
   buttonProps: React.ButtonHTMLAttributes<HTMLButtonElement>;
-  tooltipContent: ReactNode;
+  tooltipContent: ReactNode | ReactNode[];
 };
 
 function ButtonWithTooltip({

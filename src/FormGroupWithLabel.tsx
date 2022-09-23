@@ -8,9 +8,9 @@ export type FormGroupWithLabelProps = {
    */
   children: (id: string) => ReactNode;
   /** the content of the label that will appear with the element */
-  label: ReactNode;
+  label: ReactNode | ReactNode[];
   /** if present, this content will appear below the input */
-  helpText?: ReactNode;
+  helpText?: ReactNode | ReactNode[];
   /** the class name to apply to the wrapper div; will use 'mb-3' if not specified */
   wrapperDivClassName?: string;
   /** the class name to apply to the label element; will use 'form-label' if not specified */
@@ -19,7 +19,7 @@ export type FormGroupWithLabelProps = {
    * for Bootstrap form controls, the form element must have 'is-invalid' in its class name
    * for this to appear.
    */
-  invalidFeedback?: ReactNode;
+  invalidFeedback?: ReactNode | ReactNode[];
 };
 
 export function extractFormGroupWithLabelProps<T extends Omit<FormGroupWithLabelProps, 'children'>>(

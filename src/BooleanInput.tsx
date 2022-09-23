@@ -8,8 +8,8 @@ export type BooleanInputProps = Omit<
 > & {
   onChange: React.Dispatch<boolean>;
   value?: boolean;
-  trueLabel?: ReactNode;
-  falseLabel?: ReactNode;
+  trueLabel?: ReactNode | ReactNode[];
+  falseLabel?: ReactNode | ReactNode[];
   falseBeforeTrue?: boolean;
 };
 

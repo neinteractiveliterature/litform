@@ -7,7 +7,7 @@ import ErrorDisplay from './ErrorDisplay';
 export type ErrorBoundaryProps = {
   errorType?: 'graphql' | 'plain';
   placement?: 'before' | 'after' | 'replace';
-  children?: ReactNode;
+  children?: ReactNode | ReactNode[];
 };
 
 type ErrorBoundaryState = {
@@ -37,7 +37,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     }
   }
 
-  render(): ReactNode {
+  render(): ReactNode | ReactNode[] {
     const errorType = this.props.errorType ?? 'graphql';
     const placement = this.props.placement ?? 'before';
     const { children } = this.props;

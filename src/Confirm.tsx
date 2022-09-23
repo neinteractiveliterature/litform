@@ -8,7 +8,7 @@ import { ApolloError } from '@apollo/client';
 
 export type ConfirmModalState = {
   action: () => any;
-  prompt: ReactNode;
+  prompt: ReactNode | ReactNode[];
   error?: any;
   onCancel?: () => void;
   onError?: (error: any) => void;
@@ -28,7 +28,7 @@ defaultConfirm.visible = false;
 const ConfirmContext = createContext<ConfirmFunction>(defaultConfirm);
 
 export type ConfirmProps = {
-  children: ReactNode;
+  children: ReactNode | ReactNode[];
 };
 
 function Confirm({ children }: ConfirmProps): JSX.Element {

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export type HelpTextProps = {
-  children?: ReactNode;
+  children?: ReactNode | ReactNode[];
 };
 
 function HelpText({ children }: HelpTextProps): JSX.Element {

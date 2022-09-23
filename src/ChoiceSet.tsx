@@ -2,7 +2,7 @@ import { ReactNode, ChangeEvent } from 'react';
 import BootstrapFormCheckbox from './BootstrapFormCheckbox';
 
 export type ChoiceSetChoice = {
-  label: ReactNode;
+  label: ReactNode | ReactNode[];
   value: string;
   disabled?: boolean;
 };

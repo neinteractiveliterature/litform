@@ -6,8 +6,8 @@ export type CopyToClipboardButtonProps = HTMLAttributes<HTMLButtonElement> & {
   text: string;
   format?: string;
   copiedProps?: HTMLAttributes<HTMLButtonElement>;
-  defaultText?: ReactNode;
-  copiedText?: ReactNode;
+  defaultText?: ReactNode | ReactNode[];
+  copiedText?: ReactNode | ReactNode[];
   iconSet?: LitformIconSetIdentifier;
 };
 

@@ -10,7 +10,7 @@ function remToPx(rem: number) {
 }
 
 export type HelpPopoverProps = {
-  children?: ReactNode;
+  children?: ReactNode | ReactNode[] | ReactNode[];
   className?: string;
   initialVisible?: boolean;
   visibleChanged?: (newVisible: boolean) => void;

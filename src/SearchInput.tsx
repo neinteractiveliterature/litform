@@ -5,7 +5,7 @@ import { getIconClassName, LitformIconSetIdentifier } from './IconSets';
 export type SearchInputProps = {
   value?: string;
   onChange: (value: string) => void;
-  label: ReactNode;
+  label: ReactNode | ReactNode[];
   wait?: number;
   name?: string;
   inputProps?: HTMLAttributes<HTMLInputElement>;

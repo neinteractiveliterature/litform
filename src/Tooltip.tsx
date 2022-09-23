@@ -6,7 +6,7 @@ export type TooltipProps = Pick<ReturnType<typeof usePopper>, 'styles' | 'attrib
   popperRef: Ref<HTMLDivElement>;
   arrowRef: Ref<HTMLDivElement>;
   visible?: boolean;
-  children: ReactNode;
+  children: ReactNode | ReactNode[];
 };
 
 function Tooltip({

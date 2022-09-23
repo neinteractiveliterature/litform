@@ -7,7 +7,7 @@ export type ErrorDisplayProps = {
 };
 
 function ErrorDisplay({ stringError, graphQLError }: ErrorDisplayProps): JSX.Element {
-  let displayContents: ReactNode = null;
+  let displayContents: ReactNode | ReactNode[] = null;
 
   if (graphQLError) {
     try {

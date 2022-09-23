@@ -4,13 +4,13 @@ import ChoiceSet, { ChoiceSetProps } from './ChoiceSet';
 import HelpText from './HelpText';
 
 export type MultipleChoiceInputProps = ChoiceSetProps & {
-  caption: ReactNode;
-  helpText?: ReactNode;
+  caption: ReactNode | ReactNode[];
+  helpText?: ReactNode | ReactNode[];
   /** if present, the invalid field feedback that will render with the element.  Typically
    * for Bootstrap form controls, the form element must have 'is-invalid' in its class name
    * for this to appear.
    */
-  invalidFeedback?: ReactNode;
+  invalidFeedback?: ReactNode | ReactNode[];
 };
 
 function MultipleChoiceInput({

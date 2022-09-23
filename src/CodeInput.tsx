@@ -15,12 +15,12 @@ export type CodeInputProps = {
   editButtonText?: string;
   previewButtonText?: string;
   disabled?: boolean;
-  extraNavControls?: ReactNode;
+  extraNavControls?: ReactNode | ReactNode[];
   lines?: number;
   formControlClassName?: string;
   editorWrapperClassName?: string;
-  children?: ReactNode;
-  renderPreview?: (previewContent: ReactNode) => ReactNode;
+  children?: ReactNode | ReactNode[];
+  renderPreview?: (previewContent: ReactNode | ReactNode[]) => ReactNode;
 };
 
 export default function CodeInput({
