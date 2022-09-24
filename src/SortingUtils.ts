@@ -18,22 +18,25 @@ export function buildOptimisticArrayForMove<T extends { position: number }>(
 }
 
 export type BasicSortableHandlers<ItemType> = {
-  onDragStart: (event: { active: { id: string } }) => void;
-  onDragOver: (event: { active: { id: string }; over?: { id: string } | null }) => void;
+  onDragStart: (event: { active: { id: string | number } }) => void;
+  onDragOver: (event: {
+    active: { id: string | number };
+    over?: { id: string | number } | null;
+  }) => void;
   onDragEnd: () => void;
   onDragCancel: () => void;
   draggingItem: ItemType | undefined;
 };
 
 export function useBasicSortableHandlers<ItemType>(
-  getItem: (id: string) => ItemType,
-  getItemIndex: (id: string) => number,
+  getItem: (id: string | number) => ItemType,
+  getItemIndex: (id: string | number) => number,
   moveItem: (activeIndex: number, overIndex: number) => unknown,
 ): BasicSortableHandlers<ItemType> {
   const [draggingItem, setDraggingItem] = useState<ItemType>();
 
   const handleDragStart = useCallback(
-    (event: { active: { id: string } }) => {
+    (event: { active: { id: string | number } }) => {
       const { active } = event;
       const activeItem = getItem(active.id);
       setDraggingItem(activeItem);
@@ -42,7 +45,7 @@ export function useBasicSortableHandlers<ItemType>(
   );
 
   const handleDragOver = useCallback(
-    (event: { active: { id: string }; over?: { id: string } | null }) => {
+    (event: { active: { id: string | number }; over?: { id: string | number } | null }) => {
       const { active, over } = event;
       const activeIndex = getItemIndex(active.id);
       const overIndex = over ? getItemIndex(over.id) : undefined;
