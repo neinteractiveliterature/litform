@@ -4066,7 +4066,7 @@ __metadata:
     "@testing-library/react": ^13.3.0
     "@types/jest": ^29.0.0
     "@types/lodash": ^4.14.182
-    "@types/luxon": ^2.3.2
+    "@types/luxon": ^3.0.0
     "@types/mdx-js__react": ^1.5.5
     "@types/node": ^16.11.39
     "@types/react": ^18.0.12
@@ -5745,10 +5745,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/luxon@npm:^2.3.2":
-  version: 2.3.2
-  resolution: "@types/luxon@npm:2.3.2"
-  checksum: b9fe79118681f4bb9f2e37696a7df992a82683ba4448e7ad1af8cc241443ffc64ef08fdeaad749de9e6259b42b0d4b6540d7e880bca39bb504e0f3863d503c98
+"@types/luxon@npm:^3.0.0":
+  version: 3.2.0
+  resolution: "@types/luxon@npm:3.2.0"
+  checksum: 051bfbf841c6ce98728df6538342ce4aaddfcf0ec6e8b473e0195dcfc3ba6b1fe4b3ce17f2ba6d25344f41cb70032c1debe96da9e384e5f6e639665c1e6d368c
   languageName: node
   linkType: hard
 
