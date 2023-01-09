@@ -59,7 +59,7 @@
     "@testing-library/react": "^13.3.0",
     "@types/jest": "^29.0.0",
     "@types/lodash": "^4.14.182",
-    "@types/luxon": "^2.3.2",
+    "@types/luxon": "^3.0.0",
     "@types/mdx-js__react": "^1.5.5",
     "@types/node": "^16.11.39",
     "@types/react": "^18.0.12",
