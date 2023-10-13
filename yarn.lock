@@ -4195,7 +4195,7 @@ __metadata:
     "@types/lodash": ^4.14.182
     "@types/luxon": ^3.0.0
     "@types/mdx-js__react": ^1.5.5
-    "@types/node": ^16.11.39
+    "@types/node": ^18.0.0
     "@types/react": ^18.0.12
     "@types/react-dom": ^18.0.5
     "@types/testing-library__jest-dom": ^5.14.3
@@ -5967,10 +5967,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.0.10 || ^16.0.0, @types/node@npm:^14.14.20 || ^16.0.0, @types/node@npm:^16.11.39":
+"@types/node@npm:^14.0.10 || ^16.0.0, @types/node@npm:^14.14.20 || ^16.0.0":
   version: 16.11.39
   resolution: "@types/node@npm:16.11.39"
   checksum: bc97b9773ac6b3194800f990b349fad7f66c6126dacef59291b10a2c8b6813d6f67f947b7e12a6c9952790f7065d576fe38355b8fe034a6af60f317cfc570f69
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^18.0.0":
+  version: 18.18.5
+  resolution: "@types/node@npm:18.18.5"
+  checksum: fc8c9b2bf226270cf9085a7dac76ce09dd7c3519ec9b687ee2b50385954ab3709c45ca82d002d1536e24286803cd194d7ab7008acebdcd6681b8b19d4277fa5c
   languageName: node
   linkType: hard
 
