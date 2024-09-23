@@ -5,7 +5,7 @@ import { oneDark } from '@codemirror/theme-one-dark';
 import ReactMarkdown from 'react-markdown';
 import { useCallback, useMemo } from 'react';
 import { useStandardCodeMirror } from '../useCodeMirror';
-import { useArgs } from '@storybook/addons';
+import { useArgs } from '@storybook/preview-api';
 import { liquid } from '../liquid';
 
 export default {

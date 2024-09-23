@@ -1,0 +1,466 @@
+🔎 checking possible migrations..
+
+🔎 found a 'autodocsTrue' migration:
+╭ Automigration detected ────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                    │
+│   We've changed the configuration of autodocs (previous docsPage), so now the value:               │
+│     - docs.autodocs: true -- means automatically create docs for every CSF file                    │
+│     - docs.autodocs: 'tag' -- means only create autodocs for CSF files with the 'autodocs' tag     │
+│     - docs.autodocs: false -- means never create autodocs                                          │
+│                                                                                                    │
+│   Based on your prior configuration,  we can set the `docs.autodocs` to keep your old behaviour:   │
+│                                                                                                    │
+│   docs: { autodocs: true }                                                                         │
+│                                                                                                    │
+│   More info: https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#autodocs-changes      │
+│                                                                                                    │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'autodocsTrue' migration on your project? › (Y/n)✔ Do you want to run the 'autodocsTrue' migration on your project? … yes
+✅ Setting 'docs.autodocs' to true in main.js
+✅ ran autodocsTrue migration
+
+🔎 found a 'wrap-require' migration:
+╭ Automigration detected ───────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                               │
+│   We have detected that you're using Storybook 8.1.1 in a PnP project.                                        │
+│   For Storybook to work correctly, some fields in your main config must be updated. We can do this for you    │
+│   automatically.                                                                                              │
+│                                                                                                               │
+│   More info: https://storybook.js.org/docs/react/faq#how-do-i-fix-module-resolution-in-special-environments   │
+│                                                                                                               │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'wrap-require' migration on your project? › (Y/n)✔ Do you want to run the 'wrap-require' migration on your project? … yes
+✅ ran wrap-require migration
+
+⚠️  failed to check fix react-docgen
+
+Error: Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your .storybook/main.js file.
+
+Error: Cannot find module '@storybook/addon-links/package.json'
+Require stack:
+- /.storybook/main.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._resolveFilename (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)
+    at Function.resolve (node:internal/modules/helpers:190:19)
+    at getAbsolutePath (/.storybook/main.js:54:26)
+    at Object.<anonymous> (/.storybook/main.js:6:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._compile (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.newLoader (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)
+    at getStorybookData (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:185:4560)
+    at async runFixes (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:2652)
+    at async automigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:1629)
+    at async doAutomigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:651)
+    at async Command.<anonymous> (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:706:2872)
+
+⚠️  failed to check fix storyshots
+
+Error: Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your .storybook/main.js file.
+
+Error: Cannot find module '@storybook/addon-links/package.json'
+Require stack:
+- /.storybook/main.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._resolveFilename (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)
+    at Function.resolve (node:internal/modules/helpers:190:19)
+    at getAbsolutePath (/.storybook/main.js:54:26)
+    at Object.<anonymous> (/.storybook/main.js:6:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._compile (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.newLoader (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)
+    at getStorybookData (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:185:4560)
+    at async runFixes (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:2652)
+    at async automigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:1629)
+    at async doAutomigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:651)
+    at async Command.<anonymous> (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:706:2872)
+
+⚠️  failed to check fix remove-react-dependency
+
+Error: Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your .storybook/main.js file.
+
+Error: Cannot find module '@storybook/addon-links/package.json'
+Require stack:
+- /.storybook/main.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._resolveFilename (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)
+    at Function.resolve (node:internal/modules/helpers:190:19)
+    at getAbsolutePath (/.storybook/main.js:54:26)
+    at Object.<anonymous> (/.storybook/main.js:6:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._compile (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.newLoader (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)
+    at getStorybookData (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:185:4560)
+    at async runFixes (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:2652)
+    at async automigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:1629)
+    at async doAutomigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:651)
+    at async Command.<anonymous> (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:706:2872)
+
+⚠️  failed to check fix remove-legacy-mdx1
+
+Error: Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your .storybook/main.js file.
+
+Error: Cannot find module '@storybook/addon-links/package.json'
+Require stack:
+- /.storybook/main.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._resolveFilename (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)
+    at Function.resolve (node:internal/modules/helpers:190:19)
+    at getAbsolutePath (/.storybook/main.js:54:26)
+    at Object.<anonymous> (/.storybook/main.js:6:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._compile (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.newLoader (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)
+    at getStorybookData (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:185:4560)
+    at async runFixes (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:2652)
+    at async automigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:1629)
+    at async doAutomigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:651)
+    at async Command.<anonymous> (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:706:2872)
+
+⚠️  failed to check fix webpack5-compiler-setup
+
+Error: Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your .storybook/main.js file.
+
+Error: Cannot find module '@storybook/addon-links/package.json'
+Require stack:
+- /.storybook/main.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._resolveFilename (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)
+    at Function.resolve (node:internal/modules/helpers:190:19)
+    at getAbsolutePath (/.storybook/main.js:54:26)
+    at Object.<anonymous> (/.storybook/main.js:6:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._compile (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.newLoader (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)
+    at getStorybookData (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:185:4560)
+    at async runFixes (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:2652)
+    at async automigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:1629)
+    at async doAutomigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:651)
+    at async Command.<anonymous> (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:706:2872)
+
+⚠️  failed to check fix mdx1to3
+
+Error: Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your .storybook/main.js file.
+
+Error: Cannot find module '@storybook/addon-links/package.json'
+Require stack:
+- /.storybook/main.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._resolveFilename (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)
+    at Function.resolve (node:internal/modules/helpers:190:19)
+    at getAbsolutePath (/.storybook/main.js:54:26)
+    at Object.<anonymous> (/.storybook/main.js:6:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._compile (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.newLoader (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)
+    at getStorybookData (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:185:4560)
+    at async runFixes (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:2652)
+    at async automigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:1629)
+    at async doAutomigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:651)
+    at async Command.<anonymous> (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:706:2872)
+
+⚠️  failed to check fix visual-tests-addon
+
+Error: Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your .storybook/main.js file.
+
+Error: Cannot find module '@storybook/addon-links/package.json'
+Require stack:
+- /.storybook/main.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._resolveFilename (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)
+    at Function.resolve (node:internal/modules/helpers:190:19)
+    at getAbsolutePath (/.storybook/main.js:54:26)
+    at Object.<anonymous> (/.storybook/main.js:6:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._compile (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.newLoader (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)
+    at getStorybookData (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:185:4560)
+    at async runFixes (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:2652)
+    at async automigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:1629)
+    at async doAutomigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:651)
+    at async Command.<anonymous> (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:706:2872)
+
+⚠️  failed to check fix autodocs-tags
+
+Error: Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your .storybook/main.js file.
+
+Error: Cannot find module '@storybook/addon-links/package.json'
+Require stack:
+- /.storybook/main.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js
+- /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._resolveFilename (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)
+    at Function.resolve (node:internal/modules/helpers:190:19)
+    at getAbsolutePath (/.storybook/main.js:54:26)
+    at Object.<anonymous> (/.storybook/main.js:6:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._compile (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.newLoader (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)
+    at getStorybookData (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:185:4560)
+    at async runFixes (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:2652)
+    at async automigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:1629)
+    at async doAutomigrate (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:634:651)
+    at async Command.<anonymous> (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js:706:2872)
+
+╭ Migration check ran with failures ──────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                     │
+│   Successful migrations:                                                                                            │
+│                                                                                                                     │
+│   autodocsTrue, wrap-require                                                                                        │
+│                                                                                                                     │
+│   Failed migrations:                                                                                                │
+│                                                                                                                     │
+│   react-docgen:                                                                                                     │
+│   Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook           │
+│   couldn't evaluate your .storybook/main.js file.                                                                   │
+│                                                                                                                     │
+│   Error: Cannot find module '@storybook/addon-links/package.json'                                                   │
+│   Require stack:                                                                                                    │
+│   - /.storybook/main.js                                                                                             │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js                      │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js                        │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js                           │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js                               │
+│   at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)                                             │
+│   at Module._resolveFilename                                                                                        │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)                     │
+│   at Function.resolve (node:internal/modules/helpers:190:19)                                                        │
+│   at getAbsolutePath (/.storybook/main.js:54:26)                                                                    │
+│   at Object.<anonymous> (/.storybook/main.js:6:5)                                                                   │
+│   at Module._compile (node:internal/modules/cjs/loader:1358:14)                                                     │
+│   at Module._compile                                                                                                │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)                     │
+│   at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)                                              │
+│   at Object.newLoader                                                                                               │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)                      │
+│   at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)   │
+│   storyshots:                                                                                                       │
+│   Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook           │
+│   couldn't evaluate your .storybook/main.js file.                                                                   │
+│                                                                                                                     │
+│   Error: Cannot find module '@storybook/addon-links/package.json'                                                   │
+│   Require stack:                                                                                                    │
+│   - /.storybook/main.js                                                                                             │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js                      │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js                        │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js                           │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js                               │
+│   at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)                                             │
+│   at Module._resolveFilename                                                                                        │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)                     │
+│   at Function.resolve (node:internal/modules/helpers:190:19)                                                        │
+│   at getAbsolutePath (/.storybook/main.js:54:26)                                                                    │
+│   at Object.<anonymous> (/.storybook/main.js:6:5)                                                                   │
+│   at Module._compile (node:internal/modules/cjs/loader:1358:14)                                                     │
+│   at Module._compile                                                                                                │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)                     │
+│   at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)                                              │
+│   at Object.newLoader                                                                                               │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)                      │
+│   at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)   │
+│   remove-react-dependency:                                                                                          │
+│   Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook           │
+│   couldn't evaluate your .storybook/main.js file.                                                                   │
+│                                                                                                                     │
+│   Error: Cannot find module '@storybook/addon-links/package.json'                                                   │
+│   Require stack:                                                                                                    │
+│   - /.storybook/main.js                                                                                             │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js                      │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js                        │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js                           │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js                               │
+│   at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)                                             │
+│   at Module._resolveFilename                                                                                        │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)                     │
+│   at Function.resolve (node:internal/modules/helpers:190:19)                                                        │
+│   at getAbsolutePath (/.storybook/main.js:54:26)                                                                    │
+│   at Object.<anonymous> (/.storybook/main.js:6:5)                                                                   │
+│   at Module._compile (node:internal/modules/cjs/loader:1358:14)                                                     │
+│   at Module._compile                                                                                                │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)                     │
+│   at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)                                              │
+│   at Object.newLoader                                                                                               │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)                      │
+│   at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)   │
+│   remove-legacy-mdx1:                                                                                               │
+│   Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook           │
+│   couldn't evaluate your .storybook/main.js file.                                                                   │
+│                                                                                                                     │
+│   Error: Cannot find module '@storybook/addon-links/package.json'                                                   │
+│   Require stack:                                                                                                    │
+│   - /.storybook/main.js                                                                                             │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js                      │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js                        │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js                           │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js                               │
+│   at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)                                             │
+│   at Module._resolveFilename                                                                                        │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)                     │
+│   at Function.resolve (node:internal/modules/helpers:190:19)                                                        │
+│   at getAbsolutePath (/.storybook/main.js:54:26)                                                                    │
+│   at Object.<anonymous> (/.storybook/main.js:6:5)                                                                   │
+│   at Module._compile (node:internal/modules/cjs/loader:1358:14)                                                     │
+│   at Module._compile                                                                                                │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)                     │
+│   at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)                                              │
+│   at Object.newLoader                                                                                               │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)                      │
+│   at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)   │
+│   webpack5-compiler-setup:                                                                                          │
+│   Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook           │
+│   couldn't evaluate your .storybook/main.js file.                                                                   │
+│                                                                                                                     │
+│   Error: Cannot find module '@storybook/addon-links/package.json'                                                   │
+│   Require stack:                                                                                                    │
+│   - /.storybook/main.js                                                                                             │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js                      │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js                        │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js                           │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js                               │
+│   at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)                                             │
+│   at Module._resolveFilename                                                                                        │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)                     │
+│   at Function.resolve (node:internal/modules/helpers:190:19)                                                        │
+│   at getAbsolutePath (/.storybook/main.js:54:26)                                                                    │
+│   at Object.<anonymous> (/.storybook/main.js:6:5)                                                                   │
+│   at Module._compile (node:internal/modules/cjs/loader:1358:14)                                                     │
+│   at Module._compile                                                                                                │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)                     │
+│   at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)                                              │
+│   at Object.newLoader                                                                                               │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)                      │
+│   at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)   │
+│   mdx1to3:                                                                                                          │
+│   Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook           │
+│   couldn't evaluate your .storybook/main.js file.                                                                   │
+│                                                                                                                     │
+│   Error: Cannot find module '@storybook/addon-links/package.json'                                                   │
+│   Require stack:                                                                                                    │
+│   - /.storybook/main.js                                                                                             │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js                      │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js                        │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js                           │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js                               │
+│   at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)                                             │
+│   at Module._resolveFilename                                                                                        │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)                     │
+│   at Function.resolve (node:internal/modules/helpers:190:19)                                                        │
+│   at getAbsolutePath (/.storybook/main.js:54:26)                                                                    │
+│   at Object.<anonymous> (/.storybook/main.js:6:5)                                                                   │
+│   at Module._compile (node:internal/modules/cjs/loader:1358:14)                                                     │
+│   at Module._compile                                                                                                │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)                     │
+│   at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)                                              │
+│   at Object.newLoader                                                                                               │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)                      │
+│   at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)   │
+│   visual-tests-addon:                                                                                               │
+│   Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook           │
+│   couldn't evaluate your .storybook/main.js file.                                                                   │
+│                                                                                                                     │
+│   Error: Cannot find module '@storybook/addon-links/package.json'                                                   │
+│   Require stack:                                                                                                    │
+│   - /.storybook/main.js                                                                                             │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js                      │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js                        │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js                           │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js                               │
+│   at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)                                             │
+│   at Module._resolveFilename                                                                                        │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)                     │
+│   at Function.resolve (node:internal/modules/helpers:190:19)                                                        │
+│   at getAbsolutePath (/.storybook/main.js:54:26)                                                                    │
+│   at Object.<anonymous> (/.storybook/main.js:6:5)                                                                   │
+│   at Module._compile (node:internal/modules/cjs/loader:1358:14)                                                     │
+│   at Module._compile                                                                                                │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)                     │
+│   at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)                                              │
+│   at Object.newLoader                                                                                               │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)                      │
+│   at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)   │
+│   autodocs-tags:                                                                                                    │
+│   Unable to find or evaluate .storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook           │
+│   couldn't evaluate your .storybook/main.js file.                                                                   │
+│                                                                                                                     │
+│   Error: Cannot find module '@storybook/addon-links/package.json'                                                   │
+│   Require stack:                                                                                                    │
+│   - /.storybook/main.js                                                                                             │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/core-common/dist/index.js                      │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/telemetry/dist/index.js                        │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/dist/generate.js                           │
+│   - /Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/@storybook/cli/bin/index.js                               │
+│   at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)                                             │
+│   at Module._resolveFilename                                                                                        │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4799:36)                     │
+│   at Function.resolve (node:internal/modules/helpers:190:19)                                                        │
+│   at getAbsolutePath (/.storybook/main.js:54:26)                                                                    │
+│   at Object.<anonymous> (/.storybook/main.js:6:5)                                                                   │
+│   at Module._compile (node:internal/modules/cjs/loader:1358:14)                                                     │
+│   at Module._compile                                                                                                │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2258:26)                     │
+│   at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)                                              │
+│   at Object.newLoader                                                                                               │
+│   (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:2262:9)                      │
+│   at extensions..js (/Users/nbudin/.npm/_npx/6fe9a9991b157df1/node_modules/esbuild-register/dist/node.js:4838:24)   │
+│                                                                                                                     │
+│   You can find the full logs in /Users/nbudin/src/litform/migration-storybook.log                                   │
+│                                                                                                                     │
+│   ─────────────────────────────────────────────────                                                                 │
+│                                                                                                                     │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook automigrate'                   │
+│                                                                                                                     │
+│   The automigrations try to migrate common patterns in your project, but might not contain everything needed to     │
+│   migrate to the latest version of Storybook.                                                                       │
+│                                                                                                                     │
+│   Please check the changelog and migration guide for manual migrations and more information:                        │
+│   https://storybook.js.org/docs/8.0/migration-guide                                                                 │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                                           │
+│                                                                                                                     │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
