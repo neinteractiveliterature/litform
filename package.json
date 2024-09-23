@@ -124,5 +124,5 @@
   "resolutions": {
     "webpack": ">= 5"
   },
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "yarn@4.5.0"
 }
