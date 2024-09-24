@@ -4302,7 +4302,7 @@ __metadata:
     "@types/lodash": "npm:^4.14.182"
     "@types/luxon": "npm:^3.0.0"
     "@types/mdx-js__react": "npm:^1.5.5"
-    "@types/node": "npm:^16.11.39"
+    "@types/node": "npm:^20.0.0"
     "@types/react": "npm:^18.0.12"
     "@types/react-dom": "npm:^18.0.5"
     "@types/testing-library__jest-dom": "npm:^5.14.3"
@@ -6741,7 +6741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.0.10 || ^16.0.0, @types/node@npm:^16.11.39":
+"@types/node@npm:^14.0.10 || ^16.0.0":
   version: 16.11.39
   resolution: "@types/node@npm:16.11.39"
   checksum: 10/d575ff503357f9c2d86a3fb0f769478f4489b097e3b872b1ed9d7e854870f903d8c61962fca0650adc34eb30e63eb404a2381f3d51d67ac80ffd37367f4c0227
@@ -6752,6 +6752,15 @@ __metadata:
   version: 18.18.6
   resolution: "@types/node@npm:18.18.6"
   checksum: 10/ba8b71c724c4c9b1908faf09be1aa062790ef4194f956f6c7ae9791f8d2c1d123635695e41c3c8326223d2262bae2b3b5c8774c7a6c5885a98437b6fb04a2f0c
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.0.0":
+  version: 20.16.6
+  resolution: "@types/node@npm:20.16.6"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10/f8a07b113901fa2b5bfbea8dedd15321126238023586f047576805cb1a53abd7f717f9e490d8e71d4c7b627885659f862584fa844fa71aab9c86295d1f006771
   languageName: node
   linkType: hard
 
@@ -17023,6 +17032,13 @@ __metadata:
     has-symbols: "npm:^1.0.3"
     which-boxed-primitive: "npm:^1.0.2"
   checksum: 10/06e1ee41c1095e37281cb71a975cb3350f7cb470a0665d2576f02cc9564f623bd90cfc0183693b8a7fdf2d242963dcc3010b509fa3ac683f540c765c0f3e7e43
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.19.2":
+  version: 6.19.8
+  resolution: "undici-types@npm:6.19.8"
+  checksum: 10/cf0b48ed4fc99baf56584afa91aaffa5010c268b8842f62e02f752df209e3dea138b372a60a963b3b2576ed932f32329ce7ddb9cb5f27a6c83040d8cd74b7a70
   languageName: node
   linkType: hard
 
