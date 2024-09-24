@@ -42,7 +42,7 @@
     "@codemirror/theme-one-dark": "^6.1.2",
     "@lezer/common": "^1.2.1",
     "@lezer/generator": "^1.6.0",
-    "@mdx-js/react": "^2.1.1",
+    "@mdx-js/react": "^3.0.0",
     "@storybook/addon-actions": "^7.0.0",
     "@storybook/addon-docs": "^7.0.0",
     "@storybook/addon-essentials": "^7.0.0",
