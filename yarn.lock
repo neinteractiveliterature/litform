@@ -4368,7 +4368,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.5.0"
     eslint-plugin-storybook: "npm:^0.8.0"
     graphql: "npm:^16.5.0"
-    husky: "npm:^8.0.1"
+    husky: "npm:^9.0.0"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:^29.0.0"
     lint-staged: "npm:^13.0.1"
@@ -11519,12 +11519,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "husky@npm:8.0.1"
+"husky@npm:^9.0.0":
+  version: 9.1.6
+  resolution: "husky@npm:9.1.6"
   bin:
-    husky: lib/bin.js
-  checksum: 10/0f4c1162845cd8c4ecf13af85fe62a1c9de3d4277053004a59dae90a36346fe7eeb7eff3bc7a8484c4f365f6eccf7fd17aa6935198028980c9d6e95306455f3c
+    husky: bin.js
+  checksum: 10/421ccd8850378231aaefd70dbe9e4f1549b84ffe3a6897f93a202242bbc04e48bd498169aef43849411105d9fcf7c192b757d42661e28d06b934a609a4eb8771
   languageName: node
   linkType: hard
 
