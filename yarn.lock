@@ -4383,7 +4383,7 @@ __metadata:
     react-markdown: "npm:^9.0.0"
     react-popper: "npm:^2.3.0"
     sass: "npm:^1.52.3"
-    sass-loader: "npm:^13.0.0"
+    sass-loader: "npm:^16.0.0"
     style-loader: "npm:^3.3.1"
     style-mod: "npm:^4.0.0"
     typescript: "npm:^4.7.3"
@@ -13127,13 +13127,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"klona@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "klona@npm:2.0.4"
-  checksum: 10/7767d79f5b2ce4833321b3af6edd257d5a9f3f4c296c80862c131ce8aa0caf5933071b69452b8e52ea5924d846b42eb0e3d215e3eb093bfdfaae21e3ac8b7116
-  languageName: node
-  linkType: hard
-
 "lazy-universal-dotenv@npm:^3.0.1":
   version: 3.0.1
   resolution: "lazy-universal-dotenv@npm:3.0.1"
@@ -16081,20 +16074,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:^13.0.0":
-  version: 13.0.0
-  resolution: "sass-loader@npm:13.0.0"
+"sass-loader@npm:^16.0.0":
+  version: 16.0.2
+  resolution: "sass-loader@npm:16.0.2"
   dependencies:
-    klona: "npm:^2.0.4"
     neo-async: "npm:^2.6.2"
   peerDependencies:
-    fibers: ">= 3.1.0"
-    node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
+    "@rspack/core": 0.x || 1.x
+    node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
     sass: ^1.3.0
     sass-embedded: "*"
     webpack: ^5.0.0
   peerDependenciesMeta:
-    fibers:
+    "@rspack/core":
       optional: true
     node-sass:
       optional: true
@@ -16102,7 +16094,9 @@ __metadata:
       optional: true
     sass-embedded:
       optional: true
-  checksum: 10/0f483188a75ffc04852b15d89d4ff5bc6c3ba3fe68622042b61208210fb9f7d075b447eb193df0b78deafdf37983aaac975723af2b93298c54aa2ded1601c865
+    webpack:
+      optional: true
+  checksum: 10/a24ae7f6b7ef2159274b47c0a7e35cb3bfb56367a192d362ff7674f2b85b2c7bfd021e83e9351d3af36b66524efd85ebf70e242971c0b807af6622ba4ee8e298
   languageName: node
   linkType: hard
 
