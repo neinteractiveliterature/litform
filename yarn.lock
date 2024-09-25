@@ -4280,6 +4280,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mdx-js/react@npm:*, @mdx-js/react@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "@mdx-js/react@npm:3.0.1"
+  dependencies:
+    "@types/mdx": "npm:^2.0.0"
+  peerDependencies:
+    "@types/react": ">=16"
+    react: ">=16"
+  checksum: 10/d566407af11e76f498f8133fbfa8a9d8a2ad80dc7a66ca109d29fcb92e953a2d2d7aaedc0c28571d126f1967faeb126dd2e4ab4ea474c994bf5c76fa204c5997
+  languageName: node
+  linkType: hard
+
 "@mdx-js/react@npm:^2.1.5":
   version: 2.3.0
   resolution: "@mdx-js/react@npm:2.3.0"
@@ -4289,18 +4301,6 @@ __metadata:
   peerDependencies:
     react: ">=16"
   checksum: 10/bce1cb1dde0a9a2b786cd9167b9e2bc0e3be52c195a4a79aaf1677470566d1fd2979d01baca2380c76aa4a1a27cd89f051484e595fdc4144a428d6af39bb667a
-  languageName: node
-  linkType: hard
-
-"@mdx-js/react@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "@mdx-js/react@npm:3.0.1"
-  dependencies:
-    "@types/mdx": "npm:^2.0.0"
-  peerDependencies:
-    "@types/react": ">=16"
-    react: ">=16"
-  checksum: 10/d566407af11e76f498f8133fbfa8a9d8a2ad80dc7a66ca109d29fcb92e953a2d2d7aaedc0c28571d126f1967faeb126dd2e4ab4ea474c994bf5c76fa204c5997
   languageName: node
   linkType: hard
 
@@ -4345,7 +4345,7 @@ __metadata:
     "@types/jest": "npm:^29.0.0"
     "@types/lodash": "npm:^4.14.182"
     "@types/luxon": "npm:^3.0.0"
-    "@types/mdx-js__react": "npm:^1.5.5"
+    "@types/mdx-js__react": "npm:^2.0.0"
     "@types/node": "npm:^20.0.0"
     "@types/react": "npm:^18.0.12"
     "@types/react-dom": "npm:^18.0.5"
@@ -6774,12 +6774,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdx-js__react@npm:^1.5.5":
-  version: 1.5.5
-  resolution: "@types/mdx-js__react@npm:1.5.5"
+"@types/mdx-js__react@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@types/mdx-js__react@npm:2.0.0"
   dependencies:
-    "@types/react": "npm:*"
-  checksum: 10/91229e9e4d129bed0cd457459970daf8e505de9932791915cb91ad82f033b85c921c773ad16b7de629a7fa3ba97c8301784aad3b9ab6e431c3e5fc521a16a0f2
+    "@mdx-js/react": "npm:*"
+  checksum: 10/a23e4355f52e2e5051791273296786dbe44facc0535fd7b517f24921581234462e59637f80ac494b7883d17eeaee22e54088490ab8f71d63d686a15a32f493d8
   languageName: node
   linkType: hard
 
