@@ -65,7 +65,7 @@
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "@types/testing-library__jest-dom": "^5.14.3",
-    "@types/uuid": "^8.3.4",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "assert": "^2.0.0",
@@ -115,7 +115,7 @@
     "react-cool-onclickoutside": "^1.7.0",
     "react-popper": "^2.3.0",
     "style-mod": "^4.0.0",
-    "uuid": "^8.3.2"
+    "uuid": "^10.0.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
