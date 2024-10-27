@@ -4386,7 +4386,7 @@ __metadata:
     sass-loader: "npm:^16.0.0"
     style-loader: "npm:^3.3.1"
     style-mod: "npm:^4.0.0"
-    typescript: "npm:^4.7.3"
+    typescript: "npm:^5.0.0"
     util: "npm:^0.12.4"
     uuid: "npm:^10.0.0"
     webpack: "npm:^5.73.0"
@@ -17381,23 +17381,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.7.3":
-  version: 4.7.3
-  resolution: "typescript@npm:4.7.3"
+"typescript@npm:^5.0.0":
+  version: 5.6.3
+  resolution: "typescript@npm:5.6.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/0cba71ad69e0ba0f92a55d304b4f047b3eaf510b6e11ea02085d6393f184cafa2416bf89dc64ac9a80f62d0866e43ac714ffe8ef1ce45b51a313d0309d1ea160
+  checksum: 10/c328e418e124b500908781d9f7b9b93cf08b66bf5936d94332b463822eea2f4e62973bfb3b8a745fdc038785cb66cf59d1092bac3ec2ac6a3e5854687f7833f1
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^4.7.3#optional!builtin<compat/typescript>":
-  version: 4.7.3
-  resolution: "typescript@patch:typescript@npm%3A4.7.3#optional!builtin<compat/typescript>::version=4.7.3&hash=65a307"
+"typescript@patch:typescript@npm%3A^5.0.0#optional!builtin<compat/typescript>":
+  version: 5.6.3
+  resolution: "typescript@patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>::version=5.6.3&hash=8c6c40"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/8c50fa7f491ee3906d50be61dcf525ebb357685c27a806b4ecb5f3aba634e0547c808d89163c6a85a552e8af1709934dee85092cca96061565af1aed7e37dfb5
+  checksum: 10/00504c01ee42d470c23495426af07512e25e6546bce7e24572e72a9ca2e6b2e9bea63de4286c3cfea644874da1467dcfca23f4f98f7caf20f8b03c0213bb6837
   languageName: node
   linkType: hard
 
