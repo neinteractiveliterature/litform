@@ -28,7 +28,6 @@ test('it renders a graphql error', () => {
 
 test('it renders nothing by default', () => {
   const { getByTestId } = render(<ErrorDisplay />, {
-    // eslint-disable-next-line react/display-name
     wrapper: () => <div data-testid="wrapper" />,
   });
   const wrapper: HTMLDivElement = getByTestId('wrapper') as HTMLDivElement;

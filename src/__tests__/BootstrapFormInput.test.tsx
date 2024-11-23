@@ -8,7 +8,6 @@ describe('BootstrapFormInput', () => {
         name="my_input"
         label="type in me"
         value=""
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
         onTextChange={() => {}}
         {...overrideProps}
       />,

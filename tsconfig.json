@@ -14,7 +14,8 @@
     "lib": ["DOM", "DOM.Iterable", "ES2016"],
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["vitest/globals"]
   },
   "include": ["./src/"]
 }

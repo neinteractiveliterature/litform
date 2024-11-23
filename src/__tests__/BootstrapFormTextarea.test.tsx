@@ -8,7 +8,6 @@ describe('BootstrapFormTextarea', () => {
         name="my_textarea"
         label="type in me"
         value=""
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
         onTextChange={() => {}}
         {...overrideProps}
       />,
