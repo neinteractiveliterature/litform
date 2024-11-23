@@ -3,6 +3,7 @@
 /dist
 /test
 /storybook-static
+/coverage
 /.vscode
 /.eslintcache
 yarn-error.log
