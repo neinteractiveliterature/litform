@@ -1,8 +1,9 @@
 import { render, fireEvent } from '@testing-library/react';
+import { vi } from 'vitest';
 import ChoiceSet, { ChoiceSetMultipleChoiceProps, ChoiceSetSingleChoiceProps } from '../ChoiceSet';
 
 describe('ChoiceSet', () => {
-  const onChange = jest.fn();
+  const onChange = vi.fn();
   beforeEach(onChange.mockReset);
 
   const renderChoiceSet = (

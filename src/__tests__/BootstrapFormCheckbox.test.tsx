@@ -1,8 +1,9 @@
 import { render, fireEvent } from '@testing-library/react';
+import { vi } from 'vitest';
 import BootstrapFormCheckbox from '../BootstrapFormCheckbox';
 
 describe('BootstrapFormCheckbox', () => {
-  const onChange = jest.fn();
+  const onChange = vi.fn();
 
   const renderComponent = (overrideProps = {}) =>
     render(

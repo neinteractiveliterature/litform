@@ -4,7 +4,7 @@
     "sourceMap": true, // allow sourcemap support
     "declaration": true,
     "strictNullChecks": true, // enable strict null checks as a best practice
-    "module": "ES2015", // specify module code generation
+    "module": "ESNext", // specify module code generation
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "react-jsx", // use typescript to transpile jsx to js
@@ -14,8 +14,7 @@
     "lib": ["DOM", "DOM.Iterable", "ES2016"],
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "types": ["vitest/globals"]
+    "esModuleInterop": true
   },
   "include": ["./src/"]
 }
