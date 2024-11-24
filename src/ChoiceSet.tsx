@@ -50,7 +50,6 @@ function ChoiceSet(props: ChoiceSetProps): JSX.Element {
 
   const options = props.choices.map(({ label, value, disabled = false }, index) => (
     <BootstrapFormCheckbox
-      // eslint-disable-next-line react/no-array-index-key
       key={index}
       name={props.name || ''}
       type={choiceType}

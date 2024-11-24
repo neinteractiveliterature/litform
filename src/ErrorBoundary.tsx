@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import { Component, ReactNode, ErrorInfo } from 'react';
 import { ApolloError } from '@apollo/client';
 
@@ -32,8 +31,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     }
 
     if (typeof console !== 'undefined') {
-      console.log(error); // eslint-disable-line no-console
-      console.log(info); // eslint-disable-line no-console
+      console.log(error);
+      console.log(info);
     }
   }
 

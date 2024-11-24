@@ -13,7 +13,6 @@ function ErrorDisplay({ stringError, graphQLError }: ErrorDisplayProps): JSX.Ele
     try {
       if (graphQLError.graphQLErrors.length > 0) {
         const errorMessages = graphQLError.graphQLErrors.map((error, i) => (
-          // eslint-disable-next-line react/no-array-index-key
           <li key={i}>{error.message}</li>
         ));
 
@@ -21,7 +20,7 @@ function ErrorDisplay({ stringError, graphQLError }: ErrorDisplayProps): JSX.Ele
       } else {
         displayContents = <pre>{graphQLError.message}</pre>;
       }
-    } catch (formattingError) {
+    } catch {
       if (graphQLError.message) {
         displayContents = <pre>{graphQLError.message}</pre>;
       } else {
