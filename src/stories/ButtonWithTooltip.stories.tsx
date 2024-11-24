@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import ButtonWithTooltip, { ButtonWithTooltipProps } from '../ButtonWithTooltip';
 
 export default {
@@ -21,7 +21,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<Partial<ButtonWithTooltipProps>> = (args) => (
+const Template: StoryFn<Partial<ButtonWithTooltipProps>> = (args) => (
   <ButtonWithTooltip
     buttonProps={{}}
     tooltipContent={

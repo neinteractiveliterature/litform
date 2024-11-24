@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import ChoiceSet, { ChoiceSetProps } from '../ChoiceSet';
 
 export default {
@@ -22,7 +22,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ChoiceSetProps> = (args) => <ChoiceSet {...args} />;
+const Template: StoryFn<ChoiceSetProps> = (args) => <ChoiceSet {...args} />;
 
 export const SingleChoice = Template.bind({});
 SingleChoice.args = {

@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import BootstrapFormInput, { BootstrapFormInputProps } from '../BootstrapFormInput';
 
 export default {
@@ -21,7 +21,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<BootstrapFormInputProps> = (args) => <BootstrapFormInput {...args} />;
+const Template: StoryFn<BootstrapFormInputProps> = (args) => <BootstrapFormInput {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {

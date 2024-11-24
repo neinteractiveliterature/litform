@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import LoadingIndicator, { LoadingIndicatorProps } from '../LoadingIndicator';
 
 export default {
@@ -21,7 +21,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<LoadingIndicatorProps> = (args) => <LoadingIndicator {...args} />;
+const Template: StoryFn<LoadingIndicatorProps> = (args) => <LoadingIndicator {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {
