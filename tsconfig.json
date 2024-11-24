@@ -4,9 +4,10 @@
     "sourceMap": true, // allow sourcemap support
     "declaration": true,
     "strictNullChecks": true, // enable strict null checks as a best practice
-    "module": "ESNext", // specify module code generation
+    "module": "ES2015", // specify module code generation
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "types": ["vitest/globals"],
     "jsx": "react-jsx", // use typescript to transpile jsx to js
     "target": "ES2015", // specify ECMAScript target version
     "allowJs": true, // allow a partial TypeScript and JavaScript codebase,
