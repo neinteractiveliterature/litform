@@ -19,7 +19,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
-    "postinstall": "husky install",
+    "prepare": "husky",
     "prepublishOnly": "yarn run build",
     "lint": "eslint src"
   },
