@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import MultipleChoiceInput, { MultipleChoiceInputProps } from '../MultipleChoiceInput';
 
 export default {
@@ -19,7 +19,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<MultipleChoiceInputProps> = (args) => <MultipleChoiceInput {...args} />;
+const Template: StoryFn<MultipleChoiceInputProps> = (args) => <MultipleChoiceInput {...args} />;
 
 export const SingleChoice = Template.bind({});
 SingleChoice.args = {

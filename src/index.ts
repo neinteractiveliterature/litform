@@ -21,7 +21,8 @@ export {
 export { default as HelpPopover } from './HelpPopover';
 export { default as HelpText } from './HelpText';
 export { BootstrapIcons, LitformIconSets, getIconClassName } from './IconSets';
-export { LiquidLanguageConfig, liquid, liquidLanguage } from './liquid';
+export { liquid, liquidLanguage } from './liquid';
+export type { LiquidLanguageConfig } from './liquid';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as LoadQueryWrapper } from './LoadQueryWrapper';
 export { default as MultipleChoiceInput } from './MultipleChoiceInput';
@@ -43,10 +44,10 @@ export {
 export { default as SearchInput } from './SearchInput';
 export {
   buildOptimisticArrayForMove,
-  BasicSortableHandlers,
   useArrayBasicSortableHandlers,
   useBasicSortableHandlers,
 } from './SortingUtils';
+export type { BasicSortableHandlers } from './SortingUtils';
 export {
   findCommonArrayPrefix,
   findCommonStringPrefix,
@@ -66,7 +67,6 @@ export {
 } from './ToastContext';
 export { default as Tooltip } from './Tooltip';
 export {
-  UseStandardCodeMirrorExtensionsOptions,
   bootstrapLightEditorViewTheme,
   bootstrapLightHighlightStyle,
   bootstrapLightTheme,
@@ -78,6 +78,7 @@ export {
   useStandardCodeMirror,
   useStandardCodeMirrorExtensions,
 } from './useCodeMirror';
+export type { UseStandardCodeMirrorExtensionsOptions } from './useCodeMirror';
 export { default as useDebouncedState } from './useDebouncedState';
 export { default as useIsMounted } from './useIsMounted';
 export { default as useMatchWidthStyle } from './useMatchWidthStyle';
@@ -93,7 +94,5 @@ export {
   onlyOneIsNull,
   preferNull,
   sortByLocaleString,
-  KeysOfType,
-  OmitStrict,
-  UnwrapPromise,
 } from './ValueUtils';
+export type { KeysOfType, OmitStrict, UnwrapPromise } from './ValueUtils';

@@ -2,6 +2,7 @@ import { ApolloLink, Operation, NextLink } from '@apollo/client';
 import { onError } from '@apollo/client/link/error/index.js';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 
+/** @deprecated */
 export function useAuthHeadersLink(authenticityToken: string): ApolloLink {
   const authenticityTokenRef = useRef(authenticityToken);
   useEffect(() => {
@@ -28,6 +29,7 @@ export function useAuthHeadersLink(authenticityToken: string): ApolloLink {
   return authHeadersLink;
 }
 
+/** @deprecated */
 export function useErrorHandlerLink(onUnauthenticatedRef?: RefObject<() => void>): ApolloLink {
   const errorHandlerLink = useMemo(
     () =>

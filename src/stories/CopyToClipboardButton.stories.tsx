@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import CopyToClipboardButton, { CopyToClipboardButtonProps } from '../CopyToClipboardButton';
 
 export default {
@@ -20,7 +20,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<CopyToClipboardButtonProps> = (args) => <CopyToClipboardButton {...args} />;
+const Template: StoryFn<CopyToClipboardButtonProps> = (args) => <CopyToClipboardButton {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {

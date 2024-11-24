@@ -1,9 +1,17 @@
 import { ReactNode } from 'react';
-import { ApolloError } from '@apollo/client';
+import { GraphQLFormattedError } from 'graphql';
+
+interface GraphQLError extends Error {
+  graphQLErrors: GraphQLFormattedError[];
+}
+
+function isGraphQLError(error: Error): error is GraphQLError {
+  return 'graphQLErrors' in error;
+}
 
 export type ErrorDisplayProps = {
   stringError?: string | null;
-  graphQLError?: ApolloError | null;
+  graphQLError?: Error | null;
 };
 
 function ErrorDisplay({ stringError, graphQLError }: ErrorDisplayProps): JSX.Element {
@@ -11,9 +19,12 @@ function ErrorDisplay({ stringError, graphQLError }: ErrorDisplayProps): JSX.Ele
 
   if (graphQLError) {
     try {
+      if (!isGraphQLError(graphQLError)) {
+        throw new Error('Bailing and falling back to displaying message');
+      }
+
       if (graphQLError.graphQLErrors.length > 0) {
         const errorMessages = graphQLError.graphQLErrors.map((error, i) => (
-          // eslint-disable-next-line react/no-array-index-key
           <li key={i}>{error.message}</li>
         ));
 
@@ -21,7 +32,7 @@ function ErrorDisplay({ stringError, graphQLError }: ErrorDisplayProps): JSX.Ele
       } else {
         displayContents = <pre>{graphQLError.message}</pre>;
       }
-    } catch (formattingError) {
+    } catch {
       if (graphQLError.message) {
         displayContents = <pre>{graphQLError.message}</pre>;
       } else {

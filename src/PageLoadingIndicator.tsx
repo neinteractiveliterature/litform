@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
-import { getIconClassName, LitformIconSetIdentifier } from './IconSets';
+import { LitformIconSetIdentifier } from './IconSets';
 
 export type PageLoadingIndicatorProps = {
   visible: boolean;
+  /** @deprecated */
   iconSet?: LitformIconSetIdentifier;
 };
 
-function PageLoadingIndicator({
-  visible,
-  iconSet = 'bootstrap-icons',
-}: PageLoadingIndicatorProps): JSX.Element {
+function PageLoadingIndicator({ visible }: PageLoadingIndicatorProps): JSX.Element {
   const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
 
   useEffect(() => {

@@ -33,7 +33,6 @@ export type ToastContextValue = {
 const ToastContext = React.createContext<ToastContextValue>({
   toastMessages: [],
   addMessage: () => '',
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   dismissMessage: () => {},
 });
 

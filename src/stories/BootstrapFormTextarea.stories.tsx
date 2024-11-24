@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import BootstrapFormTextarea, { BootstrapFormTextareaProps } from '../BootstrapFormTextarea';
 
 export default {
@@ -21,7 +21,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<BootstrapFormTextareaProps> = (args) => <BootstrapFormTextarea {...args} />;
+const Template: StoryFn<BootstrapFormTextareaProps> = (args) => <BootstrapFormTextarea {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {

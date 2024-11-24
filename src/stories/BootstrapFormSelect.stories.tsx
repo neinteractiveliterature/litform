@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import BootstrapFormSelect, { BootstrapFormSelectProps } from '../BootstrapFormSelect';
 
 export default {
@@ -21,7 +21,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<BootstrapFormSelectProps> = (args) => (
+const Template: StoryFn<BootstrapFormSelectProps> = (args) => (
   <BootstrapFormSelect {...args}>
     <option value="1">One</option>
     <option value="2">Two</option>

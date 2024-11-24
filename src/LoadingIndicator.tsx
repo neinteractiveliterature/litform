@@ -1,11 +1,12 @@
-import { getIconClassName, LitformIconSetIdentifier } from './IconSets';
+import { LitformIconSetIdentifier } from './IconSets';
 
-export type LoadingIndicatorProps = { size?: number; iconSet?: LitformIconSetIdentifier };
+export type LoadingIndicatorProps = {
+  size?: number;
+  /** @deprecated */
+  iconSet?: LitformIconSetIdentifier;
+};
 
-function LoadingIndicator({
-  size = 5,
-  iconSet = 'bootstrap-icons',
-}: LoadingIndicatorProps): JSX.Element {
+function LoadingIndicator({ size = 5 }: LoadingIndicatorProps): JSX.Element {
   const remSize = `${2.5 + (6 - size) * 0.5}rem`;
   return (
     <div className="spinner-border" style={{ width: remSize, height: remSize }} role="status">

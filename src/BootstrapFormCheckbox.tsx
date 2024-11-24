@@ -36,8 +36,7 @@ function BootstrapFormCheckbox(props: BootstrapFormCheckboxProps): JSX.Element {
       ? (event: ChangeEvent<HTMLInputElement>) => {
           onCheckedChange(event.target.checked);
         }
-      : // eslint-disable-next-line @typescript-eslint/no-empty-function
-        () => {});
+      : () => {});
 
   return (
     <div className={classnames('form-check', className)}>

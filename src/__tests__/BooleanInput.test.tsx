@@ -1,8 +1,9 @@
 import { render, fireEvent } from '@testing-library/react';
+import { vi } from 'vitest';
 import BooleanInput from '../BooleanInput';
 
 describe('BooleanInput', () => {
-  const onChange = jest.fn();
+  const onChange = vi.fn();
   const renderInput = (overrideProps = {}) =>
     render(
       <BooleanInput

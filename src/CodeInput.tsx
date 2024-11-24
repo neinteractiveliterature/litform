@@ -1,7 +1,6 @@
 import { useState, useCallback, ReactNode, useEffect } from 'react';
 import * as React from 'react';
 import classNames from 'classnames';
-import { ApolloError } from '@apollo/client';
 
 import ErrorDisplay from './ErrorDisplay';
 import LoadingIndicator from './LoadingIndicator';
@@ -41,7 +40,7 @@ export default function CodeInput({
   const [previewing, setPreviewing] = useState(false);
   const [previewContent, setPreviewContent] = useState<ReactNode | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
-  const [previewError, setPreviewError] = useState<ApolloError | null>(null);
+  const [previewError, setPreviewError] = useState<Error | null>(null);
 
   useEffect(() => {
     setPreviewContent(null);

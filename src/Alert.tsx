@@ -26,7 +26,7 @@ export function AlertProvider({ children, okText }: AlertProviderProps): JSX.Ele
   const modal = useModal<AlertState>();
   const alert = useCallback(
     (message?: ReactNode | ReactNode[]) => modal.open({ message }),
-    [modal.open],
+    [modal],
   );
 
   return (

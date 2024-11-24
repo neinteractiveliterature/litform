@@ -7,7 +7,6 @@ export function useFunctionalStateUpdater<T>(
   setState: Dispatch<T> | undefined,
 ): FunctionalStateUpdater<T> {
   const factory: FunctionalStateUpdater<T> = useMemo(
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     () => (setState ? (updater: (prevState: T) => T) => setState(updater(state)) : () => {}),
     [state, setState],
   );
@@ -46,7 +45,6 @@ type PropertySetterTuple<T, Properties extends readonly (keyof T)[]> = {
     : never;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 function noop() {}
 
 export function usePropertySetters<T, Properties extends readonly (keyof T)[]>(

@@ -1,8 +1,9 @@
-import { QueryHookOptions, QueryResult } from '@apollo/client';
+import { OperationVariables, QueryHookOptions, QueryResult } from '@apollo/client';
 import ErrorDisplay from './ErrorDisplay';
 import PageLoadingIndicator from './PageLoadingIndicator';
 
-export default function LoadQueryWrapper<TData, TVariables, TProps>(
+/** @deprecated Apollo wrappers in Litform are going away */
+export default function LoadQueryWrapper<TData, TVariables extends OperationVariables, TProps>(
   useLoadData: (baseOptions: QueryHookOptions<TData, TVariables>) => QueryResult<TData>,
   WrappedComponent: React.ComponentType<TProps & { data: TData }>,
 ): (props: TProps) => JSX.Element {
@@ -17,7 +18,6 @@ export default function LoadQueryWrapper<TData, TVariables, TProps>(
       return <ErrorDisplay graphQLError={error} />;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return <WrappedComponent data={data!} {...props} />;
   };
 
