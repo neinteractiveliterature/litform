@@ -1,0 +1,1 @@
+import{j as t}from"./jsx-runtime-OAISXtky.js";function r({children:e}){return e?t.jsx("small",{className:"form-text text-muted",children:e}):t.jsx(t.Fragment,{})}try{r.displayName="HelpText",r.__docgenInfo={description:"",displayName:"HelpText",props:{}}}catch{}export{r as H};
