@@ -1,5 +1,4 @@
 import { Component, ReactNode, ErrorInfo } from 'react';
-import { ApolloError } from '@apollo/client';
 
 import ErrorDisplay from './ErrorDisplay';
 
@@ -47,7 +46,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
     const errorDisplayProps =
       (errorType ?? 'graphql') === 'graphql'
-        ? { graphQLError: this.state.error as ApolloError }
+        ? { graphQLError: this.state.error }
         : { stringError: this.state.error.message };
 
     if (placement === 'before') {

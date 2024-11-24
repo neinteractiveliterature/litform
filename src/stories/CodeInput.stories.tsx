@@ -1,11 +1,11 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import CodeInput from '../CodeInput';
 import { markdown } from '@codemirror/lang-markdown';
 import { oneDark } from '@codemirror/theme-one-dark';
 import ReactMarkdown from 'react-markdown';
 import { useCallback, useMemo } from 'react';
 import { useStandardCodeMirror } from '../useCodeMirror';
-import { useArgs } from '@storybook/addons';
+import { useArgs } from '@storybook/manager-api';
 import { liquid } from '../liquid';
 
 export default {
@@ -29,7 +29,7 @@ type CodeInputStoryArgs = {
   lines: number;
 };
 
-const Template: Story<CodeInputStoryArgs> = (args, context) => {
+const Template: StoryFn<CodeInputStoryArgs> = (args, context) => {
   const [, updateArgs] = useArgs();
   const onChange = useCallback(
     (value: string) => {

@@ -10,6 +10,7 @@ import type {
 import type { Modifier } from '@apollo/client/cache/core/types/common';
 import { useCallback } from 'react';
 
+/** @deprecated Apollo wrappers in Litform are going away */
 export function addNewObjectToReferenceArrayModifier<Q, T extends { id: string }>(
   cache: ApolloCache<Q>,
   newObject: T,
@@ -33,6 +34,7 @@ export function addNewObjectToReferenceArrayModifier<Q, T extends { id: string }
   return modifier;
 }
 
+/** @deprecated Apollo wrappers in Litform are going away */
 export function addNewObjectToReferenceArrayUpdater<Q, T extends { id: string }>(
   containingObject: Reference | StoreObject,
   fieldName: string,
@@ -64,6 +66,7 @@ export function addNewObjectToReferenceArrayUpdater<Q, T extends { id: string }>
   return updater;
 }
 
+/** @deprecated Apollo wrappers in Litform are going away */
 export function useCreateMutationWithReferenceArrayUpdater<
   TData,
   TVariables,
@@ -91,6 +94,7 @@ export function useCreateMutationWithReferenceArrayUpdater<
   });
 }
 
+/** @deprecated Apollo wrappers in Litform are going away */
 export function deleteObjectFromReferenceArrayModifier<T extends { id: string }>(
   deletedObject: T,
 ): Modifier<Reference[]> {
@@ -103,6 +107,7 @@ export function deleteObjectFromReferenceArrayModifier<T extends { id: string }>
   return modifier;
 }
 
+/** @deprecated Apollo wrappers in Litform are going away */
 export function deleteObjectFromReferenceArrayUpdater<Q, T extends { id: string }>(
   containingObject: Reference | StoreObject,
   fieldName: string,
@@ -119,6 +124,7 @@ export function deleteObjectFromReferenceArrayUpdater<Q, T extends { id: string 
   return updater;
 }
 
+/** @deprecated Apollo wrappers in Litform are going away */
 export function useDeleteMutationWithReferenceArrayUpdater<
   TData,
   TVariables,
@@ -134,7 +140,7 @@ export function useDeleteMutationWithReferenceArrayUpdater<
   getVariables: (item: ItemType) => TVariables,
 ): [
   (item: ItemType) => ReturnType<MutationTuple<TData, TVariables>[0]>,
-  ...MutationTuple<TData, TVariables>
+  ...MutationTuple<TData, TVariables>,
 ] {
   const mutationTuple = useMutationFunction();
   const mutate = mutationTuple[0];
