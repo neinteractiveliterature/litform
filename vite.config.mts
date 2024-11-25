@@ -20,7 +20,20 @@ const entryPoints = Object.fromEntries(
 );
 
 export default defineConfig({
-  plugins: [react(), tsconfigPaths(), dts({ insertTypesEntry: true })],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    dts({
+      insertTypesEntry: true,
+      compilerOptions: {
+        declaration: true,
+        emitDeclarationOnly: true,
+        declarationMap: true,
+      },
+      exclude: ['./src/stories', './src/__tests__'],
+      outDir: 'dist/types',
+    }),
+  ],
   build: {
     lib: {
       entry: 'src/index.ts',
@@ -44,8 +57,8 @@ export default defineConfig({
       ],
       input: entryPoints,
       output: {
-        assetFileNames: 'assets/[name][extname]',
-        entryFileNames: '[name].[format]',
+        chunkFileNames: '[format]/[name].js',
+        entryFileNames: '[format]/[name].js',
         exports: 'named',
         globals: {
           react: 'React',

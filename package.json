@@ -5,16 +5,16 @@
   "license": "MIT",
   "version": "0.30.0",
   "type": "module",
-  "main": "dist/index.umd.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
   "repository": "https://github.com/neinteractiveliterature/litform",
   "sideEffects": false,
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && vite build && tsc -p tsconfig.build.json --declaration --outDir dist/ --emitDeclarationOnly --declarationMap",
+    "build": "rm -rf dist && vite build",
     "build:grammars": "lezer-generator src/liquid.grammar -o src/liquidGrammar.generated.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
