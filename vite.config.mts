@@ -60,10 +60,12 @@ export default defineConfig({
         chunkFileNames: '[format]/[name].js',
         entryFileNames: '[format]/[name].js',
         exports: 'named',
-        globals: {
-          react: 'React',
-          'react-dom': 'react-dom',
-          'react/jsx-runtime': 'react/jsx-runtime',
+        globals: (name) => {
+          if (name === 'react') {
+            return 'React';
+          } else {
+            return name;
+          }
         },
       },
     },
