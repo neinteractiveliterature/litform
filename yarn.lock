@@ -1347,7 +1347,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lezer/common@npm:1.2.1, @lezer/common@npm:^1.0.0, @lezer/common@npm:^1.0.2, @lezer/common@npm:^1.1.0, @lezer/common@npm:^1.2.0, @lezer/common@npm:^1.2.1":
+"@lezer/common@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@lezer/common@npm:1.2.3"
+  checksum: 10/dad24e353e4e67d88b203191361ca1dff26c01c2b7b4ae829b668a1d115929334d077217367683e39180c0556510ed2066ea8ddba2b079be7c08a7152208cc87
+  languageName: node
+  linkType: hard
+
+"@lezer/common@npm:^1.0.0, @lezer/common@npm:^1.0.2, @lezer/common@npm:^1.1.0, @lezer/common@npm:^1.2.0, @lezer/common@npm:^1.2.1":
   version: 1.2.1
   resolution: "@lezer/common@npm:1.2.1"
   checksum: 10/b362ed2e97664e4b36b3dbff49b52d1bfc5accc0152b577fefd46e585d012ff685d1fd336d75d80066e01c0505b1135d4cf69be5e330b5bfec2e2650c437bcae
@@ -1529,7 +1536,7 @@ __metadata:
     "@eslint/compat": "npm:^1.2.3"
     "@eslint/eslintrc": "npm:^3.2.0"
     "@eslint/js": "npm:^9.15.0"
-    "@lezer/common": "npm:1.2.1"
+    "@lezer/common": "npm:1.2.3"
     "@lezer/generator": "npm:^1.7.1"
     "@lezer/highlight": "npm:^1.2.1"
     "@lezer/lr": "npm:1.4.0"
