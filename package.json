@@ -55,7 +55,7 @@
     "@lezer/common": "1.2.1",
     "@lezer/generator": "^1.7.1",
     "@lezer/highlight": "^1.2.1",
-    "@lezer/lr": "1.4.0",
+    "@lezer/lr": "1.4.2",
     "@mdx-js/react": "^3.0.0",
     "@popperjs/core": "^2.11.8",
     "@storybook/addon-actions": "^8.4.5",
