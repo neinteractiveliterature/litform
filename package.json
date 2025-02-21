@@ -40,7 +40,7 @@
     "react-bootstrap4-modal": "^3.0.8"
   },
   "devDependencies": {
-    "@apollo/client": "3.11.10",
+    "@apollo/client": "3.13.1",
     "@codemirror/commands": "^6.7.1",
     "@codemirror/lang-html": "^6.4.9",
     "@codemirror/lang-javascript": "^6.2.2",
