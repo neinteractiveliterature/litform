@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { LoadingIndicator, LoadingIndicatorProps } from '@neinteractiveliterature/litform';
+import { LoadingIndicator } from '@neinteractiveliterature/litform';
+import { ComponentProps } from 'react';
 
 export default {
   title: 'Loading/LoadingIndicator',
@@ -21,7 +22,9 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<LoadingIndicatorProps> = (args) => <LoadingIndicator {...args} />;
+const Template: StoryFn<ComponentProps<typeof LoadingIndicator>> = (args) => (
+  <LoadingIndicator {...args} />
+);
 
 export const Basic = Template.bind({});
 Basic.args = {

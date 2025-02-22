@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { BootstrapFormSelect, BootstrapFormSelectProps } from '@neinteractiveliterature/litform';
+import { BootstrapFormSelect } from '@neinteractiveliterature/litform';
+import { ComponentProps } from 'react';
 
 export default {
   title: 'Forms/BootstrapFormSelect',
@@ -21,7 +22,7 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<BootstrapFormSelectProps> = (args) => (
+const Template: StoryFn<ComponentProps<typeof BootstrapFormSelect>> = (args) => (
   <BootstrapFormSelect {...args}>
     <option value="1">One</option>
     <option value="2">Two</option>

@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { ChoiceSet, ChoiceSetProps } from '@neinteractiveliterature/litform';
+import { ChoiceSet } from '@neinteractiveliterature/litform';
+import { ComponentProps } from 'react';
 
 export default {
   title: 'Forms/ChoiceSet',
@@ -22,7 +23,7 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<ChoiceSetProps> = (args) => <ChoiceSet {...args} />;
+const Template: StoryFn<ComponentProps<typeof ChoiceSet>> = (args) => <ChoiceSet {...args} />;
 
 export const SingleChoice = Template.bind({});
 SingleChoice.args = {

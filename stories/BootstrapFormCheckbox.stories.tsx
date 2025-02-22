@@ -1,8 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
-import {
-  BootstrapFormCheckbox,
-  BootstrapFormCheckboxProps,
-} from '@neinteractiveliterature/litform';
+import { BootstrapFormCheckbox } from '@neinteractiveliterature/litform';
+import { ComponentProps } from 'react';
 
 export default {
   title: 'Forms/BootstrapFormCheckbox',
@@ -24,7 +22,9 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<BootstrapFormCheckboxProps> = (args) => <BootstrapFormCheckbox {...args} />;
+const Template: StoryFn<ComponentProps<typeof BootstrapFormCheckbox>> = (args) => (
+  <BootstrapFormCheckbox {...args} />
+);
 
 export const BasicCheckbox = Template.bind({});
 BasicCheckbox.args = {

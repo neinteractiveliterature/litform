@@ -1,8 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
-import {
-  CopyToClipboardButton,
-  CopyToClipboardButtonProps,
-} from '@neinteractiveliterature/litform';
+import { CopyToClipboardButton } from '@neinteractiveliterature/litform';
+import { ComponentProps } from 'react';
 
 export default {
   title: 'Buttons/CopyToClipboardButton',
@@ -23,7 +21,9 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<CopyToClipboardButtonProps> = (args) => <CopyToClipboardButton {...args} />;
+const Template: StoryFn<ComponentProps<typeof CopyToClipboardButton>> = (args) => (
+  <CopyToClipboardButton {...args} />
+);
 
 export const Basic = Template.bind({});
 Basic.args = {

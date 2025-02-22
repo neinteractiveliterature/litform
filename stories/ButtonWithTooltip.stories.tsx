@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { ButtonWithTooltip, ButtonWithTooltipProps } from '@neinteractiveliterature/litform';
+import { ButtonWithTooltip } from '@neinteractiveliterature/litform';
+import { ComponentProps } from 'react';
 
 export default {
   title: 'Buttons/ButtonWithTooltip',
@@ -21,7 +22,7 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<Partial<ButtonWithTooltipProps>> = (args) => (
+const Template: StoryFn<Partial<ComponentProps<typeof ButtonWithTooltip>>> = (args) => (
   <ButtonWithTooltip
     buttonProps={{}}
     tooltipContent={

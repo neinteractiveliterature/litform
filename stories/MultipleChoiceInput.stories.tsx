@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { MultipleChoiceInput, MultipleChoiceInputProps } from '@neinteractiveliterature/litform';
+import { MultipleChoiceInput } from '@neinteractiveliterature/litform';
+import { ComponentProps } from 'react';
 
 export default {
   title: 'Forms/MultipleChoiceInput',
@@ -19,7 +20,9 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<MultipleChoiceInputProps> = (args) => <MultipleChoiceInput {...args} />;
+const Template: StoryFn<ComponentProps<typeof MultipleChoiceInput>> = (args) => (
+  <MultipleChoiceInput {...args} />
+);
 
 export const SingleChoice = Template.bind({});
 SingleChoice.args = {

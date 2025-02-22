@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { BootstrapFormInput, BootstrapFormInputProps } from '@neinteractiveliterature/litform';
+import { BootstrapFormInput } from '@neinteractiveliterature/litform';
+import { ComponentProps } from 'react';
 
 export default {
   title: 'Forms/BootstrapFormInput',
@@ -21,7 +22,9 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<BootstrapFormInputProps> = (args) => <BootstrapFormInput {...args} />;
+const Template: StoryFn<ComponentProps<typeof BootstrapFormInput>> = (args) => (
+  <BootstrapFormInput {...args} />
+);
 
 export const Basic = Template.bind({});
 Basic.args = {
