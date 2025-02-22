@@ -1,6 +1,5 @@
 import { JSX, ReactNode, useEffect, useState } from 'react';
 import { Temporal } from 'temporal-polyfill';
-import { DurationFormat } from '@formatjs/intl-durationformat';
 
 export const TOAST_FADE_DURATION = 350;
 
@@ -9,6 +8,7 @@ export type ToastProps = {
   children: ReactNode | ReactNode[];
   visible: boolean;
   close: () => void;
+  formatTimeAgo: (duration: Temporal.Duration) => string;
   autoCloseAfter?: number;
   justNowText?: string;
 };
@@ -18,6 +18,7 @@ export default function Toast({
   children,
   visible,
   close,
+  formatTimeAgo,
   autoCloseAfter,
   justNowText,
 }: ToastProps): JSX.Element {
@@ -59,15 +60,14 @@ export default function Toast({
         if (sinceTimestamp.minutes < 1) {
           setFormattedTimeAgo(justNow);
         } else {
-          const fmt = new DurationFormat(undefined, { style: 'narrow' });
-          setFormattedTimeAgo(fmt.format(sinceTimestamp) + ' ago');
+          setFormattedTimeAgo(formatTimeAgo(sinceTimestamp));
         }
       }, 1000 * 15);
       return () => {
         window.clearInterval(handle);
       };
     }
-  }, [timestamp, visible, close, autoCloseAfter, justNow]);
+  }, [timestamp, visible, close, autoCloseAfter, justNow, formatTimeAgo]);
 
   return (
     <div

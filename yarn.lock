@@ -1255,7 +1255,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@neinteractiveliterature/litform-apollo@workspace:^, @neinteractiveliterature/litform-apollo@workspace:packages/apollo":
+"@neinteractiveliterature/litform-apollo@workspace:packages/apollo":
   version: 0.0.0-use.local
   resolution: "@neinteractiveliterature/litform-apollo@workspace:packages/apollo"
   dependencies:
@@ -1377,7 +1377,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@neinteractiveliterature/litform@workspace:packages/litform"
   dependencies:
-    "@neinteractiveliterature/litform-apollo": "workspace:^"
     "@neinteractiveliterature/litform-codemirror": "workspace:^"
     "@neinteractiveliterature/litform-controls": "workspace:^"
     "@neinteractiveliterature/litform-core": "workspace:^"
