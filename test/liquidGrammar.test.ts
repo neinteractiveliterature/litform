@@ -1,5 +1,5 @@
 import { markdown } from '@codemirror/lang-markdown';
-import { liquid } from '../liquid';
+import { liquid } from '@neinteractiveliterature/litform';
 
 it('parses an HTML document', () => {
   const languageSupport = liquid();

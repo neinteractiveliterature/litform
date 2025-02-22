@@ -1,5 +1,5 @@
 import { ApolloLink, Operation, NextLink } from '@apollo/client';
-import { onError } from '@apollo/client/link/error/index.js';
+import { onError } from '@apollo/client/link/error';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 
 /** @deprecated */

@@ -1,7 +1,8 @@
 /node_modules
 /lib
 /dist
-/test
+/test/reports
+/test/html_reports
 /storybook-static
 /coverage
 /.vscode
