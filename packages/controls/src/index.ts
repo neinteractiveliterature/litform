@@ -4,6 +4,11 @@ export { default as BootstrapFormInput } from './BootstrapFormInput';
 export { default as BootstrapFormSelect } from './BootstrapFormSelect';
 export { default as BootstrapFormTextarea } from './BootstrapFormTextarea';
 export { default as ChoiceSet } from './ChoiceSet';
+export type {
+  ChoiceSetMultipleChoiceProps,
+  ChoiceSetSingleChoiceProps,
+  ChoiceSetBaseProps,
+} from './ChoiceSet';
 export { default as CopyToClipboardButton } from './CopyToClipboardButton';
 export {
   default as FormGroupWithLabel,

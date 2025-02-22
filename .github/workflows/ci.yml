@@ -28,8 +28,8 @@ jobs:
           node-version: ${{ steps.node-version.outputs.node-version }}
       - name: yarn install
         run: yarn install
-      - name: tsc on resulting generated files
-        run: yarn run tsc --noEmit
+      - name: tsc
+        run: yarn run tsc --build
   eslint:
     name: eslint
     runs-on: ubuntu-latest

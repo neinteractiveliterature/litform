@@ -10,7 +10,10 @@
 yarn-error.log
 
 /packages/*/dist
+/packages/*/lib
 /packages/*/node_modules
+
+*.tsbuildinfo
 
 .yarn/*
 !.yarn/patches
