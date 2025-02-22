@@ -1,0 +1,31 @@
+{
+  "name": "@neinteractiveliterature/litform-apollo",
+  "author": "Nat Budin <natbudin@gmail.com>",
+  "license": "MIT",
+  "version": "0.30.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "repository": "https://github.com/neinteractiveliterature/litform",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && vite build"
+  },
+  "dependencies": {
+    "@neinteractiveliterature/litform-core": "workspace:^"
+  },
+  "peerDependencies": {
+    "@apollo/client": ">= 3.3.18",
+    "react": ">= 18"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.13.1",
+    "@types/react": "^19",
+    "react": "^19.0.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.1"
+  }
+}

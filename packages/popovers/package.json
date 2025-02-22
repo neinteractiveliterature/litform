@@ -1,0 +1,32 @@
+{
+  "name": "@neinteractiveliterature/litform-popovers",
+  "author": "Nat Budin <natbudin@gmail.com>",
+  "license": "MIT",
+  "version": "0.30.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "repository": "https://github.com/neinteractiveliterature/litform",
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf dist && vite build"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@neinteractiveliterature/litform-core": "workspace:^",
+    "classnames": "^2.5.1",
+    "react-cool-onclickoutside": "^1.7.0",
+    "react-popper": "^2.3.0"
+  },
+  "peerDependencies": {
+    "react": ">= 18"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "react": "^19.0.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.1"
+  }
+}
