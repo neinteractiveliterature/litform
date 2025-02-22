@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import ChoiceSet, { ChoiceSetProps } from '../ChoiceSet';
+import { ChoiceSet, ChoiceSetProps } from '@neinteractiveliterature/litform';
 
 export default {
   title: 'Forms/ChoiceSet',

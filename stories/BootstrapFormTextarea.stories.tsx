@@ -1,5 +1,8 @@
 import { Meta, StoryFn } from '@storybook/react';
-import BootstrapFormTextarea, { BootstrapFormTextareaProps } from '../BootstrapFormTextarea';
+import {
+  BootstrapFormTextarea,
+  BootstrapFormTextareaProps,
+} from '@neinteractiveliterature/litform';
 
 export default {
   title: 'Forms/BootstrapFormTextarea',

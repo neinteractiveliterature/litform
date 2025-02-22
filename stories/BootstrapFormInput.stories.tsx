@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import BootstrapFormInput, { BootstrapFormInputProps } from '../BootstrapFormInput';
+import { BootstrapFormInput, BootstrapFormInputProps } from '@neinteractiveliterature/litform';
 
 export default {
   title: 'Forms/BootstrapFormInput',

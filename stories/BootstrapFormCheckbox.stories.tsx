@@ -1,5 +1,8 @@
 import { Meta, StoryFn } from '@storybook/react';
-import BootstrapFormCheckbox, { BootstrapFormCheckboxProps } from '../BootstrapFormCheckbox';
+import {
+  BootstrapFormCheckbox,
+  BootstrapFormCheckboxProps,
+} from '@neinteractiveliterature/litform';
 
 export default {
   title: 'Forms/BootstrapFormCheckbox',

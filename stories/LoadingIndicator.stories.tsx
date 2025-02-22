@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import LoadingIndicator, { LoadingIndicatorProps } from '../LoadingIndicator';
+import { LoadingIndicator, LoadingIndicatorProps } from '@neinteractiveliterature/litform';
 
 export default {
   title: 'Loading/LoadingIndicator',

@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import MultipleChoiceInput, { MultipleChoiceInputProps } from '../MultipleChoiceInput';
+import { MultipleChoiceInput, MultipleChoiceInputProps } from '@neinteractiveliterature/litform';
 
 export default {
   title: 'Forms/MultipleChoiceInput',

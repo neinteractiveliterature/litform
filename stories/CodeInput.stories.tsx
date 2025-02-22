@@ -1,12 +1,10 @@
 import { Meta, StoryFn } from '@storybook/react';
-import CodeInput from '../CodeInput';
+import { CodeInput, useStandardCodeMirror, liquid } from '@neinteractiveliterature/litform';
 import { markdown } from '@codemirror/lang-markdown';
 import { oneDark } from '@codemirror/theme-one-dark';
 import ReactMarkdown from 'react-markdown';
 import { useCallback, useMemo } from 'react';
-import { useStandardCodeMirror } from '../useCodeMirror';
 import { useArgs } from '@storybook/preview-api';
-import { liquid } from '../liquid';
 
 export default {
   title: 'Forms/CodeInput',

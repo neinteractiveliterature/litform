@@ -20,20 +20,20 @@
   },
   "devDependencies": {
     "@lezer/generator": "^1.7.2",
-    "@types/react": "^19",
+    "@types/react": "^19.0.10",
     "react": "^19.0.0",
     "typescript": "^5.7.3",
     "vite": "^6.1.1"
   },
   "dependencies": {
-    "@codemirror/commands": "^6.7.1",
+    "@codemirror/commands": "^6.8.0",
     "@codemirror/lang-html": "^6.4.9",
-    "@codemirror/language": "^6.10.3",
-    "@codemirror/state": "^6.4.1",
-    "@codemirror/view": "^6.35.0",
-    "@lezer/common": "^1.2.1",
+    "@codemirror/language": "^6.10.8",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.3",
+    "@lezer/common": "^1.2.3",
     "@lezer/highlight": "^1.2.1",
-    "@lezer/lr": "^1.4.0",
+    "@lezer/lr": "^1.4.2",
     "@neinteractiveliterature/litform-core": "workspace:^",
     "classnames": "^2.5.1",
     "codemirror": "^6.0.1"
