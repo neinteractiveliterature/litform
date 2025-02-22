@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
-import BootstrapFormTextarea from '../BootstrapFormTextarea';
+import { BootstrapFormTextarea } from '@neinteractiveliterature/litform';
 
 describe('BootstrapFormTextarea', () => {
   const renderComponent = (overrideProps = {}) =>

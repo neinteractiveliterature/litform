@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "@neinteractiveliterature/litform-core": "workspace:^",
-    "react-bootstrap4-modal": "^3.0.8"
+    "react-bootstrap4-modal": "^3.0.9"
   }
 }

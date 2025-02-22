@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
-import BootstrapFormInput from '../BootstrapFormInput';
+import { BootstrapFormInput } from '@neinteractiveliterature/litform';
 
 describe('BootstrapFormInput', () => {
   const renderComponent = (overrideProps = {}) =>

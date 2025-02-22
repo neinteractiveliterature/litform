@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
-import BootstrapFormCheckbox from '../BootstrapFormCheckbox';
+import { BootstrapFormCheckbox } from '@neinteractiveliterature/litform';
 
 describe('BootstrapFormCheckbox', () => {
   const onChange = vi.fn();
