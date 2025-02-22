@@ -19,6 +19,7 @@ export function addNewObjectToReferenceArrayModifier<Q, T extends { id: string }
 ): Modifier<(Reference | undefined)[]> {
   const modifier: Modifier<(Reference | undefined)[]> = (existingObjectRefs, { readField }) => {
     const newObjectRef = cache.writeFragment({
+      // @ts-expect-error This is technically broken but this package is deprecated so I don't care
       data: newObject,
       fragment: fragment,
       fragmentName: fragmentName,
@@ -84,6 +85,7 @@ export function useCreateMutationWithReferenceArrayUpdater<
   fragmentName?: string,
 ): MutationTuple<TData, TVariables> {
   return useMutationFunction({
+    // @ts-expect-error This is technically broken but this package is deprecated so I don't care
     update: addNewObjectToReferenceArrayUpdater(
       containingObject,
       fieldName,

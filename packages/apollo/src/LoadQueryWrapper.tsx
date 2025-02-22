@@ -1,5 +1,6 @@
 import { OperationVariables, QueryHookOptions, QueryResult } from '@apollo/client';
 import { ErrorDisplay, PageLoadingIndicator } from '@neinteractiveliterature/litform-core';
+import { JSX } from 'react';
 
 /** @deprecated Apollo wrappers in Litform are going away */
 export default function LoadQueryWrapper<TData, TVariables extends OperationVariables, TProps>(
