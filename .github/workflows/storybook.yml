@@ -26,6 +26,8 @@ jobs:
         node-version-file: .node-version
     - name: yarn install
       run: yarn install
+    - name: build
+      run: yarn run build
     - name: Build Storybook
       run: yarn run build-storybook
     - name: Deploy
