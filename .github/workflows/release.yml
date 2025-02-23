@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ steps.node-version.outputs.node-version }}
           registry-url: 'https://registry.npmjs.org'
       - run: yarn
-      - run: yarn version ${{ github.event.release.name }}
+      - run: yarn workspaces foreach -At --exclude . version ${{ github.event.release.name }}
       - run: yarn run build
       - run: yarn workspaces foreach -At --exclude . pack
       - run: yarn workspaces foreach -At --exclude . exec "npm publish package.tgz --provenance --access public"
