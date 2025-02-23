@@ -1,10 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
-import {
-  ChoiceSet,
-  ChoiceSetMultipleChoiceProps,
-  ChoiceSetSingleChoiceProps,
-} from '@neinteractiveliterature/litform';
+import { ChoiceSet, ChoiceSetMultipleChoiceProps, ChoiceSetSingleChoiceProps } from '../src';
 
 describe('ChoiceSet', () => {
   const onChange = vi.fn();

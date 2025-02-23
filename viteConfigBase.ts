@@ -86,19 +86,7 @@ export const viteConfigBase: ViteUserConfig = {
   },
   test: {
     environment: 'jsdom',
-    setupFiles: ['./testSetup.ts'],
+    setupFiles: [path.join(import.meta.dirname, 'testSetup.ts')],
     globals: true,
-    reporters: [
-      'default',
-      ['junit', { outputFile: './test/reports/TEST-vitest.xml' }],
-      ['html', { outputFile: './test/html_reports/vitest-report.html' }],
-    ],
-    coverage: {
-      enabled: true,
-      include: ['packages/*/src/**/*.{js,jsx,ts,tsx}'],
-      reportsDirectory: './coverage',
-      reporter: ['text', 'lcov'],
-      reportOnFailure: true,
-    },
   },
 };

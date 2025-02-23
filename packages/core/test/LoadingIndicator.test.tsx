@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { LoadingIndicator } from '@neinteractiveliterature/litform';
+import { LoadingIndicator } from '../src';
 
 test('it renders with a given size', async () => {
   const { getByRole } = await render(<LoadingIndicator size={2} />);

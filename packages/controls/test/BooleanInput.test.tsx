@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
-import { BooleanInput } from '@neinteractiveliterature/litform';
+import BooleanInput from '../src/BooleanInput';
 
 describe('BooleanInput', () => {
   const onChange = vi.fn();

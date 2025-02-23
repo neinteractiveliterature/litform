@@ -1,12 +1,12 @@
 import { render, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
-import { BootstrapFormInput } from '@neinteractiveliterature/litform';
+import { BootstrapFormTextarea } from '../src';
 
-describe('BootstrapFormInput', () => {
+describe('BootstrapFormTextarea', () => {
   const renderComponent = (overrideProps = {}) =>
     render(
-      <BootstrapFormInput
-        name="my_input"
+      <BootstrapFormTextarea
+        name="my_textarea"
         label="type in me"
         value=""
         onTextChange={() => {}}

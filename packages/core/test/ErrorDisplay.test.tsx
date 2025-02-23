@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { GraphQLError } from 'graphql';
-import { ErrorDisplay } from '@neinteractiveliterature/litform';
+import { ErrorDisplay } from '../src';
 import { ApolloError } from '@apollo/client';
 
 test('it renders a string error', () => {

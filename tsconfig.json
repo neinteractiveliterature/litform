@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig-base.json",
   "compilerOptions": {
-    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "outDir": "./lib/" // path to output directory
   },
   "include": ["stories", "test"],

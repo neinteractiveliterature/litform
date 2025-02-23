@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { MultipleChoiceInput } from '@neinteractiveliterature/litform';
+import { MultipleChoiceInput } from '../src';
 
 describe('MultipleChoiceInput', () => {
   const renderMultipleChoiceInput = () =>
