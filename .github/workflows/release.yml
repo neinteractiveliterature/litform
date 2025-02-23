@@ -23,9 +23,6 @@ jobs:
           cache: yarn
           node-version: ${{ steps.node-version.outputs.node-version }}
           registry-url: 'https://registry.npmjs.org'
-      - run: npm login
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: yarn
       - run: yarn workspaces foreach -At --exclude . version ${{ github.event.release.name }}
       - run: yarn run build
