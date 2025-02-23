@@ -34,8 +34,7 @@ export const viteConfigBase: ViteUserConfig = {
         emitDeclarationOnly: true,
         declarationMap: true,
       },
-      exclude: ['./src/stories', './src/__tests__'],
-      outDir: 'dist/types',
+      exclude: ['./test'],
     }),
   ],
   build: {
@@ -60,10 +59,9 @@ export const viteConfigBase: ViteUserConfig = {
         /^@popperjs\//,
         /^@neinteractiveliterature\/litform/,
       ],
-      // input: entryPoints,
       output: {
-        chunkFileNames: '[format]/[name].js',
-        entryFileNames: '[format]/[name].js',
+        // chunkFileNames: '[format]/[name].js',
+        // entryFileNames: '[format]/[name].js',
         exports: 'named',
         globals: (name) => {
           if (name === 'react') {
