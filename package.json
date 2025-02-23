@@ -9,7 +9,7 @@
     "test": "vitest",
     "prepare": "husky",
     "prepublishOnly": "yarn run build",
-    "lint": "eslint src"
+    "lint": "eslint"
   },
   "dependencies": {
     "@neinteractiveliterature/litform": "workspace:^",
