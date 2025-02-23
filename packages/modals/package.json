@@ -2,7 +2,7 @@
   "name": "@neinteractiveliterature/litform-modals",
   "author": "Nat Budin <natbudin@gmail.com>",
   "license": "MIT",
-  "version": "0.30.0",
+  "version": "0.33.1",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "types": "dist/types/index.d.ts",
