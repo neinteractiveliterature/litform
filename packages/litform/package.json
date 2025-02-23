@@ -9,6 +9,9 @@
   "types": "dist/types/index.d.ts",
   "repository": "https://github.com/neinteractiveliterature/litform",
   "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf dist && vite build"
+  },
   "dependencies": {
     "@neinteractiveliterature/litform-codemirror": "workspace:^",
     "@neinteractiveliterature/litform-controls": "workspace:^",

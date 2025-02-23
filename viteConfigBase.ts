@@ -95,7 +95,7 @@ export const viteConfigBase: ViteUserConfig = {
     ],
     coverage: {
       enabled: true,
-      include: ['./src/**/*.{js,jsx,ts,tsx}'],
+      include: ['packages/*/src/**/*.{js,jsx,ts,tsx}'],
       reportsDirectory: './coverage',
       reporter: ['text', 'lcov'],
       reportOnFailure: true,

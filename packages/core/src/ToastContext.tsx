@@ -1,6 +1,7 @@
 import React, { JSX, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Toast, { TOAST_FADE_DURATION } from './Toast';
+import { Temporal } from 'temporal-polyfill';
 
 export const TOAST_ON_NEXT_PAGE_LOAD_STORAGE_KEY = 'toastOnNextPageLoad';
 
@@ -36,7 +37,11 @@ const ToastContext = React.createContext<ToastContextValue>({
   dismissMessage: () => {},
 });
 
-export function ToastContainer(): JSX.Element {
+export type ToastContainerProps = {
+  formatTimeAgo: (timeAgo: Temporal.Duration) => string;
+};
+
+export function ToastContainer({ formatTimeAgo }: ToastContainerProps): JSX.Element {
   const { toastMessages } = useContext(ToastContext);
 
   return (
@@ -46,6 +51,7 @@ export function ToastContainer(): JSX.Element {
           title={toastMessage.title}
           visible={toastMessage.visible}
           close={toastMessage.dismiss}
+          formatTimeAgo={formatTimeAgo}
           key={toastMessage.uuid}
           autoCloseAfter={toastMessage.autoDismissAfter}
         >
@@ -56,7 +62,12 @@ export function ToastContainer(): JSX.Element {
   );
 }
 
-export function ToastProvider({ children }: { children: React.ReactNode }): JSX.Element {
+export type ToastProviderProps = {
+  children: React.ReactNode;
+  formatTimeAgo: ToastContainerProps['formatTimeAgo'];
+};
+
+export function ToastProvider({ children, formatTimeAgo }: ToastProviderProps): JSX.Element {
   const [toastMessages, setToastMessages] = useState<ToastMessage[]>([]);
 
   const dismissMessage = useCallback((uuid: string) => {
@@ -114,7 +125,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }): JSX.
   return (
     <ToastContext.Provider value={contextValue}>
       {children}
-      <ToastContainer />
+      <ToastContainer formatTimeAgo={formatTimeAgo} />
     </ToastContext.Provider>
   );
 }

@@ -11,6 +11,7 @@
     { "path": "./packages/controls" },
     { "path": "./packages/core" },
     { "path": "./packages/modals" },
+    { "path": "./packages/litform" },
     { "path": "./packages/popovers" }
   ]
 }
