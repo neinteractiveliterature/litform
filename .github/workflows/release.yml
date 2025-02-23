@@ -26,7 +26,7 @@ jobs:
       - run: yarn
       - run: yarn version ${{ github.event.release.name }}
       - run: yarn run build
-      - run: yarn pack
-      - run: npm publish package.tgz --provenance --access public
+      - run: yarn workspaces foreach -At --exclude . pack
+      - run: yarn workspaces foreach -At --exclude . npm publish package.tgz --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
