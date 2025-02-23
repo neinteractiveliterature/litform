@@ -28,6 +28,8 @@ jobs:
           node-version: ${{ steps.node-version.outputs.node-version }}
       - name: yarn install
         run: yarn install
+      - name: build
+        run: yarn run build
       - name: tsc
         run: yarn run tsc --build
   eslint:
