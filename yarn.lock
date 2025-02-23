@@ -1316,7 +1316,7 @@ __metadata:
     "@types/lodash": "npm:^4.17.15"
     "@types/react": "npm:^19.0.10"
     react: "npm:^19.0.0"
-    react-bootstrap4-modal: "npm:^3.0.9"
+    react-bootstrap4-modal: "npm:^3.0.10"
     typescript: "npm:^5.7.3"
     vite: "npm:^6.1.1"
     vitest: "npm:^3.0.6"
@@ -7302,15 +7302,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-bootstrap4-modal@npm:^3.0.9":
-  version: 3.0.9
-  resolution: "react-bootstrap4-modal@npm:3.0.9"
+"react-bootstrap4-modal@npm:^3.0.10":
+  version: 3.0.10
+  resolution: "react-bootstrap4-modal@npm:3.0.10"
   dependencies:
     classnames: "npm:^2.5.1"
   peerDependencies:
     react: ">= 18"
     react-dom: ">= 18"
-  checksum: 10/66d6ef3e0c70f13386cb8623f1302e73f3f1b80e9d0c222873dcf79c5aadf7a45eaa7556a589e16c6f98f9dcffe69de2e10c5a5a4b8c712168bfbff884c5f679
+  checksum: 10/60a4d9cb64c4eebe5f189ca90b8e9bee92fec24e8a37f81e73ea54e38bbaa8da71e276f45acda8e8df2a107de8b22ed3a05defc7d11eb5ea00b3b7efb75801d8
   languageName: node
   linkType: hard
 
