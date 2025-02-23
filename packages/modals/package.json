@@ -3,8 +3,8 @@
   "author": "Nat Budin <natbudin@gmail.com>",
   "license": "MIT",
   "version": "0.33.1",
-  "main": "dist/cjs/index.js",
-  "module": "dist/es/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/types/index.d.ts",
   "exports": {
     "import": {
