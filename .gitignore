@@ -12,6 +12,7 @@ yarn-error.log
 /packages/*/dist
 /packages/*/lib
 /packages/*/node_modules
+/packages/*/package.tgz
 
 *.tsbuildinfo
 
