@@ -1,0 +1,28 @@
+{
+  "name": "@neinteractiveliterature/litform",
+  "description": "A library of shared frontend components used in NEIL's web apps",
+  "author": "Nat Budin <natbudin@gmail.com>",
+  "license": "MIT",
+  "version": "0.30.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "repository": "https://github.com/neinteractiveliterature/litform",
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf dist && vite build"
+  },
+  "dependencies": {
+    "@neinteractiveliterature/litform-codemirror": "workspace:^",
+    "@neinteractiveliterature/litform-controls": "workspace:^",
+    "@neinteractiveliterature/litform-core": "workspace:^",
+    "@neinteractiveliterature/litform-modals": "workspace:^",
+    "@neinteractiveliterature/litform-popovers": "workspace:^"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.1",
+    "vitest": "^3.0.6"
+  }
+}

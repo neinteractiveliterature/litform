@@ -1,0 +1,38 @@
+{
+  "name": "@neinteractiveliterature/litform-core",
+  "author": "Nat Budin <natbudin@gmail.com>",
+  "license": "MIT",
+  "version": "0.30.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "repository": "https://github.com/neinteractiveliterature/litform",
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf dist && vite build"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": ">= 18"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.13.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/lodash": "^4.17.15",
+    "@types/react": "^19.0.10",
+    "react": "^19.0.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.1",
+    "vitest": "^3.0.6"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "graphql": "^16.10.0",
+    "lodash": "^4.17.21",
+    "temporal-polyfill": "^0.2.5",
+    "uuid": "^11.1.0"
+  }
+}

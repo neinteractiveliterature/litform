@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "sourceMap": true, // allow sourcemap support
+    "declaration": true,
+    "strictNullChecks": true, // enable strict null checks as a best practice
+    "module": "ES2022", // specify module code generation
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "react-jsx", // use typescript to transpile jsx to js
+    "target": "ES2015", // specify ECMAScript target version
+    "allowJs": true, // allow a partial TypeScript and JavaScript codebase,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["DOM", "DOM.Iterable", "ES2016", "ESNext.Intl"],
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
+  }
+}

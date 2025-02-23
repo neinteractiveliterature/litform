@@ -22,8 +22,17 @@ const flatReact = /** @type {NonNullable<typeof reactPlugin.configs.flat>} */ (
 
 export default typescriptEslint.config(
   {
-    files: ['src/**/*'],
-    ignores: ['dist/*', '.yarn/*', '.pnp.cjs', 'storybook-static/*'],
+    ignores: [
+      'coverage/',
+      'lib/',
+      'packages/*/dist/',
+      'packages/*/lib/',
+      '.yarn/',
+      '.pnp.cjs',
+      'storybook-static/',
+      'test/html_reports/',
+      'test/reports/',
+    ],
   },
   js.configs.recommended,
   ...typescriptEslint.configs.recommended,

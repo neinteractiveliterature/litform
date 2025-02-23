@@ -28,8 +28,10 @@ jobs:
           node-version: ${{ steps.node-version.outputs.node-version }}
       - name: yarn install
         run: yarn install
-      - name: tsc on resulting generated files
-        run: yarn run tsc --noEmit
+      - name: build
+        run: yarn run build
+      - name: tsc
+        run: yarn run tsc --build
   eslint:
     name: eslint
     runs-on: ubuntu-latest
@@ -67,6 +69,8 @@ jobs:
       - name: yarn install
         run: yarn install
       - name: build
+        run: yarn run build
+      - name: test
         run: yarn run test
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v5
