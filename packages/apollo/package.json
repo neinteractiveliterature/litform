@@ -6,6 +6,9 @@
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": "./dist/es/index.js"
+  },
   "repository": "https://github.com/neinteractiveliterature/litform",
   "sideEffects": false,
   "files": [
