@@ -21,13 +21,13 @@ export interface ChoiceSetBaseProps {
 
 export interface ChoiceSetSingleChoiceProps extends ChoiceSetBaseProps {
   value?: string | null;
-  onChange(value: string | null): unknown;
+  onChange?(value: string | null): unknown;
   multiple?: false;
 }
 
 export interface ChoiceSetMultipleChoiceProps extends ChoiceSetBaseProps {
   value?: string[] | null;
-  onChange(value: string[] | null): unknown;
+  onChange?(value: string[] | null): unknown;
   multiple: true;
 }
 
@@ -37,6 +37,10 @@ function ChoiceSet(props: ChoiceSetProps): JSX.Element {
   const choiceType = props.multiple ? 'checkbox' : 'radio';
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (!props.onChange) {
+      return;
+    }
+
     if (props.multiple) {
       if (event.target.checked) {
         props.onChange([...(props.value || []), event.target.value]);

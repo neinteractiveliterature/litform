@@ -6,7 +6,7 @@ type BootstrapFormTextareaOwnProps = Omit<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
   'onChange'
 > & {
-  onTextChange: (text: string) => void;
+  onTextChange?: (text: string) => void;
 };
 
 export type BootstrapFormTextareaProps =
@@ -21,8 +21,11 @@ function BootstrapFormTextarea(props: BootstrapFormTextareaOwnProps) {
   const { name } = props;
   const inputId = useId();
   const { onTextChange, textareaAttributes } = partitionTextareaElementAttributes(props);
-  const onChangeProp = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
-    onTextChange(event.target.value);
+  const onChangeProp = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (onTextChange) {
+      onTextChange(event.target.value);
+    }
+  };
 
   return (
     <textarea

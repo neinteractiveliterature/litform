@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FormGroupWithLabelWrapper, FormGroupWithLabelWrapperProps } from './FormGroupWithLabel';
 
 type BootstrapFormSelectOwnProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> & {
-  onValueChange: (value: string) => void;
+  onValueChange?: (value: string) => void;
 };
 
 export type BootstrapFormSelectProps = FormGroupWithLabelWrapperProps<BootstrapFormSelectOwnProps>;
@@ -15,8 +15,11 @@ function partitionSelectElementAttributes(props: BootstrapFormSelectOwnProps) {
 
 function BootstrapFormSelect(props: BootstrapFormSelectOwnProps) {
   const { onValueChange, selectAttributes } = partitionSelectElementAttributes(props);
-  const onChangeProp = (event: React.ChangeEvent<HTMLSelectElement>) =>
-    onValueChange(event.target.value);
+  const onChangeProp = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (onValueChange) {
+      onValueChange(event.target.value);
+    }
+  };
 
   return (
     <select
