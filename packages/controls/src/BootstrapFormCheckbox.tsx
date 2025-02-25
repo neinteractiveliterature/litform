@@ -4,8 +4,6 @@ import classnames from 'classnames';
 export type BootstrapFormCheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   /** the content of the label that will appear beside the element */
   label: ReactNode | ReactNode[];
-  /** whether or not the element is checked */
-  checked: boolean;
   /**
    * if present, this will be called each time this input is checked or unchecked.  It's an
    * easier alternative to onChange that avoids having to deal with DOM events.

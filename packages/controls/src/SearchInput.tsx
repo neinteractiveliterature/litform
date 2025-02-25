@@ -3,11 +3,11 @@ import {
   LitformIconSetIdentifier,
   useDebouncedState,
 } from '@neinteractiveliterature/litform-core';
-import { ReactNode, HTMLAttributes, useId, JSX } from 'react';
+import { ReactNode, HTMLAttributes, useId, JSX, useCallback } from 'react';
 
 export type SearchInputProps = {
   value?: string;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   label: ReactNode | ReactNode[];
   wait?: number;
   name?: string;
@@ -26,7 +26,19 @@ function SearchInput({
   inputGroupProps,
   iconSet,
 }: SearchInputProps): JSX.Element {
-  const [transientValue, setTransientValue] = useDebouncedState(value ?? '', onChange, wait ?? 100);
+  const onChangeIfPresent = useCallback(
+    (value: string) => {
+      if (onChange) {
+        onChange(value);
+      }
+    },
+    [onChange],
+  );
+  const [transientValue, setTransientValue] = useDebouncedState(
+    value ?? '',
+    onChangeIfPresent,
+    wait ?? 100,
+  );
   const inputId = useId();
 
   return (

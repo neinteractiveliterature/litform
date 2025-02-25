@@ -6,7 +6,7 @@ export type BooleanInputProps = Omit<
   MultipleChoiceInputProps,
   'multiple' | 'value' | 'onChange' | 'choices'
 > & {
-  onChange: React.Dispatch<boolean>;
+  onChange?: React.Dispatch<boolean>;
   value?: boolean;
   trueLabel?: ReactNode | ReactNode[];
   falseLabel?: ReactNode | ReactNode[];
@@ -40,7 +40,11 @@ function BooleanInput({
       choices={choices}
       choiceClassName="form-check-inline"
       value={value != null ? value.toString() : null}
-      onChange={(newValue: string) => onChange(newValue === 'true')}
+      onChange={(newValue: string) => {
+        if (onChange) {
+          onChange(newValue === 'true');
+        }
+      }}
     />
   );
 }

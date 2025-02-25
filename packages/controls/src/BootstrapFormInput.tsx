@@ -7,7 +7,7 @@ type BootstrapFormInputOwnProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'o
    * if present, this will be called each time the text content of the input changes.  It's an
    * easier alternative to onChange that avoids having to deal with DOM events.
    */
-  onTextChange: (text: string) => void;
+  onTextChange?: (text: string) => void;
 };
 
 export type BootstrapFormInputProps = FormGroupWithLabelWrapperProps<BootstrapFormInputOwnProps>;
@@ -21,7 +21,9 @@ function BootstrapFormInput(props: BootstrapFormInputOwnProps) {
   const { onTextChange, inputAttributes } = partitionInputElementAttributes(props);
 
   const onChangeProp = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onTextChange(event.target.value);
+    if (onTextChange) {
+      onTextChange(event.target.value);
+    }
   };
 
   return (
