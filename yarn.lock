@@ -2541,9 +2541,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-v8@npm:3.0.7":
-  version: 3.0.7
-  resolution: "@vitest/coverage-v8@npm:3.0.7"
+"@vitest/coverage-v8@npm:3.0.8":
+  version: 3.0.8
+  resolution: "@vitest/coverage-v8@npm:3.0.8"
   dependencies:
     "@ampproject/remapping": "npm:^2.3.0"
     "@bcoe/v8-coverage": "npm:^1.0.2"
@@ -2558,12 +2558,12 @@ __metadata:
     test-exclude: "npm:^7.0.1"
     tinyrainbow: "npm:^2.0.0"
   peerDependencies:
-    "@vitest/browser": 3.0.7
-    vitest: 3.0.7
+    "@vitest/browser": 3.0.8
+    vitest: 3.0.8
   peerDependenciesMeta:
     "@vitest/browser":
       optional: true
-  checksum: 10/dd6fab55f6c03e4e62926e83c9a31ea5d6960e4b801e439307a1a48796230b4ae6273c437a1d78098f03439fb95bc75ad1a308d750e1393e3f3f52494ff90817
+  checksum: 10/78d2349a9a200ca82acda2fbb785cdaf11081cfdb590d2aa9c596fe318fb5badd0247099a4ac1bd52eef606d0255fcd4573f334e61263671eb8901e4810a788a
   languageName: node
   linkType: hard
 
@@ -2607,12 +2607,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/pretty-format@npm:3.0.7":
-  version: 3.0.7
-  resolution: "@vitest/pretty-format@npm:3.0.7"
+"@vitest/pretty-format@npm:3.0.8":
+  version: 3.0.8
+  resolution: "@vitest/pretty-format@npm:3.0.8"
   dependencies:
     tinyrainbow: "npm:^2.0.0"
-  checksum: 10/700479370765a8db24403e9abda808397c137873244531f50d91c9fc6434299b416f6742e0d6512e8a0c5786dad676f17091584f3f48bfce5c2ccb7cec1f4f64
+  checksum: 10/255a7929e814fd8cfd8978ae6342479a8f453ccca97a0a968efbe45b5d39d2c56e1bfa3a5400816f54d3a82c944c8407f7fe2426ec57499a9210bdccf06dbc78
   languageName: node
   linkType: hard
 
@@ -2646,11 +2646,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/ui@npm:3.0.7":
-  version: 3.0.7
-  resolution: "@vitest/ui@npm:3.0.7"
+"@vitest/ui@npm:3.0.8":
+  version: 3.0.8
+  resolution: "@vitest/ui@npm:3.0.8"
   dependencies:
-    "@vitest/utils": "npm:3.0.7"
+    "@vitest/utils": "npm:3.0.8"
     fflate: "npm:^0.8.2"
     flatted: "npm:^3.3.3"
     pathe: "npm:^2.0.3"
@@ -2658,8 +2658,8 @@ __metadata:
     tinyglobby: "npm:^0.2.12"
     tinyrainbow: "npm:^2.0.0"
   peerDependencies:
-    vitest: 3.0.7
-  checksum: 10/7f6533c732b8abe7c2dfa400a1bc0bafc720da3e794d721140c9013056e333962a9ab85997c190e827b941e533d15d73844fdc88363495a951922ca87236a98c
+    vitest: 3.0.8
+  checksum: 10/d38c3ebf31b62fb6c987ce663e8a04e36642cbdcba4e521fcef13c41346435847885f180854ee20592c56d6722b6b5c5f46c211bd2d86403023b0ce99ff23f0b
   languageName: node
   linkType: hard
 
@@ -2674,14 +2674,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/utils@npm:3.0.7":
-  version: 3.0.7
-  resolution: "@vitest/utils@npm:3.0.7"
+"@vitest/utils@npm:3.0.8":
+  version: 3.0.8
+  resolution: "@vitest/utils@npm:3.0.8"
   dependencies:
-    "@vitest/pretty-format": "npm:3.0.7"
+    "@vitest/pretty-format": "npm:3.0.8"
     loupe: "npm:^3.1.3"
     tinyrainbow: "npm:^2.0.0"
-  checksum: 10/46e91c43c63615cb96b8f56bb2e94e368c0af8ca4f7814f229f99ac87b24a7cec34febcfdd8370f9c8f86f525da0b61470ad06f1a47945c3e200f64efb696ae3
+  checksum: 10/207281dc59cd37e4aabb56db4b9bd66d281b4ef314cbed7f9642e61dfcd65bb12d29600291d676f56c3eb82b9831722a59b13f0d65b1a7af4e3ed2a5c18e98b7
   languageName: node
   linkType: hard
 
@@ -7786,8 +7786,8 @@ __metadata:
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19"
     "@vitejs/plugin-react-swc": "npm:^3.8.0"
-    "@vitest/coverage-v8": "npm:3.0.7"
-    "@vitest/ui": "npm:3.0.7"
+    "@vitest/coverage-v8": "npm:3.0.8"
+    "@vitest/ui": "npm:3.0.8"
     assert: "npm:^2.1.0"
     bootstrap: "npm:^5.3.3"
     bootstrap-icons: "npm:^1.11.3"
