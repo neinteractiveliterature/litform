@@ -30,6 +30,7 @@ export {
   titleSort,
 } from './StringUtils';
 export { useFunctionalStateUpdater, usePropertySetters } from './usePropertySetters';
+export type { FunctionalStateUpdater, PropertySetter } from './usePropertySetters';
 export {
   parseIntOrNull,
   parseFloatOrNull,
