@@ -43,6 +43,6 @@
     "copy-to-clipboard": "^3.3.3",
     "graphql": "^16.10.0",
     "lodash": "^4.17.21",
-    "temporal-polyfill": "^0.2.5"
+    "temporal-polyfill": "^0.3.0"
   }
 }
