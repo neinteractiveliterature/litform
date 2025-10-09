@@ -18,7 +18,7 @@ jobs:
       - name: corepack enable
         run: corepack enable
       # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           cache: yarn
           node-version: ${{ steps.node-version.outputs.node-version }}
