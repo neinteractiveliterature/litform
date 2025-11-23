@@ -75,7 +75,7 @@
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
     "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
   },
-  "packageManager": "yarn@4.9.0",
+  "packageManager": "yarn@4.12.0",
   "dependenciesMeta": {
     "@babel/traverse@7.26.9": {
       "unplugged": true
