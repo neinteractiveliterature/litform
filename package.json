@@ -16,7 +16,7 @@
     "@neinteractiveliterature/litform-apollo": "workspace:^"
   },
   "devDependencies": {
-    "@apollo/client": "^3.13.1",
+    "@apollo/client": "^4.0.0",
     "@codemirror/lang-markdown": "^6.3.2",
     "@codemirror/theme-one-dark": "^6.1.2",
     "@eslint/compat": "^1.2.7",
