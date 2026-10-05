@@ -23,10 +23,12 @@ jobs:
           cache: yarn
           node-version: ${{ steps.node-version.outputs.node-version }}
           registry-url: 'https://registry.npmjs.org'
+      # Trusted publishing (OIDC) needs npm 11.5.1 or later, and Node 22.14's bundled npm is older
+      - run: npm install -g npm@^11.5.1
       - run: yarn
       - run: yarn workspaces foreach -At --exclude . version ${{ github.event.release.name }}
       - run: yarn run build
       - run: yarn workspaces foreach -At --exclude . pack
+      # Authenticates through OIDC (each package has this workflow configured as a trusted publisher on npmjs.com), so
+      # there's no npm token
       - run: yarn workspaces foreach -At --exclude . exec "npm publish package.tgz --provenance --access public"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
