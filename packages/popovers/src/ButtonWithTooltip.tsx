@@ -20,7 +20,13 @@ function ButtonWithTooltip({
   const [arrow, setArrow] = useState<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState<boolean>(false);
 
-  const { styles, attributes, state, update } = useLitformPopper(tooltip, dropdownButton, arrow);
+  // The tooltip element is only handed to popper while the tooltip is showing, so a page full of these buttons doesn't
+  // have popper tracking and positioning every hidden tooltip.
+  const { styles, attributes, state, update } = useLitformPopper(
+    visible ? tooltip : null,
+    dropdownButton,
+    arrow,
+  );
 
   const show = useCallback(() => {
     setVisible(true);

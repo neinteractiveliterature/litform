@@ -45,8 +45,11 @@ function HelpPopover({
     setVisible(!visible);
   };
 
+  // The popover element is only handed to popper while the popover is showing.  Popper only sets itself up (listeners,
+  // position computation, state updates after every render) when it has both elements, so this keeps every help
+  // popover on a page from doing that work while they're hidden.
   const { styles, attributes } = useLitformPopperWithAutoClosing(
-    popover,
+    visible ? popover : null,
     toggleButton,
     arrow,
     setVisible,
