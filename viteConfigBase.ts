@@ -56,7 +56,7 @@ export const viteConfigBase: ViteUserConfig = {
         /^@apollo\//,
         /^@codemirror\//,
         /^@lezer\//,
-        /^@popperjs\//,
+        /^@floating-ui\//,
         /^@neinteractiveliterature\/litform/,
       ],
       output: {

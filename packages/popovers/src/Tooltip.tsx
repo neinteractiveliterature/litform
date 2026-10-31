@@ -1,8 +1,8 @@
 import { Ref, ReactNode, JSX } from 'react';
 import classNames from 'classnames';
-import { usePopper } from 'react-popper';
+import type { LitformPopperResult } from './PopperUtils';
 
-export type TooltipProps = Pick<ReturnType<typeof usePopper>, 'styles' | 'attributes' | 'state'> & {
+export type TooltipProps = Pick<LitformPopperResult, 'styles' | 'attributes' | 'state'> & {
   popperRef: Ref<HTMLDivElement>;
   arrowRef: Ref<HTMLDivElement>;
   visible?: boolean;

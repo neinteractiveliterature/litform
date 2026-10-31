@@ -25,11 +25,10 @@
     "dist"
   ],
   "dependencies": {
+    "@floating-ui/react-dom": "^2.1.9",
     "@neinteractiveliterature/litform-core": "workspace:^",
-    "@popperjs/core": "^2.11.8",
     "classnames": "^2.5.1",
-    "react-cool-onclickoutside": "^1.7.0",
-    "react-popper": "^2.3.0"
+    "react-cool-onclickoutside": "^1.7.0"
   },
   "peerDependencies": {
     "react": ">= 18",

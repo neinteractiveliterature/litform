@@ -254,6 +254,63 @@ const addToast = useToast();
 addToast({ title: 'Saved', body: 'Changes saved successfully.' });
 ```
 
+### useLitformPopper / useLitformPopperWithAutoClosing / useToggleOpen
+
+Position a dropdown, popover or tooltip next to another element. Built on [Floating UI](https://floating-ui.com/) (these hooks used to be built on Popper, which is why they still say "popper").
+
+```tsx
+const [button, setButton] = useState<HTMLButtonElement | null>(null);
+const [menu, setMenu] = useState<HTMLDivElement | null>(null);
+const [open, setOpen] = useState(false);
+
+// Pass `null` for the popper element while it's hidden: nothing is set up (no listeners, no measuring) until both
+// elements exist.
+const { styles, attributes, state, update } = useLitformPopperWithAutoClosing(
+  open ? menu : null, // the popper element
+  button, // the reference element
+  null, // the arrow element, if you have one
+  setOpen, // called with `false` when something outside the button and menu is clicked
+  { placement: 'bottom-start', offset: 2 },
+);
+const toggle = useToggleOpen(setOpen, update);
+
+<button ref={setButton} onClick={toggle}>Menu</button>
+<div ref={setMenu} style={styles.popper} {...attributes.popper} className={open ? 'dropdown-menu show' : 'd-none'}>
+  …
+</div>;
+```
+
+Options (`LitformPopperOptions`, all optional):
+
+| Option         | Type            | Notes                                                                                                                                                                                              |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `placement`    | `Placement`     | Default `'bottom'`. Any Floating UI placement, e.g. `'top-start'`.                                                                                                                                 |
+| `strategy`     | `Strategy`      | Default `'fixed'`.                                                                                                                                                                                 |
+| `offset`       | `OffsetOptions` | A number (gap between reference and popper) or `{ mainAxis, crossAxis }`.                                                                                                                          |
+| `arrowPadding` | `number`        | Padding between the arrow and the popper's edges. Only matters if you pass an arrow element.                                                                                                       |
+| `middleware`   | `Middleware[]`  | Extra [Floating UI middleware](https://floating-ui.com/docs/middleware) (e.g. `size`, to match the reference's width). Runs after the built-in `offset`, `flip` and `shift`, and before the arrow. |
+
+`flip` and `shift` are always on, so the popper stays on screen.
+
+Result (`LitformPopperResult`):
+
+- `styles.popper` / `styles.arrow` — apply to the popper and arrow elements.
+- `attributes.popper` — spread onto the popper element. Contains `data-popper-placement` (which Bootstrap's CSS keys off) once it has been positioned, and is empty before that.
+- `state` — `{ placement }` once positioned (the placement may differ from the one you asked for if it flipped), `null` before then or while the popper element is `null`.
+- `update()` — recompute the position now.
+
+`useAutoClosingPopper(setVisible, reference, popper)` is the click-outside half on its own; `useLitformPopperWithAutoClosing` is both together.
+
+**Migrating from the Popper-based version:** the hook names, arguments and result shape are unchanged; only the options differ.
+
+| Before (Popper)                                                          | Now (Floating UI)                                                   |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| `{ modifiers: [{ name: 'offset', options: { offset: [skid, dist] } }] }` | `{ offset: { crossAxis: skid, mainAxis: dist } }`                   |
+| `{ modifiers: [{ name: 'arrow', options: { padding } }] }`               | `{ arrowPadding: padding }`                                         |
+| custom modifiers (`{ name, fn }` working on Popper's `state`)            | Floating UI middleware in `middleware: [...]` (different signature) |
+| `import { Placement } from '@popperjs/core'`                             | `import type { Placement } from '@neinteractiveliterature/litform'` |
+| `ReturnType<typeof usePopper>['styles']` etc.                            | `LitformPopperResult['styles']` etc.                                |
+
 ---
 
 ## Utility components

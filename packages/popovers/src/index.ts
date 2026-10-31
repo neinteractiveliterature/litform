@@ -6,4 +6,12 @@ export {
   useLitformPopperWithAutoClosing,
   useToggleOpen,
 } from './PopperUtils';
+export type {
+  LitformPopperOptions,
+  LitformPopperResult,
+  Middleware,
+  OffsetOptions,
+  Placement,
+  Strategy,
+} from './PopperUtils';
 export { default as Tooltip } from './Tooltip';
