@@ -1,7 +1,7 @@
 import { ReactNode, useCallback, useState } from 'react';
 import * as React from 'react';
 import classNames from 'classnames';
-import { useLitformPopperWithAutoClosing } from './PopperUtils';
+import { useLitformFloatingWithAutoClosing } from './FloatingUtils';
 import { getIconClassName, LitformIconSetIdentifier } from '@neinteractiveliterature/litform-core';
 
 // https://stackoverflow.com/questions/36532307/rem-px-in-javascript
@@ -45,20 +45,18 @@ function HelpPopover({
     setVisible(!visible);
   };
 
-  // The popover element is only handed to popper while the popover is showing.  Popper only sets itself up (listeners,
-  // position computation, state updates after every render) when it has both elements, so this keeps every help
-  // popover on a page from doing that work while they're hidden.
-  const { styles, attributes } = useLitformPopperWithAutoClosing(
+  // The popover element is only handed to the positioning code while the popover is showing.  It only sets itself up
+  // (listeners, position computation, state updates after every render) when it has both elements, so this keeps every
+  // help popover on a page from doing that work while they're hidden.
+  const { styles, attributes } = useLitformFloatingWithAutoClosing(
     visible ? popover : null,
     toggleButton,
     arrow,
     setVisible,
     {
-      modifiers: [
-        // offset value is pure trial and error, no idea why this works
-        { name: 'offset', options: { offset: [remToPx((1.0 + 1.0 / 6.0) * -1), remToPx(0.5)] } },
-        { name: 'arrow', options: { element: arrow, padding: remToPx(-0.3) } },
-      ],
+      // offset value is pure trial and error, no idea why this works
+      offset: { crossAxis: remToPx((1.0 + 1.0 / 6.0) * -1), mainAxis: remToPx(0.5) },
+      arrowPadding: remToPx(-0.3),
     },
   );
 
@@ -90,8 +88,8 @@ function HelpPopover({
           'd-none': !visible,
         })}
         ref={setPopover}
-        style={styles.popper}
-        {...attributes.popper}
+        style={styles.floating}
+        {...attributes.floating}
       >
         <div className="card-body">{children}</div>
         <span ref={setArrow} style={styles.arrow} className="popover-arrow" />

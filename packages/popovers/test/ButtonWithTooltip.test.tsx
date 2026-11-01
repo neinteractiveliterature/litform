@@ -1,8 +1,8 @@
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { ButtonWithTooltip } from '../src';
 
-// Popper marks an element it has positioned with data-popper-placement, so that attribute shows whether popper is
-// doing any work for the tooltip.
+// litform marks an element it has positioned with data-popper-placement (Bootstrap's CSS keys off that name), so
+// that attribute shows whether any positioning work is being done for the tooltip.
 const POSITIONED = 'data-popper-placement';
 
 describe('ButtonWithTooltip', () => {
