@@ -2,12 +2,12 @@ import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { vi } from 'vitest';
 import { HelpPopover } from '../src';
 
-// Popper marks an element it has positioned with data-popper-placement, so that attribute shows whether popper is
-// doing any work for the popover.
+// litform marks an element it has positioned with data-popper-placement (Bootstrap's CSS keys off that name), so
+// that attribute shows whether any positioning work is being done for the popover.
 const POSITIONED = 'data-popper-placement';
 
 describe('HelpPopover', () => {
-  // Popper computes positions asynchronously, so let those state updates land inside act before the test ends
+  // Floating UI computes positions asynchronously, so let those state updates land inside act before the test ends
   const settle = () =>
     act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 0));

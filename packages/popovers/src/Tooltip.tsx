@@ -1,16 +1,16 @@
 import { Ref, ReactNode, JSX } from 'react';
 import classNames from 'classnames';
-import type { LitformPopperResult } from './PopperUtils';
+import type { LitformFloatingResult } from './FloatingUtils';
 
-export type TooltipProps = Pick<LitformPopperResult, 'styles' | 'attributes' | 'state'> & {
-  popperRef: Ref<HTMLDivElement>;
+export type TooltipProps = Pick<LitformFloatingResult, 'styles' | 'attributes' | 'state'> & {
+  floatingRef: Ref<HTMLDivElement>;
   arrowRef: Ref<HTMLDivElement>;
   visible?: boolean;
   children: ReactNode | ReactNode[];
 };
 
 function Tooltip({
-  popperRef,
+  floatingRef,
   arrowRef,
   styles,
   visible,
@@ -22,14 +22,14 @@ function Tooltip({
 
   return (
     <div
-      ref={popperRef}
-      style={{ ...styles.popper, ...(visible ? {} : { zIndex: -9999 }) }}
+      ref={floatingRef}
+      style={{ ...styles.floating, ...(visible ? {} : { zIndex: -9999 }) }}
       className={classNames(`tooltip bs-tooltip-${placementClass}`, {
         show: visible,
         'd-none': !visible,
       })}
       role="tooltip"
-      {...attributes.popper}
+      {...attributes.floating}
     >
       <div className="tooltip-arrow" ref={arrowRef} style={styles.arrow} />
       <div className="tooltip-inner">{children}</div>

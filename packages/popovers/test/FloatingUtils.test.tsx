@@ -2,9 +2,9 @@ import { act, fireEvent, render, renderHook, waitFor } from '@testing-library/re
 import { vi } from 'vitest';
 import {
   Tooltip,
-  useAutoClosingPopper,
-  useLitformPopper,
-  useLitformPopperWithAutoClosing,
+  useAutoClosingFloating,
+  useLitformFloating,
+  useLitformFloatingWithAutoClosing,
   useToggleOpen,
 } from '../src';
 
@@ -37,7 +37,7 @@ const reference = (overrides: Partial<Box> = {}) =>
     height: 30,
     ...overrides,
   });
-const popper = (overrides: Partial<Box> = {}) =>
+const floating = (overrides: Partial<Box> = {}) =>
   box(document.createElement('div'), { left: 0, top: 0, width: 100, height: 50, ...overrides });
 
 // jsdom's viewport has no size, which makes Floating UI think everything overflows it and flip around; give it a screen
@@ -59,34 +59,36 @@ afterEach(() => {
   Reflect.deleteProperty(document.documentElement, 'clientHeight');
 });
 
-describe('useLitformPopper', () => {
-  test('it does nothing until it has both a reference and a popper element', async () => {
+describe('useLitformFloating', () => {
+  test('it does nothing until it has both a reference and a floating element', async () => {
     const referenceElement = reference();
-    const onlyReference = renderHook(() => useLitformPopper(null, referenceElement, null));
+    const onlyReference = renderHook(() => useLitformFloating(null, referenceElement, null));
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 20));
     });
     expect(onlyReference.result.current.state).toBeNull();
-    expect(onlyReference.result.current.attributes.popper).toEqual({});
+    expect(onlyReference.result.current.attributes.floating).toEqual({});
 
-    const popperElement = popper();
-    const onlyPopper = renderHook(() => useLitformPopper(popperElement, null, null));
+    const floatingElement = floating();
+    const onlyFloating = renderHook(() => useLitformFloating(floatingElement, null, null));
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 20));
     });
-    expect(onlyPopper.result.current.state).toBeNull();
+    expect(onlyFloating.result.current.state).toBeNull();
   });
 
-  test('it puts the popper below the reference by default, as a fixed-position element', async () => {
+  test('it puts the floating element below the reference by default, as a fixed-position element', async () => {
     const referenceElement = reference();
-    const popperElement = popper();
-    const { result } = renderHook(() => useLitformPopper(popperElement, referenceElement, null));
+    const floatingElement = floating();
+    const { result } = renderHook(() =>
+      useLitformFloating(floatingElement, referenceElement, null),
+    );
 
     await waitFor(() => expect(result.current.state).not.toBeNull());
 
     expect(result.current.state).toEqual({ placement: 'bottom' });
-    expect(result.current.attributes.popper).toEqual({ 'data-popper-placement': 'bottom' });
-    expect(result.current.styles.popper).toMatchObject({
+    expect(result.current.attributes.floating).toEqual({ 'data-popper-placement': 'bottom' });
+    expect(result.current.styles.floating).toMatchObject({
       position: 'fixed',
       transform: 'translate(200px, 230px)', // centered under the reference, whose bottom edge is at y=230
     });
@@ -94,9 +96,9 @@ describe('useLitformPopper', () => {
 
   test('it honors the placement, strategy and offset options', async () => {
     const referenceElement = reference({ top: 300 });
-    const popperElement = popper();
+    const floatingElement = floating();
     const { result } = renderHook(() =>
-      useLitformPopper(popperElement, referenceElement, null, {
+      useLitformFloating(floatingElement, referenceElement, null, {
         placement: 'top',
         strategy: 'absolute',
         offset: 10,
@@ -106,43 +108,43 @@ describe('useLitformPopper', () => {
     await waitFor(() => expect(result.current.state).not.toBeNull());
 
     expect(result.current.state).toEqual({ placement: 'top' });
-    expect(result.current.styles.popper).toMatchObject({
+    expect(result.current.styles.floating).toMatchObject({
       position: 'absolute',
-      transform: 'translate(200px, 240px)', // 50px tall popper, 10px gap above the reference's top edge at y=300
+      transform: 'translate(200px, 240px)', // 50px tall floating element, 10px gap above the reference's top edge at y=300
     });
   });
 
   test('it supports a skidding offset along the reference', async () => {
     const referenceElement = reference();
-    const popperElement = popper();
+    const floatingElement = floating();
     const { result } = renderHook(() =>
-      useLitformPopper(popperElement, referenceElement, null, {
+      useLitformFloating(floatingElement, referenceElement, null, {
         offset: { mainAxis: 4, crossAxis: 15 },
       }),
     );
 
     await waitFor(() => expect(result.current.state).not.toBeNull());
 
-    expect(result.current.styles.popper).toMatchObject({ transform: 'translate(215px, 234px)' });
+    expect(result.current.styles.floating).toMatchObject({ transform: 'translate(215px, 234px)' });
   });
 
   test('it flips to the other side when there is no room for the requested placement', async () => {
-    // only 10px above the reference, but the popper is 50px tall
+    // only 10px above the reference, but the floating element is 50px tall
     const referenceElement = reference({ top: 10 });
-    const popperElement = popper();
+    const floatingElement = floating();
     const { result } = renderHook(() =>
-      useLitformPopper(popperElement, referenceElement, null, { placement: 'top' }),
+      useLitformFloating(floatingElement, referenceElement, null, { placement: 'top' }),
     );
 
     await waitFor(() => expect(result.current.state).not.toBeNull());
 
     expect(result.current.state).toEqual({ placement: 'bottom' });
-    expect(result.current.attributes.popper).toEqual({ 'data-popper-placement': 'bottom' });
+    expect(result.current.attributes.floating).toEqual({ 'data-popper-placement': 'bottom' });
   });
 
   test('it positions the arrow at the center of the reference', async () => {
     const referenceElement = reference();
-    const popperElement = popper();
+    const floatingElement = floating();
     const arrowElement = box(document.createElement('span'), {
       left: 0,
       top: 0,
@@ -150,20 +152,22 @@ describe('useLitformPopper', () => {
       height: 10,
     });
     const { result } = renderHook(() =>
-      useLitformPopper(popperElement, referenceElement, arrowElement),
+      useLitformFloating(floatingElement, referenceElement, arrowElement),
     );
 
     await waitFor(() => expect(result.current.styles.arrow.left).toBeDefined());
 
-    // the popper starts at x=200 and the reference's center is at x=250, so the arrow's left edge goes at 50-10
+    // the floating element starts at x=200 and the reference's center is at x=250, so the arrow's left edge goes at 50-10
     expect(result.current.styles.arrow).toMatchObject({ position: 'absolute', left: '40px' });
     expect(result.current.styles.arrow.top).toBeUndefined();
   });
 
   test('it has no arrow position without an arrow element', async () => {
     const referenceElement = reference();
-    const popperElement = popper();
-    const { result } = renderHook(() => useLitformPopper(popperElement, referenceElement, null));
+    const floatingElement = floating();
+    const { result } = renderHook(() =>
+      useLitformFloating(floatingElement, referenceElement, null),
+    );
 
     await waitFor(() => expect(result.current.state).not.toBeNull());
 
@@ -176,10 +180,10 @@ describe('useLitformPopper', () => {
 
   test('it runs extra middleware', async () => {
     const referenceElement = reference();
-    const popperElement = popper();
+    const floatingElement = floating();
     const fn = vi.fn(() => ({ x: 7, y: 9 }));
     const { result } = renderHook(() =>
-      useLitformPopper(popperElement, referenceElement, null, {
+      useLitformFloating(floatingElement, referenceElement, null, {
         middleware: [{ name: 'custom', fn }],
       }),
     );
@@ -187,13 +191,15 @@ describe('useLitformPopper', () => {
     await waitFor(() => expect(result.current.state).not.toBeNull());
 
     expect(fn).toHaveBeenCalled();
-    expect(result.current.styles.popper).toMatchObject({ transform: 'translate(7px, 9px)' });
+    expect(result.current.styles.floating).toMatchObject({ transform: 'translate(7px, 9px)' });
   });
 
   test('it repositions when asked to', async () => {
     const referenceElement = reference();
-    const popperElement = popper();
-    const { result } = renderHook(() => useLitformPopper(popperElement, referenceElement, null));
+    const floatingElement = floating();
+    const { result } = renderHook(() =>
+      useLitformFloating(floatingElement, referenceElement, null),
+    );
     await waitFor(() => expect(result.current.state).not.toBeNull());
 
     // the reference moves; nothing tells Floating UI, so it's still where it was until update() is called
@@ -213,58 +219,60 @@ describe('useLitformPopper', () => {
     });
 
     await waitFor(() =>
-      expect(result.current.styles.popper).toMatchObject({ transform: 'translate(400px, 230px)' }),
+      expect(result.current.styles.floating).toMatchObject({
+        transform: 'translate(400px, 230px)',
+      }),
     );
   });
 
-  test('it stops tracking when the popper element goes away', async () => {
+  test('it stops tracking when the floating element goes away', async () => {
     const referenceElement = reference();
-    const popperElement = popper();
+    const floatingElement = floating();
     const { result, rerender } = renderHook(
-      ({ popperEl }: { popperEl: HTMLElement | null }) =>
-        useLitformPopper(popperEl, referenceElement, null),
-      { initialProps: { popperEl: popperElement as HTMLElement | null } },
+      ({ floatingEl }: { floatingEl: HTMLElement | null }) =>
+        useLitformFloating(floatingEl, referenceElement, null),
+      { initialProps: { floatingEl: floatingElement as HTMLElement | null } },
     );
     await waitFor(() => expect(result.current.state).not.toBeNull());
 
-    rerender({ popperEl: null });
+    rerender({ floatingEl: null });
 
-    await waitFor(() => expect(result.current.attributes.popper).toEqual({}));
+    await waitFor(() => expect(result.current.attributes.floating).toEqual({}));
   });
 });
 
-describe('useAutoClosingPopper', () => {
-  test('it calls setVisible(false) when something outside the reference and popper is clicked', () => {
+describe('useAutoClosingFloating', () => {
+  test('it calls setVisible(false) when something outside the reference and floating element is clicked', () => {
     const setVisible = vi.fn();
     const referenceElement = reference();
-    const popperElement = popper();
-    renderHook(() => useAutoClosingPopper(setVisible, referenceElement, popperElement));
+    const floatingElement = floating();
+    renderHook(() => useAutoClosingFloating(setVisible, referenceElement, floatingElement));
 
     fireEvent.mouseDown(document.body);
 
     expect(setVisible).toHaveBeenCalledWith(false);
   });
 
-  test('it does nothing when the reference or the popper is clicked', () => {
+  test('it does nothing when the reference or the floating element is clicked', () => {
     const setVisible = vi.fn();
     const referenceElement = reference();
-    const popperElement = popper();
-    renderHook(() => useAutoClosingPopper(setVisible, referenceElement, popperElement));
+    const floatingElement = floating();
+    renderHook(() => useAutoClosingFloating(setVisible, referenceElement, floatingElement));
 
     fireEvent.mouseDown(referenceElement);
-    fireEvent.mouseDown(popperElement);
+    fireEvent.mouseDown(floatingElement);
 
     expect(setVisible).not.toHaveBeenCalled();
   });
 });
 
-describe('useLitformPopperWithAutoClosing', () => {
-  test('it positions the popper and also closes it on outside clicks', async () => {
+describe('useLitformFloatingWithAutoClosing', () => {
+  test('it positions the floating element and also closes it on outside clicks', async () => {
     const setVisible = vi.fn();
     const referenceElement = reference();
-    const popperElement = popper();
+    const floatingElement = floating();
     const { result } = renderHook(() =>
-      useLitformPopperWithAutoClosing(popperElement, referenceElement, null, setVisible, {
+      useLitformFloatingWithAutoClosing(floatingElement, referenceElement, null, setVisible, {
         placement: 'bottom-start',
       }),
     );
@@ -302,17 +310,17 @@ describe('useToggleOpen', () => {
 
 describe('Tooltip', () => {
   const styles = {
-    popper: { position: 'fixed' as const },
+    floating: { position: 'fixed' as const },
     arrow: { position: 'absolute' as const, left: '5px' },
   };
 
   test('it renders visible, with the placement as a Bootstrap class and the arrow positioned', () => {
     const { getByRole, getByText, container } = render(
       <Tooltip
-        popperRef={() => {}}
+        floatingRef={() => {}}
         arrowRef={() => {}}
         styles={styles}
-        attributes={{ popper: { 'data-popper-placement': 'top-start' } }}
+        attributes={{ floating: { 'data-popper-placement': 'top-start' } }}
         state={{ placement: 'top-start' }}
         visible
       >
@@ -330,10 +338,10 @@ describe('Tooltip', () => {
   test('it renders hidden, out of the way, before it has been positioned', () => {
     const { getByRole } = render(
       <Tooltip
-        popperRef={() => {}}
+        floatingRef={() => {}}
         arrowRef={() => {}}
         styles={styles}
-        attributes={{ popper: {} }}
+        attributes={{ floating: {} }}
         state={null}
       >
         words

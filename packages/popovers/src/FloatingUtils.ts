@@ -12,10 +12,10 @@ import type { Middleware, OffsetOptions, Placement, Strategy } from '@floating-u
 
 export type { Middleware, OffsetOptions, Placement, Strategy };
 
-export function useAutoClosingPopper(
+export function useAutoClosingFloating(
   setVisible: React.Dispatch<boolean>,
   referenceElement: HTMLElement | undefined | null,
-  popperElement: HTMLElement | undefined | null,
+  floatingElement: HTMLElement | undefined | null,
 ): void {
   const hide = useCallback(() => {
     setVisible(false);
@@ -26,20 +26,20 @@ export function useAutoClosingPopper(
     if (referenceElement) {
       onClickOutsideRef(referenceElement);
     }
-    if (popperElement) {
-      onClickOutsideRef(popperElement);
+    if (floatingElement) {
+      onClickOutsideRef(floatingElement);
     }
-  }, [onClickOutsideRef, referenceElement, popperElement]);
+  }, [onClickOutsideRef, referenceElement, floatingElement]);
 }
 
-export type LitformPopperOptions = {
-  /** Where to put the popper relative to its reference element.  Defaults to "bottom". */
+export type LitformFloatingOptions = {
+  /** Where to put the floating element relative to its reference element.  Defaults to "bottom". */
   placement?: Placement;
   /** CSS positioning strategy.  Defaults to "fixed". */
   strategy?: Strategy;
-  /** Distance between the reference and the popper (a number), or a Floating UI offset object */
+  /** Distance between the reference and the floating element (a number), or a Floating UI offset object */
   offset?: OffsetOptions;
-  /** Padding between the arrow and the edges of the popper, if there is an arrow */
+  /** Padding between the arrow and the edges of the floating element, if there is an arrow */
   arrowPadding?: number;
   /**
    * Extra Floating UI middleware.  These run after the built-in offset, flip and shift, and before the arrow.
@@ -48,39 +48,40 @@ export type LitformPopperOptions = {
   middleware?: Middleware[];
 };
 
-export type LitformPopperResult = {
+export type LitformFloatingResult = {
   styles: {
-    /** Apply to the popper element */
-    popper: CSSProperties;
+    /** Apply to the floating element */
+    floating: CSSProperties;
     /** Apply to the arrow element, if there is one */
     arrow: CSSProperties;
   };
   attributes: {
     /**
-     * Spread onto the popper element.  Holds `data-popper-placement` (which Bootstrap's CSS uses) once the popper has
+     * Spread onto the floating element.  Holds `data-popper-placement` (which Bootstrap's CSS uses) once the popper has
      * been positioned, and nothing before then.
      */
-    popper: Record<string, string>;
+    floating: Record<string, string>;
   };
-  /** The popper's placement once it has been positioned (it may differ from the requested one if it had to flip) */
+  /** The floating element's placement once it has been positioned (it may differ from the requested one if it had to flip) */
   state: { placement: Placement } | null;
   /** Recompute the position now */
   update: () => void;
 };
 
 /**
- * Positions `popperElement` next to `referenceElement` using Floating UI, and keeps it positioned as the page scrolls
+ * Positions `floatingElement` next to `referenceElement` using Floating UI, and keeps it positioned as the page scrolls
  * and resizes.  Nothing is set up (no listeners, no position computation) until both elements are present, so callers
- * can pass `null` for the popper element while it's hidden.
+ * can pass `null` for the floating element while it's hidden.
  *
- * (The name and the shape of the result are a holdover from when this was built on Popper.)
+ * (`data-popper-placement` keeps its name from the days when this was built on Popper, because Bootstrap's CSS
+ * selects on it.)
  */
-export function useLitformPopper(
-  popperElement: HTMLElement | undefined | null,
+export function useLitformFloating(
+  floatingElement: HTMLElement | undefined | null,
   referenceElement: HTMLElement | undefined | null,
   arrowElement: HTMLElement | undefined | null,
-  options?: LitformPopperOptions,
-): LitformPopperResult {
+  options?: LitformFloatingOptions,
+): LitformFloatingResult {
   const {
     placement: requestedPlacement = 'bottom',
     strategy = 'fixed',
@@ -99,10 +100,10 @@ export function useLitformPopper(
       ...(middleware ?? []),
       ...(arrowElement ? [arrowMiddleware({ element: arrowElement, padding: arrowPadding })] : []),
     ],
-    elements: { reference: referenceElement ?? null, floating: popperElement ?? null },
-    // lets Floating UI forget the old position when the popper goes away, so a popper that's shown again doesn't flash
+    elements: { reference: referenceElement ?? null, floating: floatingElement ?? null },
+    // lets Floating UI forget the old position when the floating element goes away, so one that's shown again doesn't flash
     // at its previous position before it has been measured
-    open: popperElement != null && referenceElement != null,
+    open: floatingElement != null && referenceElement != null,
     whileElementsMounted: autoUpdate,
   });
 
@@ -110,33 +111,33 @@ export function useLitformPopper(
 
   return {
     styles: {
-      popper: floatingStyles,
+      floating: floatingStyles,
       arrow: {
         position: 'absolute',
         left: arrowData?.x != null ? `${arrowData.x}px` : undefined,
         top: arrowData?.y != null ? `${arrowData.y}px` : undefined,
       },
     },
-    attributes: { popper: isPositioned ? { 'data-popper-placement': placement } : {} },
+    attributes: { floating: isPositioned ? { 'data-popper-placement': placement } : {} },
     state: isPositioned ? { placement } : null,
     update,
   };
 }
 
-export function useLitformPopperWithAutoClosing(
-  popperElement: HTMLElement | undefined | null,
+export function useLitformFloatingWithAutoClosing(
+  floatingElement: HTMLElement | undefined | null,
   referenceElement: HTMLElement | undefined | null,
   arrowElement: HTMLElement | undefined | null,
   setVisible: React.Dispatch<boolean>,
-  options?: LitformPopperOptions,
-): LitformPopperResult {
-  useAutoClosingPopper(setVisible, referenceElement, popperElement);
-  return useLitformPopper(popperElement, referenceElement, arrowElement, options);
+  options?: LitformFloatingOptions,
+): LitformFloatingResult {
+  useAutoClosingFloating(setVisible, referenceElement, floatingElement);
+  return useLitformFloating(floatingElement, referenceElement, arrowElement, options);
 }
 
 export function useToggleOpen(
   setDropdownOpen: (updater: (prev: boolean) => boolean) => void,
-  update: LitformPopperResult['update'] | null | undefined,
+  update: LitformFloatingResult['update'] | null | undefined,
 ): () => void {
   const toggleOpen = useCallback(() => {
     setDropdownOpen((prev) => !prev);

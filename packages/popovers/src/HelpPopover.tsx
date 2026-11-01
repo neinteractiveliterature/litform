@@ -1,7 +1,7 @@
 import { ReactNode, useCallback, useState } from 'react';
 import * as React from 'react';
 import classNames from 'classnames';
-import { useLitformPopperWithAutoClosing } from './PopperUtils';
+import { useLitformFloatingWithAutoClosing } from './FloatingUtils';
 import { getIconClassName, LitformIconSetIdentifier } from '@neinteractiveliterature/litform-core';
 
 // https://stackoverflow.com/questions/36532307/rem-px-in-javascript
@@ -48,7 +48,7 @@ function HelpPopover({
   // The popover element is only handed to the positioning code while the popover is showing.  It only sets itself up
   // (listeners, position computation, state updates after every render) when it has both elements, so this keeps every
   // help popover on a page from doing that work while they're hidden.
-  const { styles, attributes } = useLitformPopperWithAutoClosing(
+  const { styles, attributes } = useLitformFloatingWithAutoClosing(
     visible ? popover : null,
     toggleButton,
     arrow,
@@ -88,8 +88,8 @@ function HelpPopover({
           'd-none': !visible,
         })}
         ref={setPopover}
-        style={styles.popper}
-        {...attributes.popper}
+        style={styles.floating}
+        {...attributes.floating}
       >
         <div className="card-body">{children}</div>
         <span ref={setArrow} style={styles.arrow} className="popover-arrow" />

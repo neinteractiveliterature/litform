@@ -1,7 +1,7 @@
 import { ReactNode, useCallback, useState } from 'react';
 import * as React from 'react';
 
-import { useLitformPopper } from './PopperUtils';
+import { useLitformFloating } from './FloatingUtils';
 import Tooltip from './Tooltip';
 
 export type ButtonWithTooltipProps = {
@@ -22,7 +22,7 @@ function ButtonWithTooltip({
 
   // The tooltip element is only handed to the positioning code while the tooltip is showing, so a page full of these
   // buttons doesn't have every hidden tooltip being tracked and positioned.
-  const { styles, attributes, state, update } = useLitformPopper(
+  const { styles, attributes, state, update } = useLitformFloating(
     visible ? tooltip : null,
     dropdownButton,
     arrow,
@@ -47,7 +47,7 @@ function ButtonWithTooltip({
         {children}
       </button>
       <Tooltip
-        popperRef={setTooltip}
+        floatingRef={setTooltip}
         arrowRef={setArrow}
         state={state}
         attributes={attributes}
