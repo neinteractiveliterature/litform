@@ -1698,11 +1698,13 @@ __metadata:
     "@types/react": "npm:^19.0.10"
     react: "npm:^19.0.0"
     react-bootstrap4-modal: "npm:^3.0.10"
+    react-dom: "npm:^19.0.0"
     typescript: "npm:^5.7.3"
     vite: "npm:^7.0.0"
     vitest: "npm:^3.0.6"
   peerDependencies:
     react: ">= 18"
+    react-dom: ">= 18"
   languageName: unknown
   linkType: soft
 
@@ -1739,9 +1741,14 @@ __metadata:
     "@neinteractiveliterature/litform-modals": "workspace:^"
     "@neinteractiveliterature/litform-popovers": "workspace:^"
     "@testing-library/jest-dom": "npm:^6.6.3"
+    react: "npm:^19.0.0"
+    react-dom: "npm:^19.0.0"
     typescript: "npm:^5.7.3"
     vite: "npm:^7.0.0"
     vitest: "npm:^3.0.6"
+  peerDependencies:
+    react: ">= 18"
+    react-dom: ">= 18"
   languageName: unknown
   linkType: soft
 

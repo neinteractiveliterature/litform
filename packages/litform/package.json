@@ -29,8 +29,14 @@
     "@neinteractiveliterature/litform-modals": "workspace:^",
     "@neinteractiveliterature/litform-popovers": "workspace:^"
   },
+  "peerDependencies": {
+    "react": ">= 18",
+    "react-dom": ">= 18"
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "typescript": "^5.7.3",
     "vite": "^7.0.0",
     "vitest": "^3.0.6"
