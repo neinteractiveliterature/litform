@@ -22,6 +22,30 @@ test('it renders a graphql error', () => {
   expect(getAllByText('is borked')).toHaveLength(1);
 });
 
+// Apollo Client 4's CombinedGraphQLErrors keeps its GraphQL errors in `errors` rather than `graphQLErrors`
+class CombinedGraphQLErrorsLike extends Error {
+  errors: { message: string }[];
+
+  constructor(errors: { message: string }[]) {
+    super(errors.map((error) => error.message).join('\n'));
+    this.errors = errors;
+  }
+}
+
+test('it renders each error of an Apollo Client 4 combined GraphQL error as a list item', () => {
+  const error = new CombinedGraphQLErrorsLike([{ message: 'everything ' }, { message: 'is borked' }]);
+  const { getAllByRole, container } = render(<ErrorDisplay graphQLError={error} />);
+
+  expect(getAllByRole('listitem').map((item) => item.textContent)).toEqual(['everything ', 'is borked']);
+  expect(container.querySelector('pre')).toBeNull();
+});
+
+test('it falls back to the message for an error with no GraphQL errors', () => {
+  const { getByText } = render(<ErrorDisplay graphQLError={new Error('plain old error')} />);
+
+  expect(getByText('plain old error').tagName).toEqual('PRE');
+});
+
 test('it renders nothing by default', () => {
   const { getByTestId } = render(<ErrorDisplay />, {
     wrapper: () => <div data-testid="wrapper" />,
