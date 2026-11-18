@@ -1,12 +1,27 @@
 import { JSX, ReactNode } from 'react';
 import type { GraphQLFormattedError } from 'graphql';
 
-interface GraphQLError extends Error {
-  graphQLErrors: GraphQLFormattedError[];
+// Apollo Client 3's ApolloError keeps its GraphQL errors in `graphQLErrors`...
+interface ApolloClient3GraphQLError extends Error {
+  graphQLErrors: readonly GraphQLFormattedError[];
 }
 
-function isGraphQLError(error: Error): error is GraphQLError {
-  return 'graphQLErrors' in error;
+// ...while Apollo Client 4's CombinedGraphQLErrors keeps them in `errors`. These are checked by shape rather than by
+// importing from @apollo/client, so that this works with either major version.
+interface ApolloClient4GraphQLError extends Error {
+  errors: readonly GraphQLFormattedError[];
+}
+
+function getGraphQLErrors(error: Error): readonly GraphQLFormattedError[] | undefined {
+  if ('graphQLErrors' in error && Array.isArray((error as ApolloClient3GraphQLError).graphQLErrors)) {
+    return (error as ApolloClient3GraphQLError).graphQLErrors;
+  }
+
+  if ('errors' in error && Array.isArray((error as ApolloClient4GraphQLError).errors)) {
+    return (error as ApolloClient4GraphQLError).errors;
+  }
+
+  return undefined;
 }
 
 export type ErrorDisplayProps = {
@@ -19,12 +34,13 @@ function ErrorDisplay({ stringError, graphQLError }: ErrorDisplayProps): JSX.Ele
 
   if (graphQLError) {
     try {
-      if (!isGraphQLError(graphQLError)) {
+      const graphQLErrors = getGraphQLErrors(graphQLError);
+      if (!graphQLErrors) {
         throw new Error('Bailing and falling back to displaying message');
       }
 
-      if (graphQLError.graphQLErrors.length > 0) {
-        const errorMessages = graphQLError.graphQLErrors.map((error, i) => (
+      if (graphQLErrors.length > 0) {
+        const errorMessages = graphQLErrors.map((error, i) => (
           <li key={i}>{error.message}</li>
         ));
 
