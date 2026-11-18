@@ -8274,11 +8274,6 @@ __metadata:
     vite-plugin-dts: "npm:^4.5.0"
     vite-tsconfig-paths: "npm:^5.1.4"
     vitest: "npm:^3.0.6"
-  dependenciesMeta:
-    "@babel/traverse@7.26.9":
-      unplugged: true
-    react-docgen@7.1.1:
-      unplugged: true
   languageName: unknown
   linkType: soft
 
