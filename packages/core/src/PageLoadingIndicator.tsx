@@ -3,20 +3,28 @@ import { LitformIconSetIdentifier } from './IconSets';
 
 export type PageLoadingIndicatorProps = {
   visible: boolean;
+  /**
+   * Milliseconds to wait before showing the indicator, so that it doesn't flash on quick loads. With 0 it is visible from
+   * the first render, including in server-rendered or prerendered HTML, where effects don't run.
+   */
+  delay?: number;
   /** @deprecated */
   iconSet?: LitformIconSetIdentifier;
 };
 
-function PageLoadingIndicator({ visible }: PageLoadingIndicatorProps): JSX.Element {
-  const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
+function PageLoadingIndicator({ visible, delay = 250 }: PageLoadingIndicatorProps): JSX.Element {
+  const [delayedVisible, setDelayedVisible] = useState(false);
 
   useEffect(() => {
     if (!visible) {
-      setShowLoadingIndicator(false);
+      setDelayedVisible(false);
     }
-    const timeoutId = setTimeout(() => setShowLoadingIndicator(visible), 250);
+    const timeoutId = setTimeout(() => setDelayedVisible(visible), delay);
     return () => clearTimeout(timeoutId);
-  }, [visible]);
+  }, [visible, delay]);
+
+  // With no delay, don't wait for the effect
+  const showLoadingIndicator = delay === 0 ? visible : delayedVisible;
 
   return (
     <div

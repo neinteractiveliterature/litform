@@ -7,6 +7,7 @@ export default {
   component: PageLoadingIndicator,
   argTypes: {
     visible: { control: 'boolean' },
+    delay: { control: 'number' },
     iconSet: { control: 'radio', options: ['bootstrap-icons'] },
     // label: { control: 'text' },
     // hideLabel: { control: 'boolean' },
@@ -29,4 +30,10 @@ const Template: StoryFn<ComponentProps<typeof PageLoadingIndicator>> = (args) =>
 export const Basic = Template.bind({});
 Basic.args = {
   visible: true,
+};
+
+export const NoDelay = Template.bind({});
+NoDelay.args = {
+  visible: true,
+  delay: 0,
 };

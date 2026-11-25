@@ -377,7 +377,8 @@ Options:
 
 ```tsx
 <LoadingIndicator size={3} />           // size 1–9, default 5
-<PageLoadingIndicator visible={loading} />
+<PageLoadingIndicator visible={loading} />      // appears after 250ms, so it doesn't flash on quick loads
+<PageLoadingIndicator visible delay={0} />      // visible from the first render, even in prerendered HTML
 ```
 
 ### DisclosureTriangle
